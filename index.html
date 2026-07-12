@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Советы Chevrolet Bolt EV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #06060c;
+            --surface: #0d0d16;
+            --surface-2: #12121e;
+            --surface-3: #1a1a2a;
+            --border: rgba(255,255,255,0.06);
+            --text: #f0f0f8;
+            --text-2: #8888a8;
+            --text-3: #555570;
+            --accent: #00e4b0;
+            --accent-dim: rgba(0,228,176,0.12);
+            --accent-glow: rgba(0,228,176,0.25);
+            --blue: #4a9eff;
+            --purple: #a78bfa;
+            --orange: #fb923c;
+            --red: #f43f5e;
+            --pink: #f472b6;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { border-color: rgba(0,228,176,0.1); }
+            50% { border-color: rgba(0,228,176,0.3); }
+        }
+
+        @keyframes particleFloat {
+            0% { transform: translate(0, 0) scale(1); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+        }
+
+        @keyframes slideInStagger {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes rotateGlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes textReveal {
+            from { clip-path: inset(0 100% 0 0); }
+            to { clip-path: inset(0 0% 0 0); }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-1 { transition-delay: 0.05s; }
+        .stagger-2 { transition-delay: 0.1s; }
+        .stagger-3 { transition-delay: 0.15s; }
+        .stagger-4 { transition-delay: 0.2s; }
+        .stagger-5 { transition-delay: 0.25s; }
+        .stagger-6 { transition-delay: 0.3s; }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            position: fixed;
+            left: 0; top: 0;
+            width: 300px;
+            height: 100vh;
+            background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
+            border-right: 1px solid var(--border);
+            overflow-y: auto;
+            z-index: 100;
+            padding: 28px 0;
+            scrollbar-width: thin;
+            scrollbar-color: var(--surface-3) transparent;
+        }
+
+        .sidebar::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 1px; height: 100%;
+            background: linear-gradient(180deg, var(--accent) 0%, transparent 30%, transparent 70%, var(--accent) 100%);
+            opacity: 0.3;
+        }
+
+        .sidebar-header {
+            padding: 0 24px 24px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .logo-icon {
+            width: 44px; height: 44px;
+            background: linear-gradient(135deg, var(--accent), var(--blue));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--bg);
+            animation: float 3s ease-in-out infinite;
+            box-shadow: 0 8px 32px rgba(0,228,176,0.3);
+        }
+
+        .logo h1 {
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, var(--accent), var(--blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-sub {
+            font-size: 10px;
+            color: var(--text-3);
+            letter-spacing: 0.5px;
+        }
+
+        .search-box {
+            padding: 0 24px 20px;
+        }
+
+        .search-box input {
+            width: 100%;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 10px 14px 10px 36px;
+            font-size: 13px;
+            color: var(--text);
+            outline: none;
+            font-family: inherit;
+            transition: all 0.3s;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23555570' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85zm-5.44.856a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: 12px center;
+        }
+
+        .search-box input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-dim);
+        }
+
+        .nav-group { margin-bottom: 4px; }
+
+        .nav-group-title {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-3);
+            padding: 12px 24px 6px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 24px;
+            font-size: 13px;
+            color: var(--text-2);
+            text-decoration: none;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            border-left: 2px solid transparent;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0;
+            width: 2px; height: 100%;
+            background: var(--accent);
+            transform: scaleY(0);
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .nav-item:hover {
+            color: var(--text);
+            background: rgba(255,255,255,0.03);
+        }
+
+        .nav-item:hover::before {
+            transform: scaleY(1);
+        }
+
+        .nav-item.active {
+            color: var(--accent);
+            background: var(--accent-dim);
+            font-weight: 500;
+        }
+
+        .nav-item.active::before {
+            transform: scaleY(1);
+        }
+
+        .nav-dot {
+            width: 5px; height: 5px;
+            background: var(--text-3);
+            border-radius: 50%;
+            transition: all 0.25s;
+        }
+
+        .nav-item:hover .nav-dot,
+        .nav-item.active .nav-dot {
+            background: var(--accent);
+            box-shadow: 0 0 8px var(--accent);
+        }
+
+        /* ===== MAIN ===== */
+        .main {
+            margin-left: 300px;
+            padding: 0 48px 80px;
+            max-width: 960px;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px 0;
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: -200px; right: -200px;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            filter: blur(80px);
+            animation: glowPulse 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .hero-bg-2 {
+            position: absolute;
+            bottom: -100px; left: -100px;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(74,158,255,0.15) 0%, transparent 70%);
+            filter: blur(60px);
+            animation: glowPulse 5s ease-in-out infinite 1s;
+            pointer-events: none;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: var(--accent-dim);
+            border: 1px solid rgba(0,228,176,0.2);
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 24px;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+        }
+
+        .hero-badge .dot {
+            width: 6px; height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: glowPulse 2s ease-in-out infinite;
+        }
+
+        .hero h2 {
+            font-size: 52px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+        }
+
+        .hero h2 .gradient {
+            background: linear-gradient(135deg, var(--accent), var(--blue), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: shimmer 3s linear infinite;
+        }
+
+        .hero p {
+            font-size: 17px;
+            color: var(--text-2);
+            max-width: 500px;
+            line-height: 1.8;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.8s both;
+        }
+
+        .hero-stat {
+            position: relative;
+        }
+
+        .hero-stat::after {
+            content: '';
+            position: absolute;
+            right: -20px; top: 50%;
+            transform: translateY(-50%);
+            width: 1px; height: 30px;
+            background: var(--border);
+        }
+
+        .hero-stat:last-child::after { display: none; }
+
+        .hero-stat .num {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .hero-stat .label {
+            font-size: 11px;
+            color: var(--text-3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ===== SECTIONS ===== */
+        .section {
+            margin-bottom: 64px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        .section-header::after {
+            content: '';
+            position: absolute;
+            bottom: -1px; left: 0;
+            width: 60px; height: 2px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+        }
+
+        .section-icon {
+            width: 40px; height: 40px;
+            background: linear-gradient(135deg, var(--accent-dim), rgba(74,158,255,0.1));
+            border: 1px solid rgba(0,228,176,0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+
+        .section:hover .section-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 4px 20px var(--accent-dim);
+        }
+
+        .section-title {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .subsection-title {
+            font-size: 15px;
+            font-weight: 700;
+            margin: 24px 0 12px;
+            color: var(--blue);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .subsection-title::before {
+            content: '';
+            width: 3px; height: 14px;
+            background: var(--blue);
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: var(--text-2);
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 8px 0 16px 0;
+            font-size: 14px;
+            list-style: none;
+        }
+
+        li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+            color: var(--text-2);
+        }
+
+        li::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 10px;
+            width: 6px; height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        a:hover {
+            text-shadow: 0 0 12px var(--accent-glow);
+        }
+
+        /* ===== CARDS ===== */
+        .card {
+            background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 16px 0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.02) 100%);
+            pointer-events: none;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0,228,176,0.2);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 0 1px rgba(0,228,176,0.1);
+        }
+
+        .card.accent {
+            border-color: rgba(0,228,176,0.2);
+            background: linear-gradient(135deg, rgba(0,228,176,0.05) 0%, var(--surface) 100%);
+        }
+
+        .card.warning {
+            border-color: rgba(251,146,60,0.2);
+            background: linear-gradient(135deg, rgba(251,146,60,0.05) 0%, var(--surface) 100%);
+        }
+
+        .card.danger {
+            border-color: rgba(244,63,94,0.2);
+            background: linear-gradient(135deg, rgba(244,63,94,0.05) 0%, var(--surface) 100%);
+        }
+
+        .card-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card.accent .card-title { color: var(--accent); }
+        .card.warning .card-title { color: var(--orange); }
+        .card.danger .card-title { color: var(--red); }
+
+        .card-title .icon {
+            width: 20px; height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            border-radius: 6px;
+            flex-shrink: 0;
+        }
+
+        .card.accent .card-title .icon { background: var(--accent-dim); }
+        .card.warning .card-title .icon { background: rgba(251,146,60,0.15); }
+        .card.danger .card-title .icon { background: rgba(244,63,94,0.15); }
+
+        /* ===== SPECS GRID ===== */
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .spec {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .spec::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--blue));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .spec:hover {
+            transform: translateY(-3px);
+            border-color: rgba(0,228,176,0.15);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+
+        .spec:hover::after { opacity: 1; }
+
+        .spec .label {
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-3);
+            margin-bottom: 6px;
+        }
+
+        .spec .value {
+            font-size: 20px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent), var(--blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ===== TAGS ===== */
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 600;
+            margin: 2px 4px 2px 0;
+            transition: all 0.2s;
+        }
+
+        .tag:hover { transform: scale(1.05); }
+
+        .tag.green { background: rgba(0,228,176,0.12); color: var(--accent); border: 1px solid rgba(0,228,176,0.2); }
+        .tag.blue { background: rgba(74,158,255,0.12); color: var(--blue); border: 1px solid rgba(74,158,255,0.2); }
+        .tag.purple { background: rgba(167,139,250,0.12); color: var(--purple); border: 1px solid rgba(167,139,250,0.2); }
+        .tag.orange { background: rgba(251,146,60,0.12); color: var(--orange); border: 1px solid rgba(251,146,60,0.2); }
+        .tag.pink { background: rgba(244,114,182,0.12); color: var(--pink); border: 1px solid rgba(244,114,182,0.2); }
+
+        code {
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-family: 'SF Mono', monospace;
+            color: var(--accent);
+        }
+
+        /* ===== FLOATING PARTICLES ===== */
+        .particles {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px; height: 3px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0;
+            animation: particleFloat linear infinite;
+        }
+
+        /* ===== MOBILE ===== */
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 16px; left: 16px;
+            z-index: 200;
+            width: 44px; height: 44px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text);
+            font-size: 18px;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .menu-toggle:hover {
+            background: var(--surface-2);
+            border-color: var(--accent);
+        }
+
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            z-index: 99;
+        }
+
+        @media (max-width: 900px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                z-index: 101;
+            }
+            .sidebar.open { transform: translateX(0); }
+            .sidebar-overlay.open { display: block; }
+            .menu-toggle { display: flex; }
+            .main { margin-left: 0; padding: 24px 20px 60px; padding-top: 72px; }
+            .hero { min-height: 50vh; }
+            .hero h2 { font-size: 32px; }
+            .hero-stats { gap: 24px; flex-wrap: wrap; }
+            .section-title { font-size: 22px; }
+            .specs-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--surface-3); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+        /* ===== BACK TO TOP ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: 32px; right: 32px;
+            width: 44px; height: 44px;
+            background: linear-gradient(135deg, var(--accent), var(--blue));
+            border: none;
+            border-radius: 12px;
+            color: var(--bg);
+            font-size: 18px;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,228,176,0.3);
+        }
+
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+
+<!-- Particles -->
+<div class="particles" id="particles"></div>
+
+<!-- Sidebar overlay (mobile) -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+<button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+
+<!-- Back to top -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- Sidebar -->
+<nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <div class="logo">
+            <div class="logo-icon">⚡</div>
+            <div>
+                <h1>BOLT EV</h1>
+                <div class="logo-sub">Справочник владельца</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="search-box">
+        <input type="text" id="search" placeholder="Поиск по разделам..." oninput="filterNav(this.value)">
+    </div>
+
+    <div class="nav-group">
+        <div class="nav-group-title">Основы</div>
+        <a class="nav-item" onclick="goTo('terms')"><span class="nav-dot"></span>Термины</a>
+        <a class="nav-item" onclick="goTo('misc')"><span class="nav-dot"></span>Разное</a>
+        <a class="nav-item" onclick="goTo('opel')"><span class="nav-dot"></span>Опель vs Bolt</a>
+    </div>
+    <div class="nav-group">
+        <div class="nav-group-title">ТО и обслуживание</div>
+        <a class="nav-item" onclick="goTo('maintenance')"><span class="nav-dot"></span>Регламент ТО</a>
+        <a class="nav-item" onclick="goTo('oil')"><span class="nav-dot"></span>Масло редуктора</a>
+        <a class="nav-item" onclick="goTo('filter')"><span class="nav-dot"></span>Салонный фильтр</a>
+        <a class="nav-item" onclick="goTo('wipers')"><span class="nav-dot"></span>Дворники</a>
+        <a class="nav-item" onclick="goTo('battery-small')"><span class="nav-dot"></span>12В АКБ</a>
+        <a class="nav-item" onclick="goTo('headlights')"><span class="nav-dot"></span>Фары</a>
+    </div>
+    <div class="nav-group">
+        <div class="nav-group-title">Колёса и резина</div>
+        <a class="nav-item" onclick="goTo('tires')"><span class="nav-dot"></span>Размеры шин</a>
+        <a class="nav-item" onclick="goTo('tpms')"><span class="nav-dot"></span>Датчики давления</a>
+        <a class="nav-item" onclick="goTo('tpms-flash')"><span class="nav-dot"></span>Прошивка датчиков</a>
+        <a class="nav-item" onclick="goTo('alignment')"><span class="nav-dot"></span>Развал-схождение</a>
+    </div>
+    <div class="nav-group">
+        <div class="nav-group-title">Зарядка</div>
+        <a class="nav-item" onclick="goTo('charging-types')"><span class="nav-dot"></span>Типы зарядок</a>
+        <a class="nav-item" onclick="goTo('charging-map')"><span class="nav-dot"></span>Где найти зарядки</a>
+        <a class="nav-item" onclick="goTo('charging-fast')"><span class="nav-dot"></span>Быстрая зарядка</a>
+        <a class="nav-item" onclick="goTo('charging-parking')"><span class="nav-dot"></span>Зарядка в паркинге</a>
+        <a class="nav-item" onclick="goTo('charging-min')"><span class="nav-dot"></span>Мин. напряжение</a>
+    </div>
+    <div class="nav-group">
+        <div class="nav-group-title">Батарея</div>
+        <a class="nav-item" onclick="goTo('battery-capacity')"><span class="nav-dot"></span>Ёмкость</a>
+        <a class="nav-item" onclick="goTo('battery-degradation')"><span class="nav-dot"></span>Деградация</a>
+        <a class="nav-item" onclick="goTo('range-speed')"><span class="nav-dot"></span>Запас хода vs скорость</a>
+        <a class="nav-item" onclick="goTo('range-temp')"><span class="nav-dot"></span>Запас хода vs температура</a>
+        <a class="nav-item" onclick="goTo('consumption')"><span class="nav-dot"></span>Расход кВт·ч</a>
+    </div>
+    <div class="nav-group">
+        <div class="nav-group-title">Зима</div>
+        <a class="nav-item" onclick="goTo('winter')"><span class="nav-dot"></span>Зимние советы</a>
+        <a class="nav-item" onclick="goTo('winter-climate')"><span class="nav-dot"></span>Климат и подогрев</a>
+        <a class="nav-item" onclick="goTo('winter-cold')"><span class="nav-dot"></span>Большие морозы</a>
+    </div>
+    <div class="nav-group">
+        <div class="nav-group-title">Медиа и электрика</div>
+        <a class="nav-item" onclick="goTo('media')"><span class="nav-dot"></span>Медиасистема</a>
+        <a class="nav-item" onclick="goTo('home-power')"><span class="nav-dot"></span>Питание дома</a>
+        <a class="nav-item" onclick="goTo('wash-mode')"><span class="nav-dot"></span>Режим мойки</a>
+    </div>
+    <div class="nav-group">
+        <div class="nav-group-title">Ремонт и проблемы</div>
+        <a class="nav-item" onclick="goTo('problems')"><span class="nav-dot"></span>Общие проблемы</a>
+        <a class="nav-item" onclick="goTo('suspension')"><span class="nav-dot"></span>Подвеска</a>
+        <a class="nav-item" onclick="goTo('trunk')"><span class="nav-dot"></span>Багажник</a>
+        <a class="nav-item" onclick="goTo('interior')"><span class="nav-dot"></span>Салон</a>
+        <a class="nav-item" onclick="goTo('fuses')"><span class="nav-dot"></span>Предохранители</a>
+        <a class="nav-item" onclick="goTo('towing')"><span class="nav-dot"></span>Буксировка</a>
+    </div>
+    <div class="nav-group">
+        <div class="nav-group-title">Доп. оборудование</div>
+        <a class="nav-item" onclick="goTo('apps')"><span class="nav-dot"></span>ПО на телефон</a>
+        <a class="nav-item" onclick="goTo('alarm')"><span class="nav-dot"></span>Сигнализации</a>
+        <a class="nav-item" onclick="goTo('spacers')"><span class="nav-dot"></span>Проставки</a>
+    </div>
+    <div class="nav-group">
+        <div class="nav-group-title">Полезное</div>
+        <a class="nav-item" onclick="goTo('groups')"><span class="nav-dot"></span>Чаты и группы</a>
+        <a class="nav-item" onclick="goTo('recall')"><span class="nav-dot"></span>Отзыв производителя</a>
+        <a class="nav-item" onclick="goTo('qr')"><span class="nav-dot"></span>Комплектация по QR</a>
+        <a class="nav-item" onclick="goTo('contacts')"><span class="nav-dot"></span>Мастера</a>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<main class="main">
+
+    <!-- HERO -->
+    <div class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-bg-2"></div>
+        <div class="hero-badge"><span class="dot"></span>Обновляется автоматически</div>
+        <h2>Советы<br><span class="gradient">Chevrolet Bolt EV</span></h2>
+        <p>Полный справочник владельца электромобиля. Термины, обслуживание, зарядка, ремонт и многое другое.</p>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="num">60+</div>
+                <div class="label">Разделов</div>
+            </div>
+            <div class="hero-stat">
+                <div class="num">300+</div>
+                <div class="label">Советов</div>
+            </div>
+            <div class="hero-stat">
+                <div class="num">4000+</div>
+                <div class="label">Участников</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ТЕРМИНЫ -->
+    <div class="section" id="terms">
+        <div class="section-header">
+            <div class="section-icon">📖</div>
+            <h3 class="section-title">Термины</h3>
+        </div>
+        <div class="specs-grid">
+            <div class="spec animate-on-scroll stagger-1"><div class="label">SOC</div><div class="value">Заряд %</div></div>
+            <div class="spec animate-on-scroll stagger-2"><div class="label">SOH</div><div class="value">Здоровье</div></div>
+            <div class="spec animate-on-scroll stagger-3"><div class="label">EV</div><div class="value">Электромобиль</div></div>
+        </div>
+        <p><strong>SOC</strong> (State of Charge) — текущий уровень заряда батареи в процентах.</p>
+        <p><strong>SOH</strong> (State Of Health) — показатель состояния батареи. Обозначает остаточную ёмкость. Изначально равен 100%.</p>
+        <p><strong>Регенеративное торможение</strong> — система, восстанавливающая энергию при замедлении. Позволяет замедлить и остановить авто без тормозов (вождение одной педалью).</p>
+        <p><strong>Антипригарка</strong> — прошивка, ограничивающая заряд батареи для предотвращения возгорания.</p>
+        <p><strong>HillTop</strong> — функция ограничения зарядки для резерва энергии от рекуперативного торможения.</p>
+    </div>
+
+    <!-- РАЗНОЕ -->
+    <div class="section" id="misc">
+        <div class="section-header">
+            <div class="section-icon">⚡</div>
+            <h3 class="section-title">Разное (коротко)</h3>
+        </div>
+        <div class="card accent animate-on-scroll">
+            <div class="card-title"><span class="icon">⚡</span> Факты о Bolt</div>
+            <ul>
+                <li>Отличная система терморегулирования с жидкостным охлаждением батареи</li>
+                <li>Даже Bolts с пробегом 100k+ миль показывают деградацию 5-10%</li>
+                <li>Bolt 2020 — батарея 66 кВт·ч | 2022 — 65 кВт·ч (буфер 1 кВт·ч)</li>
+                <li>Батарея 2017-2019 — фактически 57 кВт·ч, получаем ~60 кВт·ч</li>
+                <li>2022 — встроенная зарядка Qi и Wireless CarPlay</li>
+                <li>2020 — добавлены HD-камеры (нельзя на старых моделях)</li>
+            </ul>
+        </div>
+        <div class="card animate-on-scroll">
+            <div class="card-title"><span class="icon">🔌</span> Питание дома от Bolt</div>
+            <p>Купите синусоидальный инвертор 2000 Вт+ и подключите к клеммам АКБ 12В. Bolt выдаёт 130А (~1600 Вт) в системе 12В.</p>
+            <p>Для работы >1-2 часов: включите авто, стояночный тормоз, нейтраль, выйдите через пассажирскую дверь.</p>
+        </div>
+    </div>
+
+    <!-- ОПЕЛЬ vs BOLT -->
+    <div class="section" id="opel">
+        <div class="section-header">
+            <div class="section-icon">🔍</div>
+            <h3 class="section-title">Опель Ампера-e vs Chevrolet Bolt</h3>
+        </div>
+        <div class="card animate-on-scroll">
+            <div class="card-title"><span class="icon">💡</span> Оптика</div>
+            <ul>
+                <li>В Опеле есть ручной корректор фар</li>
+                <li>Нет боковых жёлтых повторителей габаритов</li>
+                <li>Задние ПТФ — отдельная кнопка вкл</li>
+            </ul>
+        </div>
+        <div class="card animate-on-scroll">
+            <div class="card-title"><span class="icon">🪞</span> Зеркала</div>
+            <ul>
+                <li>Сферические стекла с обеих сторон</li>
+                <li>Складывание с кнопки</li>
+            </ul>
+        </div>
+        <div class="card animate-on-scroll">
+            <div class="card-title"><span class="icon">🚗</span> Кузов и салон</div>
+            <ul>
+                <li>Европорты с завода, русский язык в меню</li>
+                <li>Есть датчик дождя, кнопка ограничения скорости</li>
+                <li>Парктроники в круг + автопарковка</li>
+                <li>Зарядка 6А/10А (vs 8А/12А у Bolt)</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ТО -->
+    <div class="section" id="maintenance">
+        <div class="section-header">
+            <div class="section-icon">🔧</div>
+            <h3 class="section-title">Регламент ТО</h3>
+        </div>
+        <p>Bolt не требует частого ТО. Основные интервалы:</p>
+        <div class="specs-grid">
+            <div class="spec animate-on-scroll stagger-1"><div class="label">Масло редуктора</div><div class="value">100 000 км</div></div>
+            <div class="spec animate-on-scroll stagger-2"><div class="label">Салонный фильтр</div><div class="value">15 000 км</div></div>
+            <div class="spec animate-on-scroll stagger-3"><div class="label">Тормозные колодки</div><div class="value">60 000+ км</div></div>
+            <div class="spec animate-on-scroll stagger-4"><div class="label">Жидкость охлаждения</div><div class="value">240 000 км</div></div>
+        </div>
+    </div>
+
+    <!-- МАСЛО -->
+    <div class="section" id="oil">
+        <div class="section-header">
+            <div class="section-icon">🛢️</div>
+            <h3 class="section-title">Масло в редуктор</h3>
+        </div>
+        <div class="specs-grid">
+            <div class="spec animate-on-scroll stagger-1"><div class="label">Оригинал</div><div class="value">ACDelco Dexron HP</div></div>
+            <div class="spec animate-on-scroll stagger-2"><div class="label">Аналог</div><div class="value">Mobil LV HP</div></div>
+            <div class="spec animate-on-scroll stagger-3"><div class="label">Объём</div><div class="value">2.6 л</div></div>
+            <div class="spec animate-on-scroll stagger-4"><div class="label">Интервал</div><div class="value">100 000 км</div></div>
+        </div>
+    </div>
+
+    <!-- ФИЛЬТР -->
+    <div class="section" id="filter">
+        <div class="section-header">
+            <div class="section-icon">🌬️</div>
+            <h3 class="section-title">Салонный фильтр</h3>
+        </div>
+        <p>Оригинал: <code>13356914</code>, высота 30 мм</p>
+        <div class="specs-grid">
+            <div class="spec animate-on-scroll stagger-1"><div class="label">Антибактериальный</div><div class="value">MANN FP 24 003</div></div>
+            <div class="spec animate-on-scroll stagger-2"><div class="label">Угольный</div><div class="value">CUK 24 003</div></div>
+            <div class="spec animate-on-scroll stagger-3"><div class="label">Альтернатива</div><div class="value">WIX 2107</div></div>
+            <div class="spec animate-on-scroll stagger-4"><div class="label">Антибактериальный</div><div class="value">FC 907 NY</div></div>
+        </div>
+        <div class="card warning animate-on-scroll">
+            <div class="card-title"><span class="icon">⚠️</span> Отзыв о MANN</div>
+            <p>Фильтр MANN (~150 злотых) — дорогой, но очень эффективный. Запахи улицы полностью пропадают. Минус: забивается за 2 месяца. Дешёвые хватают на полгода.</p>
+        </div>
+    </div>
+
+    <!-- ДВОРНИКИ -->
+    <div class="section" id="wipers">
+        <div class="section-header">
+            <div class="section-icon">🌧️</div>
+            <h3 class="section-title">Дворники</h3>
+        </div>
+        <p>Оригинальные дворники: <span class="tag green">A101S</span></p>
+    </div>
+
+    <!-- 12В АКБ -->
+    <div class="section" id="battery-small">
+        <div class="section-header">
+            <div class="section-icon">🔋</div>
+            <h3 class="section-title">12В Аккумулятор</h3>
+        </div>
+        <div class="specs-grid">
+            <div class="spec animate-on-scroll stagger-1"><div class="label">Тип</div><div class="value">AGM</div></div>
+            <div class="spec animate-on-scroll stagger-2"><div class="label">Размер</div><div class="value">207×175×190</div></div>
+            <div class="spec animate-on-scroll stagger-3"><div class="label">Ёмкость</div><div class="value">50 Ah</div></div>
+            <div class="spec animate-on-scroll stagger-4"><div class="label">Оригинал</div><div class="value">ACDelco LN1AGM</div></div>
+        </div>
+        <div class="card danger animate-on-scroll">
+            <div class="card-title"><span class="icon">⚠️</span> Battery Saver Active</div>
+            <p>Если видите это сообщение — 12В АКБ разряжена. Обычно живёт 3-5 лет. На Bolt известны случаи выхода за 1 год.</p>
+        </div>
+    </div>
+
+    <!-- ФАРЫ -->
+    <div class="section" id="headlights">
+        <div class="section-header">
+            <div class="section-icon">💡</div>
+            <h3 class="section-title">Фары</h3>
+        </div>
+        <div class="specs-grid">
+            <div class="spec animate-on-scroll stagger-1"><div class="label">Ксенон</div><div class="value">D3S</div></div>
+            <div class="spec animate-on-scroll stagger-2"><div class="label">Линзы</div><div class="value">Aozoom A6</div></div>
+        </div>
+    </div>
+
+    <!-- ШИНЫ -->
+    <div class="section" id="tires">
+        <div class="section-header">
+            <div class="section-icon">🛞</div>
+            <h3 class="section-title">Резина и диски</h3>
+        </div>
+        <div class="card accent animate-on-scroll">
+            <div class="card-title"><span class="icon">📐</span> Оригинальные размеры</div>
+            <div class="specs-grid">
+                <div class="spec"><div class="label">Шины</div><div class="value">215/50 R17</div></div>
+                <div class="spec"><div class="label">Диски</div><div class="value">6.5J×17 ET44</div></div>
+                <div class="spec"><div class="label">Крепление</div><div class="value">5×105</div></div>
+                <div class="spec"><div class="label">D центра</div><div class="value">56.6 мм</div></div>
+            </div>
+        </div>
+        <div class="subsection-title">Альтернативные размеры</div>
+        <ul>
+            <li><strong>16" зима:</strong> 205/60 R17 ET39 — от Opel Astra</li>
+            <li><strong>17" ET42:</strong> 7J×17 — нормально встаёт</li>
+            <li><strong>215/55 R17:</strong> на вывороте может затирать</li>
+        </ul>
+        <div class="card warning animate-on-scroll">
+            <div class="card-title"><span class="icon">⚠️</span> Важно</div>
+            <p>У Bolt большой крутящий момент — передние шины изнашиваются быстро. Делайте ротацию по расписанию!</p>
+        </div>
+    </div>
+
+    <!-- ДАТЧИКИ ДАВЛЕНИЯ -->
+    <div class="section" id="tpms">
+        <div class="section-header">
+            <div class="section-icon">📡</div>
+            <h3 class="section-title">Датчики давления в колёсах</h3>
+        </div>
+        <div class="specs-grid">
+            <div class="spec animate-on-scroll stagger-1"><div class="label">Частота Bolt</div><div class="value">315 МГц</div></div>
+            <div class="spec animate-on-scroll stagger-2"><div class="label">Частота Ampera-e</div><div class="value">433 МГц</div></div>
+            <div class="spec animate-on-scroll stagger-3"><div class="label">Оригинал</div><div class="value">ACDelco 13598772</div></div>
+            <div class="spec animate-on-scroll stagger-4"><div class="label">Вентиль</div><div class="value">top5623904</div></div>
+        </div>
+        <div class="card danger animate-on-scroll">
+            <div class="card-title"><span class="icon">⚠️</span> Китайские датчики</div>
+            <p>Большой процент брака. Покупайте с запасом и проверяйте перед установкой.</p>
+        </div>
+    </div>
+
+    <!-- ПРОШИВКА ДАТЧИКОВ -->
+    <div class="section" id="tpms-flash">
+        <div class="section-header">
+            <div class="section-icon">🔧</div>
+            <h3 class="section-title">Прошивка датчиков колёс</h3>
+        </div>
+        <p><strong>Прошивальщик:</strong> EL-50448</p>
+        <ol>
+            <li>Войти в сервисный режим (Start без тормоза 5+ сек)</li>
+            <li>Выбрать давление колёс в меню на руле, нажать ОК</li>
+            <li>Подтвердить привязку — малина сигналит, горит левый поворотник</li>
+            <li>Поднести прибор к левому переднему колесу и привязать</li>
+            <li>После успешной привязки — правый поворотник, затем задние</li>
+            <li>Выключить авто (иначе привязка потеряется)</li>
+        </ol>
+    </div>
+
+    <!-- РАЗВАЛ -->
+    <div class="section" id="alignment">
+        <div class="section-header">
+            <div class="section-icon">📐</div>
+            <h3 class="section-title">Развал-схождение</h3>
+        </div>
+        <div class="specs-grid">
+            <div class="spec animate-on-scroll stagger-1"><div class="label">Развал</div><div class="value">-0.5° ±0.3°</div></div>
+            <div class="spec animate-on-scroll stagger-2"><div class="label">Схождение</div><div class="value">0.1° ±0.1°</div></div>
+            <div class="spec animate-on-scroll stagger-3"><div class="label">Наклон оси</div><div class="value">-6.5° ±0.5°</div></div>
+        </div>
+    </div>
+
+    <!-- ЗАРЯДКИ -->
+    <div class="section" id="charging-types">
+        <div class="section-header">
+            <div class="section-icon">🔌</div>
+            <h3 class="section-title">Типы зарядок</h3>
+        </div>
+        <div class="specs-grid">
+            <div class="spec animate-on-scroll stagger-1"><div class="label">AC (домашняя)</div><div class="value">1.4-7.2 кВт</div></div>
+            <div class="spec animate-on-scroll stagger-2"><div class="label">DC быстрая</div><div class="value">до 55 кВт</div></div>
+            <div class="spec animate-on-scroll stagger-3"><div class="label">Разъём DC</div><div class="value">CCS Combo</div></div>
+            <div class="spec animate-on-scroll stagger-4"><div class="label">Разъём AC</div><div class="value">J1772</div></div>
+        </div>
+    </div>
+
+    <!-- ГДЕ ЗАРЯДКИ -->
+    <div class="section" id="charging-map">
+        <div class="section-header">
+            <div class="section-icon">🗺️</div>
+            <h3 class="section-title">Где найти зарядки</h3>
+        </div>
+        <p><strong>PlugShare</strong> — главное приложение (после санкций через прокси)</p>
+        <p><strong>Беларусь:</strong></p>
+        <ul>
+            <li><a href="https://malankabn.by/" target="_blank">Маланка</a> — быстрая 0.39 BYN/кВт, обычная 0.29 BYN/кВт</li>
+            <li><a href="https://chargeandgo.by/" target="_blank">Charge&Go</a></li>
+        </ul>
+    </div>
+
+    <!-- БЫСТРАЯ ЗАРЯДКА -->
+    <div class="section" id="charging-fast">
+        <div class="section-header">
+            <div class="section-icon">⚡</div>
+            <h3 class="section-title">Быстрая зарядка</h3>
+        </div>
+        <p><strong>Как определить:</strong></p>
+        <ul>
+            <li><strong>Без быстрой зарядки:</strong> нет проводов, чёрная несъёмная заглушка</li>
+            <li><strong>С быстрой зарядкой:</strong> два кабеля, съёмная заглушка (под ней доп. разъём)</li>
+        </ul>
+    </div>
+
+    <!-- ЗАРЯДКА В ПАРКИНГЕ -->
+    <div class="section" id="charging-parking">
+        <div class="section-header">
+            <div class="section-icon">🏢</div>
+            <h3 class="section-title">Установка зарядки в паркинге</h3>
+        </div>
+        <ol>
+            <li>Получить тех. условия (инженер ЖЭС/ТС)</li>
+            <li>Сделать проект</li>
+            <li>Согласовать с членами ТС (2/3 голосов)</li>
+            <li>Установить ящик со счётчиком (интеграция с АСКУЭ)</li>
+            <li>Согласовать с Энергонадзор</li>
+            <li>Согласовать с Энергосбыт</li>
+            <li>Заключить договор</li>
+            <li>Параметризовать счётчик</li>
+        </ol>
+    </div>
+
+    <!-- МИН НАПРЯЖЕНИЕ -->
+    <div class="section" id="charging-min">
+        <div class="section-header">
+            <div class="section-icon">⚠️</div>
+            <h3 class="section-title">Минимальное напряжение</h3>
+        </div>
+        <div class="card accent animate-on-scroll">
+            <div class="card-title"><span class="icon">⚡</span> Работает от 165В!</div>
+            <p>По данным из чатов, Bolt способен заряжаться от напряжения сети от 165В.</p>
+        </div>
+    </div>
+
+    <!-- ЁМКОСТЬ -->
+    <div class="section" id="battery-capacity">
+        <div class="section-header">
+            <div class="section-icon">🔋</div>
+            <h3 class="section-title">Ёмкость батареи</h3>
+        </div>
+        <div class="specs-grid">
+            <div class="spec animate-on-scroll stagger-1"><div class="label">2017-2019</div><div class="value">60 кВт·ч</div></div>
+            <div class="spec animate-on-scroll stagger-2"><div class="label">2020+</div><div class="value">66 кВт·ч</div></div>
+            <div class="spec animate-on-scroll stagger-3"><div class="label">2022</div><div class="value">65 кВт·ч</div></div>
+            <div class="spec animate-on-scroll stagger-4"><div class="label">Фактически 17-19</div><div class="value">~60 кВт·ч</div></div>
+        </div>
+    </div>
+
+    <!-- ДЕГРАДАЦИЯ -->
+    <div class="section" id="battery-degradation">
+        <div class="section-header">
+            <div class="section-icon">📉</div>
+            <h3 class="section-title">Деградация батарей</h3>
+        </div>
+        <div class="card accent animate-on-scroll">
+            <div class="card-title"><span class="icon">📊</span> Практическая статистика</div>
+            <p>Bolts с пробегом 100k+ миль показывают деградацию всего 5-10%. Жидкостное охлаждение отлично справляется с поддержанием оптимального температурного режима.</p>
+        </div>
+    </div>
+
+    <!-- ЗАВИСИМОСТЬ ОТ СКОРОСТИ -->
+    <div class="section" id="range-speed">
+        <div class="section-header">
+            <div class="section-icon">🚗</div>
+            <h3 class="section-title">Зависимость запаса хода от скорости</h3>
+        </div>
+        <div class="specs-grid">
+            <div class="spec animate-on-scroll stagger-1"><div class="label">60 км/ч</div><div class="value">~400 км</div></div>
+            <div class="spec animate-on-scroll stagger-2"><div class="label">80 км/ч</div><div class="value">~350 км</div></div>
+            <div class="spec animate-on-scroll stagger-3"><div class="label">100 км/ч</div><div class="value">~300 км</div></div>
+            <div class="spec animate-on-scroll stagger-4"><div class="label">120 км/ч</div><div class="value">~250 км</div></div>
+            <div class="spec animate-on-scroll stagger-5"><div class="label">140 км/ч</div><div class="value">~200 км</div></div>
+        </div>
+        <p>Скорость — главный враг запаса хода. Каждые +20 км/ч = потеря ~50 км.</p>
+    </div>
+
+    <!-- ЗАВИСИМОСТЬ ОТ ТЕМПЕРАТУРЫ -->
+    <div class="section" id="range-temp">
+        <div class="section-header">
+            <div class="section-icon">🌡️</div>
+            <h3 class="section-title">Зависимость от температуры</h3>
+        </div>
+        <div class="specs-grid">
+            <div class="spec animate-on-scroll stagger-1"><div class="label">+25°C</div><div class="value">100%</div></div>
+            <div class="spec animate-on-scroll stagger-2"><div class="label">0°C</div><div class="value">70-80%</div></div>
+            <div class="spec animate-on-scroll stagger-3"><div class="label">-10°C</div><div class="value">60-70%</div></div>
+            <div class="spec animate-on-scroll stagger-4"><div class="label">-20°C</div><div class="value">50-60%</div></div>
+        </div>
+        <p>В морозы теряется 30-50% запаса хода. Подогрев батареи отнимает энергию.</p>
+    </div>
+
+    <!-- РАСХОД -->
+    <div class="section" id="consumption">
+        <div class="section-header">
+            <div class="section-icon">📊</div>
+            <h3 class="section-title">Расход кВт·ч</h3>
+        </div>
+        <div class="specs-grid">
+            <div class="spec animate-on-scroll stagger-1"><div class="label">Лето город</div><div class="value">14-16</div></div>
+            <div class="spec animate-on-scroll stagger-2"><div class="label">Лето трасса</div><div class="value">16-20</div></div>
+            <div class="spec animate-on-scroll stagger-3"><div class="label">Зима город</div><div class="value">20-28</div></div>
+            <div class="spec animate-on-scroll stagger-4"><div class="label">Зима трасса</div><div class="value">25-35</div></div>
+        </div>
+        <p>кВт·ч на 100 км. Зимой расход увеличивается в 1.5-2 раза.</p>
+    </div>
+
+    <!-- ЗИМА -->
+    <div class="section" id="winter">
+        <div class="section-header">
+            <div class="section-icon">❄️</div>
+            <h3 class="section-title">Зимние советы</h3>
+        </div>
+        <div class="card animate-on-scroll">
+            <div class="card-title"><span class="icon">🔥</span> Активация климата</div>
+            <p>Дистанционный запуск подогрева салона через приложение MyChevrolet. Заряжайте батарею перед поездкой — подогрев съедает 3-5% заряда.</p>
+        </div>
+    </div>
+
+    <div class="section" id="winter-climate">
+        <div class="section-header">
+            <div class="section-icon">🔥</div>
+            <h3 class="section-title">Климат и подогрев</h3>
+        </div>
+        <p>Подогрев салона работает от тяговой батареи. В сильные морозы может съедать до 10% заряда. Рекомендуется заряжать батарею перед поездкой и использовать предварительный подогрев.</p>
+    </div>
+
+    <div class="section" id="winter-cold">
+        <div class="section-header">
+            <div class="section-icon">🥶</div>
+            <h3 class="section-title">Большие морозы</h3>
+        </div>
+        <div class="card danger animate-on-scroll">
+            <div class="card-title"><span class="icon">⚠️</span> Внимание</div>
+            <p>При температуре ниже -20°C мощность зарядки может снизиться в 2-3 раза. Заряжайте батарею в тёплом гараже или используйте предварительный подогрев.</p>
+        </div>
+    </div>
+
+    <!-- МЕДИА -->
+    <div class="section" id="media">
+        <div class="section-header">
+            <div class="section-icon">📱</div>
+            <h3 class="section-title">Медиасистема</h3>
+        </div>
+        <ul>
+            <li><strong>Перезапуск:</strong> удерживать кнопку громкости 10+ секунд</li>
+            <li><strong>Android Auto:</strong> долгое нажатие Home для переключения</li>
+            <li><strong>Прошивка 2017:</strong> версия 14.5</li>
+        </ul>
+    </div>
+
+    <!-- ПИТАНИЕ ДОМА -->
+    <div class="section" id="home-power">
+        <div class="section-header">
+            <div class="section-icon">🏠</div>
+            <h3 class="section-title">Питание дома от Bolt</h3>
+        </div>
+        <div class="card accent animate-on-scroll">
+            <div class="card-title"><span class="icon">🔌</span> Схема подключения</div>
+            <ol>
+                <li>Купить инвертор 1000-2000 Вт (синусоидальный)</li>
+                <li>Подключить к клеммам АКБ 12В</li>
+                <li>Запитать дом через инвертор</li>
+                <li>Завести авто для зарядки АКБ</li>
+                <li>Включить режим мойки для непрерывной работы</li>
+            </ol>
+            <p><strong>Мощность:</strong> ~1400 Вт переменного тока непрерывно</p>
+        </div>
+    </div>
+
+    <!-- РЕЖИМ МОЙКИ -->
+    <div class="section" id="wash-mode">
+        <div class="section-header">
+            <div class="section-icon">🚿</div>
+            <h3 class="section-title">Режим мойки</h3>
+        </div>
+        <p>Режим мойки позволяет держать автомобиль включённым при открытых дверях. Используется при подключении к дому для непрерывной зарядки 12В АКБ.</p>
+    </div>
+
+    <!-- ПРОБЛЕМЫ -->
+    <div class="section" id="problems">
+        <div class="section-header">
+            <div class="section-icon">⚠️</div>
+            <h3 class="section-title">Проблемы и решения</h3>
+        </div>
+        <div class="card danger animate-on-scroll">
+            <div class="card-title"><span class="icon">🔧</span> Stabilitrak</div>
+            <p>Ошибка стабилизации. Часто решается перезапуском авто. Если повторяется — проверьте датчики колёс.</p>
+        </div>
+        <div class="card animate-on-scroll">
+            <div class="card-title"><span class="icon">🔩</span> Скрип/стук спереди</div>
+            <p>Чаще всего — стойки стабилизатора. Подходят от Toyota Corolla 02, Avensis 03, Nissan Juke 2010 (OEM 4882002030).</p>
+        </div>
+        <div class="card animate-on-scroll">
+            <div class="card-title"><span class="icon">🔊</span> Скрежет при парковке</div>
+            <p>Нормальное явление — регенеративное торможение.</p>
+        </div>
+        <div class="card animate-on-scroll">
+            <div class="card-title"><span class="icon">🪑</span> Дребезжание заднего кресла</div>
+            <p>Решается демпферной лентой или поролоном в местах контакта.</p>
+        </div>
+    </div>
+
+    <!-- ПОДВЕСКА -->
+    <div class="section" id="suspension">
+        <div class="section-header">
+            <div class="section-icon">🔩</div>
+            <h3 class="section-title">Подвеска</h3>
+        </div>
+        <div class="specs-grid">
+            <div class="spec animate-on-scroll stagger-1"><div class="label">Стойки стабилизатора</div><div class="value">Toyota 02</div></div>
+            <div class="spec animate-on-scroll stagger-2"><div class="label">OEM</div><div class="value">4882002030</div></div>
+        </div>
+    </div>
+
+    <!-- БАГАЖНИК -->
+    <div class="section" id="trunk">
+        <div class="section-header">
+            <div class="section-icon">🧳</div>
+            <h3 class="section-title">Багажник</h3>
+        </div>
+        <ul>
+            <li>Крючок крышки багажника — 3D печать</li>
+            <li>Крепление для шторки багажника</li>
+            <li>Нижняя полка — только как доп. опция</li>
+        </ul>
+    </div>
+
+    <!-- САЛОН -->
+    <div class="section" id="interior">
+        <div class="section-header">
+            <div class="section-icon">🪑</div>
+            <h3 class="section-title">Салон</h3>
+        </div>
+        <ul>
+            <li>Ремонт скрипа подлокотника — демпферная лента</li>
+            <li>Улучшение сидений — листовая пена</li>
+            <li>Альтернативные сиденья от Mercedes</li>
+            <li>Снятие подголовника — по инструкции</li>
+        </ul>
+    </div>
+
+    <!-- ПРЕДОХРАНИТЕЛИ -->
+    <div class="section" id="fuses">
+        <div class="section-header">
+            <div class="section-icon">🔌</div>
+            <h3 class="section-title">Блок предохранителей</h3>
+        </div>
+        <ul>
+            <li><strong>Под капотом:</strong> основные предохранители</li>
+            <li><strong>Салон (слева от руля):</strong> дополнительные</li>
+        </ul>
+    </div>
+
+    <!-- БУКСИРОВКА -->
+    <div class="section" id="towing">
+        <div class="section-header">
+            <div class="section-icon">🚛</div>
+            <h3 class="section-title">Буксировка</h3>
+        </div>
+        <div class="card warning animate-on-scroll">
+            <div class="card-title"><span class="icon">⚠️</span> Важно</div>
+            <ul>
+                <li>Используйте только режим Нейтраль</li>
+                <li>Скорость буксировки — не более 50 км/ч</li>
+                <li>Расстояние — не более 50 км</li>
+                <li>Ключ для снятия АКБ — на 10</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ПО НА ТЕЛЕФОН -->
+    <div class="section" id="apps">
+        <div class="section-header">
+            <div class="section-icon">📲</div>
+            <h3 class="section-title">ПО на телефон</h3>
+        </div>
+        <div class="card animate-on-scroll">
+            <div class="card-title"><span class="icon">📱</span> MyChevrolet</div>
+            <p>Не обновлять! Входить без регистрации. <a href="https://drive.google.com/file/d/1Nn9-wTQK9JG_gqN0dH5K7Yq9M995peYh/view" target="_blank">Скачать APK</a></p>
+        </div>
+        <div class="card animate-on-scroll">
+            <div class="card-title"><span class="icon">🔋</span> MyGreenVolt</div>
+            <p><a href="https://play.google.com/store/apps/details?id=net.MyGreenVolt" target="_blank">Google Play</a>. График ячеек — платный ($1+).</p>
+        </div>
+        <div class="card animate-on-scroll">
+            <div class="card-title"><span class="icon">📊</span> Torque Pro</div>
+            <p><a href="https://4pda.to/forum/index.php?showtopic=193433" target="_blank">Скачать PRO</a> (нужна регистрация)</p>
+        </div>
+    </div>
+
+    <!-- СИГНАЛИЗАЦИИ -->
+    <div class="section" id="alarm">
+        <div class="section-header">
+            <div class="section-icon">🚨</div>
+            <h3 class="section-title">Сигнализации</h3>
+        </div>
+        <div class="card danger animate-on-scroll">
+            <div class="card-title"><span class="icon">❌</span> Pandora — НЕ рекомендуется</div>
+            <p>"Пандора срёт в CAN-шину и сбрасывает апдейт при опросе блоков." В итоге вырвали — Bolt стал ездить лучше.</p>
+        </div>
+    </div>
+
+    <!-- ПРОСТАВКИ -->
+    <div class="section" id="spacers">
+        <div class="section-header">
+            <div class="section-icon">📐</div>
+            <h3 class="section-title">Проставки</h3>
+        </div>
+        <div class="specs-grid">
+            <div class="spec animate-on-scroll stagger-1"><div class="label">Перёд</div><div class="value">25 мм</div></div>
+            <div class="spec animate-on-scroll stagger-2"><div class="label">Зад</div><div class="value">20 мм</div></div>
+        </div>
+    </div>
+
+    <!-- ЧАТЫ -->
+    <div class="section" id="groups">
+        <div class="section-header">
+            <div class="section-icon">💬</div>
+            <h3 class="section-title">Чаты и группы</h3>
+        </div>
+        <ul>
+            <li><a href="https://t.me/boltchevrolet" target="_blank">Chevrolet BOLT ФОРУМ</a> — Telegram (2080 участников)</li>
+            <li><a href="https://t.me/chevybolt" target="_blank">ChevyBolt</a> — Telegram (980 участников)</li>
+            <li><a href="https://t.me/BOLT_RF" target="_blank">Chevrolet BOLT РФ</a> — Telegram</li>
+            <li><a href="https://www.drive2.ru/experience/chevrolet/g5400/" target="_blank">DRIVE2.RU</a></li>
+            <li><a href="https://invite.viber.com/?g2=AQBl%2FLRkKQsTMUw2adHmhJ0T7TYdVZmK2wi%2BsevzibMStMDKqIfrElqdpL9BAS%2Bu" target="_blank">Шевроле Болт BY</a> — Viber (465 участников)</li>
+        </ul>
+    </div>
+
+    <!-- ОТЗЫВ -->
+    <div class="section" id="recall">
+        <div class="section-header">
+            <div class="section-icon">📋</div>
+            <h3 class="section-title">Проверка на отзыв</h3>
+        </div>
+        <p><a href="https://my.chevrolet.com/recalls" target="_blank">my.chevrolet.com/recalls</a></p>
+    </div>
+
+    <!-- QR -->
+    <div class="section" id="qr">
+        <div class="section-header">
+            <div class="section-icon">📱</div>
+            <h3 class="section-title">Комплектация по QR</h3>
+        </div>
+        <p>Отсканируйте QR-код на водительской стойке. Длинный текст с кодами комплектации.</p>
+        <p><a href="https://drive.google.com/file/d/1nXYWi-4S7O5hWzxiyd02q6x0ExN-nwES/view" target="_blank">Расшифровка кодов (PDF)</a></p>
+    </div>
+
+    <!-- МАСТЕРА -->
+    <div class="section" id="contacts">
+        <div class="section-header">
+            <div class="section-icon">🔧</div>
+            <h3 class="section-title">Мастера</h3>
+        </div>
+        <p>Подробные контакты в оригинальной документации.</p>
+    </div>
+
+</main>
+
+<script>
+// ===== PARTICLES =====
+(function() {
+    const container = document.getElementById('particles');
+    for (let i = 0; i < 30; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.top = Math.random() * 100 + '%';
+        p.style.setProperty('--tx', (Math.random() - 0.5) * 200 + 'px');
+        p.style.setProperty('--ty', (Math.random() - 0.5) * 200 + 'px');
+        p.style.animationDuration = (Math.random() * 8 + 6) + 's';
+        p.style.animationDelay = (Math.random() * 8) + 's';
+        container.appendChild(p);
+    }
+})();
+
+// ===== SCROLL ANIMATIONS =====
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.section, .animate-on-scroll').forEach(el => observer.observe(el));
+
+// ===== NAVIGATION =====
+function goTo(id) {
+    const el = document.getElementById(id);
+    if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+        event.target.closest('.nav-item')?.classList.add('active');
+    }
+    // Close mobile sidebar
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sidebarOverlay').classList.remove('open');
+}
+
+function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.getElementById('sidebarOverlay').classList.toggle('open');
+}
+
+// ===== SEARCH =====
+function filterNav(query) {
+    const q = query.toLowerCase();
+    document.querySelectorAll('.nav-item').forEach(item => {
+        item.style.display = item.textContent.toLowerCase().includes(q) || !q ? '' : 'none';
+    });
+    document.querySelectorAll('.nav-group').forEach(g => {
+        const visible = g.querySelectorAll('.nav-item:not([style*="display: none"])').length;
+        g.style.display = visible || !q ? '' : 'none';
+    });
+}
+
+// ===== BACK TO TOP =====
+window.addEventListener('scroll', () => {
+    const btn = document.getElementById('backToTop');
+    btn.classList.toggle('visible', window.scrollY > 400);
+});
+
+// ===== ACTIVE NAV ON SCROLL =====
+const sections = document.querySelectorAll('.section');
+const navItems = document.querySelectorAll('.nav-item');
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navItems.forEach(n => {
+        n.classList.remove('active');
+        if (n.getAttribute('onclick')?.includes(current)) n.classList.add('active');
+    });
+});
+</script>
+</body>
+</html>
