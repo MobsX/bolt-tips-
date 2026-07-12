@@ -6,1608 +6,782 @@
     <title>Советы Chevrolet Bolt EV</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg: #06060c;
-            --surface: #0d0d16;
-            --surface-2: #12121e;
-            --surface-3: #1a1a2a;
-            --border: rgba(255,255,255,0.06);
-            --text: #f0f0f8;
-            --text-2: #8888a8;
-            --text-3: #555570;
-            --accent: #00e4b0;
-            --accent-dim: rgba(0,228,176,0.12);
-            --accent-glow: rgba(0,228,176,0.25);
-            --blue: #4a9eff;
-            --purple: #a78bfa;
-            --orange: #fb923c;
-            --red: #f43f5e;
-            --pink: #f472b6;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-
-        /* ===== ANIMATIONS ===== */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInLeft {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes fadeInRight {
-            from { opacity: 0; transform: translateX(30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes scaleIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        @keyframes glowPulse {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 1; }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-        }
-
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-
-        @keyframes borderGlow {
-            0%, 100% { border-color: rgba(0,228,176,0.1); }
-            50% { border-color: rgba(0,228,176,0.3); }
-        }
-
-        @keyframes particleFloat {
-            0% { transform: translate(0, 0) scale(1); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
-        }
-
-        @keyframes slideInStagger {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes rotateGlow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        @keyframes textReveal {
-            from { clip-path: inset(0 100% 0 0); }
-            to { clip-path: inset(0 0% 0 0); }
-        }
-
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .stagger-1 { transition-delay: 0.05s; }
-        .stagger-2 { transition-delay: 0.1s; }
-        .stagger-3 { transition-delay: 0.15s; }
-        .stagger-4 { transition-delay: 0.2s; }
-        .stagger-5 { transition-delay: 0.25s; }
-        .stagger-6 { transition-delay: 0.3s; }
-
-        /* ===== SIDEBAR ===== */
-        .sidebar {
-            position: fixed;
-            left: 0; top: 0;
-            width: 300px;
-            height: 100vh;
-            background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
-            border-right: 1px solid var(--border);
-            overflow-y: auto;
-            z-index: 100;
-            padding: 28px 0;
-            scrollbar-width: thin;
-            scrollbar-color: var(--surface-3) transparent;
-        }
-
-        .sidebar::before {
-            content: '';
-            position: absolute;
-            top: 0; right: 0;
-            width: 1px; height: 100%;
-            background: linear-gradient(180deg, var(--accent) 0%, transparent 30%, transparent 70%, var(--accent) 100%);
-            opacity: 0.3;
-        }
-
-        .sidebar-header {
-            padding: 0 24px 24px;
-            border-bottom: 1px solid var(--border);
-            margin-bottom: 20px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 8px;
-        }
-
-        .logo-icon {
-            width: 44px; height: 44px;
-            background: linear-gradient(135deg, var(--accent), var(--blue));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            font-weight: 900;
-            color: var(--bg);
-            animation: float 3s ease-in-out infinite;
-            box-shadow: 0 8px 32px rgba(0,228,176,0.3);
-        }
-
-        .logo h1 {
-            font-size: 16px;
-            font-weight: 800;
-            letter-spacing: 2px;
-            background: linear-gradient(135deg, var(--accent), var(--blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .logo-sub {
-            font-size: 10px;
-            color: var(--text-3);
-            letter-spacing: 0.5px;
-        }
-
-        .search-box {
-            padding: 0 24px 20px;
-        }
-
-        .search-box input {
-            width: 100%;
-            background: var(--surface-2);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 10px 14px 10px 36px;
-            font-size: 13px;
-            color: var(--text);
-            outline: none;
-            font-family: inherit;
-            transition: all 0.3s;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23555570' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85zm-5.44.856a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: 12px center;
-        }
-
-        .search-box input:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px var(--accent-dim);
-        }
-
-        .nav-group { margin-bottom: 4px; }
-
-        .nav-group-title {
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--text-3);
-            padding: 12px 24px 6px;
-        }
-
-        .nav-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 24px;
-            font-size: 13px;
-            color: var(--text-2);
-            text-decoration: none;
-            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-            border-left: 2px solid transparent;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .nav-item::before {
-            content: '';
-            position: absolute;
-            left: 0; top: 0;
-            width: 2px; height: 100%;
-            background: var(--accent);
-            transform: scaleY(0);
-            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .nav-item:hover {
-            color: var(--text);
-            background: rgba(255,255,255,0.03);
-        }
-
-        .nav-item:hover::before {
-            transform: scaleY(1);
-        }
-
-        .nav-item.active {
-            color: var(--accent);
-            background: var(--accent-dim);
-            font-weight: 500;
-        }
-
-        .nav-item.active::before {
-            transform: scaleY(1);
-        }
-
-        .nav-dot {
-            width: 5px; height: 5px;
-            background: var(--text-3);
-            border-radius: 50%;
-            transition: all 0.25s;
-        }
-
-        .nav-item:hover .nav-dot,
-        .nav-item.active .nav-dot {
-            background: var(--accent);
-            box-shadow: 0 0 8px var(--accent);
-        }
-
-        /* ===== MAIN ===== */
-        .main {
-            margin-left: 300px;
-            padding: 0 48px 80px;
-            max-width: 960px;
-        }
-
-        /* ===== HERO ===== */
-        .hero {
-            position: relative;
-            min-height: 70vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 60px 0;
-            margin-bottom: 40px;
-            overflow: hidden;
-        }
-
-        .hero-bg {
-            position: absolute;
-            top: -200px; right: -200px;
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-            filter: blur(80px);
-            animation: glowPulse 4s ease-in-out infinite;
-            pointer-events: none;
-        }
-
-        .hero-bg-2 {
-            position: absolute;
-            bottom: -100px; left: -100px;
-            width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(74,158,255,0.15) 0%, transparent 70%);
-            filter: blur(60px);
-            animation: glowPulse 5s ease-in-out infinite 1s;
-            pointer-events: none;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 16px;
-            background: var(--accent-dim);
-            border: 1px solid rgba(0,228,176,0.2);
-            border-radius: 100px;
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--accent);
-            margin-bottom: 24px;
-            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
-        }
-
-        .hero-badge .dot {
-            width: 6px; height: 6px;
-            background: var(--accent);
-            border-radius: 50%;
-            animation: glowPulse 2s ease-in-out infinite;
-        }
-
-        .hero h2 {
-            font-size: 52px;
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
-        }
-
-        .hero h2 .gradient {
-            background: linear-gradient(135deg, var(--accent), var(--blue), var(--purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-size: 200% 200%;
-            animation: shimmer 3s linear infinite;
-        }
-
-        .hero p {
-            font-size: 17px;
-            color: var(--text-2);
-            max-width: 500px;
-            line-height: 1.8;
-            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
-        }
-
-        .hero-stats {
-            display: flex;
-            gap: 40px;
-            margin-top: 40px;
-            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.8s both;
-        }
-
-        .hero-stat {
-            position: relative;
-        }
-
-        .hero-stat::after {
-            content: '';
-            position: absolute;
-            right: -20px; top: 50%;
-            transform: translateY(-50%);
-            width: 1px; height: 30px;
-            background: var(--border);
-        }
-
-        .hero-stat:last-child::after { display: none; }
-
-        .hero-stat .num {
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--accent);
-        }
-
-        .hero-stat .label {
-            font-size: 11px;
-            color: var(--text-3);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* ===== SECTIONS ===== */
-        .section {
-            margin-bottom: 64px;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 24px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid var(--border);
-            position: relative;
-        }
-
-        .section-header::after {
-            content: '';
-            position: absolute;
-            bottom: -1px; left: 0;
-            width: 60px; height: 2px;
-            background: linear-gradient(90deg, var(--accent), transparent);
-        }
-
-        .section-icon {
-            width: 40px; height: 40px;
-            background: linear-gradient(135deg, var(--accent-dim), rgba(74,158,255,0.1));
-            border: 1px solid rgba(0,228,176,0.15);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            transition: all 0.3s;
-            flex-shrink: 0;
-        }
-
-        .section:hover .section-icon {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 4px 20px var(--accent-dim);
-        }
-
-        .section-title {
-            font-size: 26px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
-
-        .subsection-title {
-            font-size: 15px;
-            font-weight: 700;
-            margin: 24px 0 12px;
-            color: var(--blue);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .subsection-title::before {
-            content: '';
-            width: 3px; height: 14px;
-            background: var(--blue);
-            border-radius: 2px;
-        }
-
-        p {
-            margin-bottom: 12px;
-            font-size: 14px;
-            color: var(--text-2);
-            line-height: 1.8;
-        }
-
-        ul, ol {
-            margin: 8px 0 16px 0;
-            font-size: 14px;
-            list-style: none;
-        }
-
-        li {
-            margin-bottom: 8px;
-            padding-left: 20px;
-            position: relative;
-            color: var(--text-2);
-        }
-
-        li::before {
-            content: '';
-            position: absolute;
-            left: 0; top: 10px;
-            width: 6px; height: 6px;
-            background: var(--accent);
-            border-radius: 50%;
-            opacity: 0.6;
-        }
-
-        a {
-            color: var(--accent);
-            text-decoration: none;
-            transition: all 0.2s;
-            position: relative;
-        }
-
-        a:hover {
-            text-shadow: 0 0 12px var(--accent-glow);
-        }
-
-        /* ===== CARDS ===== */
-        .card {
-            background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 24px;
-            margin: 16px 0;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.02) 100%);
-            pointer-events: none;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(0,228,176,0.2);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 0 1px rgba(0,228,176,0.1);
-        }
-
-        .card.accent {
-            border-color: rgba(0,228,176,0.2);
-            background: linear-gradient(135deg, rgba(0,228,176,0.05) 0%, var(--surface) 100%);
-        }
-
-        .card.warning {
-            border-color: rgba(251,146,60,0.2);
-            background: linear-gradient(135deg, rgba(251,146,60,0.05) 0%, var(--surface) 100%);
-        }
-
-        .card.danger {
-            border-color: rgba(244,63,94,0.2);
-            background: linear-gradient(135deg, rgba(244,63,94,0.05) 0%, var(--surface) 100%);
-        }
-
-        .card-title {
-            font-size: 14px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .card.accent .card-title { color: var(--accent); }
-        .card.warning .card-title { color: var(--orange); }
-        .card.danger .card-title { color: var(--red); }
-
-        .card-title .icon {
-            width: 20px; height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            border-radius: 6px;
-            flex-shrink: 0;
-        }
-
-        .card.accent .card-title .icon { background: var(--accent-dim); }
-        .card.warning .card-title .icon { background: rgba(251,146,60,0.15); }
-        .card.danger .card-title .icon { background: rgba(244,63,94,0.15); }
-
-        /* ===== SPECS GRID ===== */
-        .specs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 12px;
-            margin: 20px 0;
-        }
-
-        .spec {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 18px;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .spec::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 2px;
-            background: linear-gradient(90deg, var(--accent), var(--blue));
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .spec:hover {
-            transform: translateY(-3px);
-            border-color: rgba(0,228,176,0.15);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-        }
-
-        .spec:hover::after { opacity: 1; }
-
-        .spec .label {
-            font-size: 10px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-3);
-            margin-bottom: 6px;
-        }
-
-        .spec .value {
-            font-size: 20px;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--accent), var(--blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* ===== TAGS ===== */
-        .tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            padding: 4px 12px;
-            border-radius: 100px;
-            font-size: 11px;
-            font-weight: 600;
-            margin: 2px 4px 2px 0;
-            transition: all 0.2s;
-        }
-
-        .tag:hover { transform: scale(1.05); }
-
-        .tag.green { background: rgba(0,228,176,0.12); color: var(--accent); border: 1px solid rgba(0,228,176,0.2); }
-        .tag.blue { background: rgba(74,158,255,0.12); color: var(--blue); border: 1px solid rgba(74,158,255,0.2); }
-        .tag.purple { background: rgba(167,139,250,0.12); color: var(--purple); border: 1px solid rgba(167,139,250,0.2); }
-        .tag.orange { background: rgba(251,146,60,0.12); color: var(--orange); border: 1px solid rgba(251,146,60,0.2); }
-        .tag.pink { background: rgba(244,114,182,0.12); color: var(--pink); border: 1px solid rgba(244,114,182,0.2); }
-
-        code {
-            background: var(--surface-2);
-            border: 1px solid var(--border);
-            padding: 2px 8px;
-            border-radius: 6px;
-            font-size: 13px;
-            font-family: 'SF Mono', monospace;
-            color: var(--accent);
-        }
-
-        /* ===== FLOATING PARTICLES ===== */
-        .particles {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .particle {
-            position: absolute;
-            width: 3px; height: 3px;
-            background: var(--accent);
-            border-radius: 50%;
-            opacity: 0;
-            animation: particleFloat linear infinite;
-        }
-
-        /* ===== MOBILE ===== */
-        .menu-toggle {
-            display: none;
-            position: fixed;
-            top: 16px; left: 16px;
-            z-index: 200;
-            width: 44px; height: 44px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            color: var(--text);
-            font-size: 18px;
-            cursor: pointer;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-
-        .menu-toggle:hover {
-            background: var(--surface-2);
-            border-color: var(--accent);
-        }
-
-        .sidebar-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(4px);
-            z-index: 99;
-        }
-
-        @media (max-width: 900px) {
-            .sidebar {
-                transform: translateX(-100%);
-                transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-                z-index: 101;
-            }
-            .sidebar.open { transform: translateX(0); }
-            .sidebar-overlay.open { display: block; }
-            .menu-toggle { display: flex; }
-            .main { margin-left: 0; padding: 24px 20px 60px; padding-top: 72px; }
-            .hero { min-height: 50vh; }
-            .hero h2 { font-size: 32px; }
-            .hero-stats { gap: 24px; flex-wrap: wrap; }
-            .section-title { font-size: 22px; }
-            .specs-grid { grid-template-columns: 1fr 1fr; }
-        }
-
-        /* ===== SCROLLBAR ===== */
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: var(--surface-3); border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
-
-        /* ===== BACK TO TOP ===== */
-        .back-to-top {
-            position: fixed;
-            bottom: 32px; right: 32px;
-            width: 44px; height: 44px;
-            background: linear-gradient(135deg, var(--accent), var(--blue));
-            border: none;
-            border-radius: 12px;
-            color: var(--bg);
-            font-size: 18px;
-            cursor: pointer;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            z-index: 50;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .back-to-top:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0,228,176,0.3);
-        }
-
-        .hidden { display: none !important; }
+        :root{--bg:#06060c;--surface:#0d0d16;--surface-2:#12121e;--border:rgba(255,255,255,0.06);--text:#f0f0f8;--text-2:#9898b0;--text-3:#555570;--accent:#00e4b0;--accent-dim:rgba(0,228,176,0.12);--blue:#4a9eff;--orange:#fb923c;--red:#f43f5e;--purple:#a78bfa;--pink:#f472b6}
+        *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+        body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.8;overflow-x:hidden}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes glowPulse{0%,100%{opacity:.3}50%{opacity:1}}
+        @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+        @keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+        @keyframes borderGlow{0%,100%{border-color:rgba(0,228,176,.1)}50%{border-color:rgba(0,228,176,.3)}}
+        @keyframes slideIn{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
+        .scroll-reveal{opacity:0;transform:translateY(30px);transition:all .7s cubic-bezier(.16,1,.3,1)}.scroll-reveal.visible{opacity:1;transform:translateY(0)}
+        .main{max-width:820px;margin:0 auto;padding:40px 24px 100px}
+        .hero{text-align:center;padding:80px 0 50px;position:relative;overflow:hidden}
+        .hero::before{content:'';position:absolute;top:-150px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(0,228,176,.15),transparent 70%);filter:blur(80px);animation:glowPulse 4s ease-in-out infinite;pointer-events:none}
+        .hero-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;background:var(--accent-dim);border:1px solid rgba(0,228,176,.2);border-radius:100px;font-size:11px;color:var(--accent);margin-bottom:16px;animation:fadeIn .8s .2s both}
+        .hero-badge .dot{width:5px;height:5px;background:var(--accent);border-radius:50%;animation:glowPulse 2s infinite}
+        .hero h1{font-size:42px;font-weight:900;line-height:1.1;margin-bottom:12px;animation:fadeIn .8s .4s both}
+        .hero h1 .g{background:linear-gradient(135deg,var(--accent),var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200% 200%;animation:shimmer 3s linear infinite}
+        .hero>p{color:var(--text-2);font-size:15px;max-width:500px;margin:0 auto;animation:fadeIn .8s .6s both}
+        .hero-links{display:flex;gap:12px;justify-content:center;margin-top:20px;animation:fadeIn .8s .8s both}
+        .hero-links a{padding:8px 16px;background:var(--accent-dim);border:1px solid rgba(0,228,176,.2);border-radius:8px;color:var(--accent);font-size:12px;font-weight:600;text-decoration:none;transition:all .3s}
+        .hero-links a:hover{background:var(--accent);color:var(--bg);transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,228,176,.3)}
+        .section{margin-bottom:48px;padding:24px;background:var(--surface);border:1px solid var(--border);border-radius:16px;transition:all .3s}
+        .section:hover{border-color:rgba(0,228,176,.15);box-shadow:0 8px 32px rgba(0,0,0,.2)}
+        .section-title{font-size:20px;font-weight:800;margin:0 0 16px;padding-bottom:10px;border-bottom:2px solid var(--accent);display:inline-block;letter-spacing:-.3px}
+        .section-title .icon{margin-right:8px}
+        .subsection{font-size:15px;font-weight:700;margin:20px 0 10px;color:var(--blue);display:flex;align-items:center;gap:8px}
+        .subsection::before{content:'';width:3px;height:14px;background:var(--blue);border-radius:2px}
+        p{margin-bottom:10px;font-size:14px;color:var(--text-2);line-height:1.8}
+        ul,ol{margin:8px 0 16px 20px;font-size:14px;color:var(--text-2)}
+        li{margin-bottom:6px}
+        a{color:var(--accent);text-decoration:none;transition:all .2s}
+        a:hover{text-shadow:0 0 12px rgba(0,228,176,.25);text-decoration:underline}
+        img{width:100%;border-radius:12px;margin:12px 0;border:1px solid var(--border);display:block;transition:transform .3s}
+        img:hover{transform:scale(1.01)}
+        .specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin:12px 0}
+        .spec{background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center;transition:all .3s}
+        .spec:hover{transform:translateY(-2px);border-color:rgba(0,228,176,.2);box-shadow:0 4px 16px rgba(0,0,0,.2)}
+        .spec .label{font-size:10px;color:var(--text-3);text-transform:uppercase;letter-spacing:1px}
+        .spec .value{font-size:18px;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-top:4px}
+        .card{background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:16px;margin:12px 0;transition:all .3s}
+        .card:hover{border-color:rgba(0,228,176,.2)}
+        .card.accent{border-left:3px solid var(--accent)}
+        .card.warning{border-left:3px solid var(--orange)}
+        .card.danger{border-left:3px solid var(--red)}
+        code{background:var(--surface-2);padding:2px 6px;border-radius:4px;font-size:13px;color:var(--accent);border:1px solid var(--border)}
+        .tag{display:inline-block;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:600;margin:2px 4px 2px 0}
+        .tag.green{background:rgba(0,228,176,.12);color:var(--accent)}
+        .tag.blue{background:rgba(74,158,255,.12);color:var(--blue)}
+        .tag.orange{background:rgba(251,146,60,.12);color:var(--orange)}
+        .tag.purple{background:rgba(167,139,250,.12);color:var(--purple)}
+        @media(max-width:600px){.main{padding:20px 16px 60px}.hero h1{font-size:28px}.section{padding:16px}.specs{grid-template-columns:1fr 1fr}}
     </style>
 </head>
 <body>
+<div class="main">
+<div class="hero">
+    <div class="hero-badge"><span class="dot"></span>Обновляется автоматически</div>
+    <h1>Советы<br><span class="g">Chevrolet Bolt EV</span></h1>
+    <p>Полный справочник владельца электромобиля. Термины, обслуживание, зарядка, ремонт и многое другое.</p>
+    <div class="hero-links">
+        <a href="https://allev.info/2020/02/chevy-bolt-most-frequently-asked-questions/" target="_blank">FAQ (англ)</a>
+        <a href="https://docs.google.com/spreadsheets/d/1PY888hxXtqvXgGJvA_GUkV_knmKiMO8AAAoPEKD0wNU/edit" target="_blank">Калькулятор</a>
+        <a href="https://max.ru/join/LF7lRQw04K2uaNn7qZnTMiugj8r881rTbL4bc6tp8-E" target="_blank">MAX</a>
+    </div>
+</div>
 
-<!-- Particles -->
-<div class="particles" id="particles"></div>
+<!-- ТЕРМИНЫ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">📖</span>Термины</h2>
+<p><strong>SOC</strong> - State of charge. Текущий уровень заряда батареи в процентах</p>
+<p><strong>SOH</strong> - (State Of Health, %) – показатель, использующийся для оценки состояния батареи. На русском языке может звучать, как: степень работоспособности аккумулятора. Обозначает его остаточную емкость, измеряется в %, т.к. изначально SOH любого электромобиля равен 100%. НЕ имеет единой формулы исчисления и пороговой величины, после прохождения которой аккумулятор будет считаться нерабочим – все индивидуально и зависит от конкретного разработчика.</p>
+<p>Следует также отличать его от «запаса хода» (дистанция, которую машина может проехать на выдаваемых кВтч), который постоянно меняется в зависимости от уровня заряда, рельефа местности, использования вспомогательных систем, стиля вождения, количества пассажиров и веса перевозимого груза.</p>
+<p><strong>EV</strong> - Electric vehicle</p>
+<p><strong>РЕГЕНЕРАТИВНОЕ ТОРМОЖЕНИЕ</strong> - Система, используемая в электромобилях, которая восстанавливает энергию, она в противном случае теряется во время замедления и торможения, тогда система отправляет ее обратно в аккумуляторную батарею, чтобы помочь поддерживать заряд. Электромобили, такие как Chevrolet Bolt EV, могут максимизировать эффект рекуперативного торможения, чтобы замедлить - и даже полностью остановить автомобиль - без использования тормозов. Это называется «вождение одной педалью».</p>
+<p><strong>Антипригарка</strong> - прошивка Bolt ограничивающая заряд батареи для предотвращения возгорания</p>
+<p><strong>HillTop</strong> - функция для ограничения зарядки. При включении эта функция ограничивает заряд во время зарядки аккумулятора, делая резерв для энергии от рекуперативного торможения. Эта функция также интегрируется с функцией зарядки на основе местоположения, что позволяет настроить систему таким образом, чтобы она включалась, когда вы находитесь дома (On - Home Only) или в дороге (On - только в гостях)</p>
+</div>
 
-<!-- Sidebar overlay (mobile) -->
-<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+<!-- РАЗНОЕ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">⚡</span>Разное (коротко)</h2>
+<p>✿ В машине есть очень хорошая система терморегулирования, в том числе неплохая система охлаждения, которая использует кондиционер автомобиля. Существует система жидкостного охлаждения, которая неплохо справляется с поддержанием оптимального температурного режима батареи для максимального срока службы.</p>
+<p>✿ Фактически, даже болты с большим пробегом (100 тыс. + Миль) демонстрируют очень минимальную деградацию в максимальном диапазоне 5-10%.</p>
+<p>✿ Bolt 2020 г.в. (модельный год) имеет немного большую батарею - 66 кВтч</p>
+<p>✿ У Bolt 2022 похоже, что добавили буфер на 1 кВтч. Доступно только 65 кВт / ч.</p>
+<p>✿ В 2018 модельном году добавлен телескопический солнцезащитный козырек (который можно установить в 2017 модельный год), а обогрев рулевого колеса может включаться автоматически.</p>
+<p>✿ батарея 2017-2019 на самом деле составляет 57 кВтч, но при нормальном использовании мы можем получить ~ 60 кВтч.</p>
+<p>✿ В 2022 есть встроенная зарядка Qi и функция Wireless CarPlay.</p>
+<p>✿ В 2020 были добавлены HD-камеры, однако вы не можете использовать их на более старых моделях.</p>
+<p>✿ Предупреждения о низком уровне жидкости для омывателя ветрового стекла нет.</p>
+<p>✿ Если вам нужно запитать свой дом (или что-то еще), приобретите качественный синусоидальный инвертор (в идеале) мощностью 2000 Вт + непрерывной мощности и подключите его напрямую к клеммам аккумулятора 12 В. Bolt может обеспечить постоянную мощность 130 А или около 1600 Вт в системе 12 В от основного тягового аккумулятора. Это означает, что постоянная выходная мощность переменного тока составляет около 1400 Вт. Короткие нагрузки выше этого допустимы.</p>
+<p>Если вам нужно проработать более 1-2 часов (когда Bolt автоматически выключится), включите автомобиль, включите стояночный тормоз, переключитесь на нейтраль и выйдите через пассажирскую дверь.</p>
+</div>
 
-<button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+<!-- ОПЕЛЬ vs BOLT -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🔍</span>Опель Ампера-е vs Chevrolet Bolt</h2>
+<p><strong>ОПТИКА</strong></p>
+<ol>
+<li>В опеле есть ручной корректор</li>
+<li>В опеле нет боковых жёлтых повторителей габаритов, соответственно нет боковых диодных габаритов</li>
+<li>Оптика в заднем бампере в опеле, это противотуманные фонари, и задний ход одна лампа. Есть кнопка вкл зад. птф.</li>
+</ol>
+<p><strong>ЗЕРКАЛА</strong></p>
+<ol>
+<li>Стекла сферические с обеих сторон, с пассажирской стороны нет надписи</li>
+<li>В опеле зеркала складываются с кнопки.</li>
+</ol>
+<p><strong>КУЗОВ</strong></p>
+<ol>
+<li>В опеле передняя решетка рельефная.</li>
+<li>В опеле европорты с завода</li>
+<li>Штатная зарядка в опеле полностью соответствует нашим стандартам, без переделок</li>
+<li>В опеле чуть другое расположение предохранителей под капотом</li>
+<li>В опеле блокируется даже штатный пистолет зарядки, разблокировать можно кнопкой на ключе или на большом экране.</li>
+</ol>
+<p><strong>САЛОН - КОМФОРТ</strong></p>
+<ol>
+<li>В опеле в меню есть по умолчанию русский язык, четные волны</li>
+<li>В опеле в отличии от шевроле, только две камеры, задняя и в лобовом, кругового обзора не бывает</li>
+<li>В опеле есть датчик дождя</li>
+<li>В опеле есть кнопка на руле ограничения скорости</li>
+<li>В опеле парктроники в круг, есть автопарковка, задействованы кнопки под большим монитором</li>
+<li>В опеле не бывает нижней жёсткой полки в багажнике, как и креплений. (Пишут что есть как доп. опция)</li>
+<li>Ключи внешне абсолютно разные</li>
+<img src="images/01_opel_optika1.png" alt="Ключи сравнение 1">
+<img src="images/02_opel_optika2.png" alt="Ключи сравнение 2">
+<li>В Опеле камера 360, как опция за отдельную плату</li>
+</ol>
+<p>Разница в скорости стандартной зарядки Bolt 8А/12А на шевроле и 6А/10А на опеле</p>
+<p>В остальном, абсолютно одинаковые машины</p>
+</div>
 
-<!-- Back to top -->
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<!-- ИНСТРУКЦИИ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">📋</span>Инструкции</h2>
+<p>Различные инструкции (англ): <a href="https://allev.info/2020/02/chevy-bolt-most-frequently-asked-questions/" target="_blank">https://allev.info/2020/02/chevy-bolt-most-frequently-asked-questions/</a></p>
+<p>Русская кривая: <a href="https://drive.google.com/file/d/1Rpj8Pf-UXJazhzd5efhcn-YdODuj8pZ8/view" target="_blank">https://drive.google.com/file/d/1Rpj8Pf-UXJazhzd5efhcn-YdODuj8pZ8/view</a></p>
+<p><strong>Bolt EV Service Manual 2017-2019 (сервисная инструкция):</strong> <a href="https://drive.google.com/file/d/1eZawZRS1c3m7dLvHKuv3AWbXhLbp4s62/view" target="_blank">https://drive.google.com/file/d/1eZawZRS1c3m7dLvHKuv3AWbXhLbp4s62/view</a></p>
+</div>
 
-<!-- Sidebar -->
-<nav class="sidebar" id="sidebar">
-    <div class="sidebar-header">
-        <div class="logo">
-            <div class="logo-icon">⚡</div>
-            <div>
-                <h1>BOLT EV</h1>
-                <div class="logo-sub">Справочник владельца</div>
-            </div>
-        </div>
-    </div>
+<!-- ТО -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🔧</span>Регламент ТО, интервалы и тех. обслуживание</h2>
+<img src="images/03_TO_reglament.png" alt="Регламент ТО">
+</div>
 
-    <div class="search-box">
-        <input type="text" id="search" placeholder="Поиск по разделам..." oninput="filterNav(this.value)">
-    </div>
+<!-- QR КОД -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">📱</span>Комплектация BOLT через чтение QR кода на стойке водителя</h2>
+<p>Чтобы прочитать коды комплектации нужно отсканировать большой QR-код на водительской стойке. Там будет длинный текст, где через пробелы разные коды.</p>
+<p>Ниже есть PDF где можно найти большинство из них: <a href="https://drive.google.com/file/d/1nXYWi-4S7O5hWzxiyd02q6x0ExN-nwES/view" target="_blank">Коды из расшифровки</a></p>
+</div>
 
-    <div class="nav-group">
-        <div class="nav-group-title">Основы</div>
-        <a class="nav-item" onclick="goTo('terms')"><span class="nav-dot"></span>Термины</a>
-        <a class="nav-item" onclick="goTo('misc')"><span class="nav-dot"></span>Разное</a>
-        <a class="nav-item" onclick="goTo('opel')"><span class="nav-dot"></span>Опель vs Bolt</a>
-    </div>
-    <div class="nav-group">
-        <div class="nav-group-title">ТО и обслуживание</div>
-        <a class="nav-item" onclick="goTo('maintenance')"><span class="nav-dot"></span>Регламент ТО</a>
-        <a class="nav-item" onclick="goTo('oil')"><span class="nav-dot"></span>Масло редуктора</a>
-        <a class="nav-item" onclick="goTo('filter')"><span class="nav-dot"></span>Салонный фильтр</a>
-        <a class="nav-item" onclick="goTo('wipers')"><span class="nav-dot"></span>Дворники</a>
-        <a class="nav-item" onclick="goTo('battery-small')"><span class="nav-dot"></span>12В АКБ</a>
-        <a class="nav-item" onclick="goTo('headlights')"><span class="nav-dot"></span>Фары</a>
-    </div>
-    <div class="nav-group">
-        <div class="nav-group-title">Колёса и резина</div>
-        <a class="nav-item" onclick="goTo('tires')"><span class="nav-dot"></span>Размеры шин</a>
-        <a class="nav-item" onclick="goTo('tpms')"><span class="nav-dot"></span>Датчики давления</a>
-        <a class="nav-item" onclick="goTo('tpms-flash')"><span class="nav-dot"></span>Прошивка датчиков</a>
-        <a class="nav-item" onclick="goTo('alignment')"><span class="nav-dot"></span>Развал-схождение</a>
-    </div>
-    <div class="nav-group">
-        <div class="nav-group-title">Зарядка</div>
-        <a class="nav-item" onclick="goTo('charging-types')"><span class="nav-dot"></span>Типы зарядок</a>
-        <a class="nav-item" onclick="goTo('charging-map')"><span class="nav-dot"></span>Где найти зарядки</a>
-        <a class="nav-item" onclick="goTo('charging-fast')"><span class="nav-dot"></span>Быстрая зарядка</a>
-        <a class="nav-item" onclick="goTo('charging-parking')"><span class="nav-dot"></span>Зарядка в паркинге</a>
-        <a class="nav-item" onclick="goTo('charging-min')"><span class="nav-dot"></span>Мин. напряжение</a>
-    </div>
-    <div class="nav-group">
-        <div class="nav-group-title">Батарея</div>
-        <a class="nav-item" onclick="goTo('battery-capacity')"><span class="nav-dot"></span>Ёмкость</a>
-        <a class="nav-item" onclick="goTo('battery-degradation')"><span class="nav-dot"></span>Деградация</a>
-        <a class="nav-item" onclick="goTo('range-speed')"><span class="nav-dot"></span>Запас хода vs скорость</a>
-        <a class="nav-item" onclick="goTo('range-temp')"><span class="nav-dot"></span>Запас хода vs температура</a>
-        <a class="nav-item" onclick="goTo('consumption')"><span class="nav-dot"></span>Расход кВт·ч</a>
-    </div>
-    <div class="nav-group">
-        <div class="nav-group-title">Зима</div>
-        <a class="nav-item" onclick="goTo('winter')"><span class="nav-dot"></span>Зимние советы</a>
-        <a class="nav-item" onclick="goTo('winter-climate')"><span class="nav-dot"></span>Климат и подогрев</a>
-        <a class="nav-item" onclick="goTo('winter-cold')"><span class="nav-dot"></span>Большие морозы</a>
-    </div>
-    <div class="nav-group">
-        <div class="nav-group-title">Медиа и электрика</div>
-        <a class="nav-item" onclick="goTo('media')"><span class="nav-dot"></span>Медиасистема</a>
-        <a class="nav-item" onclick="goTo('home-power')"><span class="nav-dot"></span>Питание дома</a>
-        <a class="nav-item" onclick="goTo('wash-mode')"><span class="nav-dot"></span>Режим мойки</a>
-    </div>
-    <div class="nav-group">
-        <div class="nav-group-title">Ремонт и проблемы</div>
-        <a class="nav-item" onclick="goTo('problems')"><span class="nav-dot"></span>Общие проблемы</a>
-        <a class="nav-item" onclick="goTo('suspension')"><span class="nav-dot"></span>Подвеска</a>
-        <a class="nav-item" onclick="goTo('trunk')"><span class="nav-dot"></span>Багажник</a>
-        <a class="nav-item" onclick="goTo('interior')"><span class="nav-dot"></span>Салон</a>
-        <a class="nav-item" onclick="goTo('fuses')"><span class="nav-dot"></span>Предохранители</a>
-        <a class="nav-item" onclick="goTo('towing')"><span class="nav-dot"></span>Буксировка</a>
-    </div>
-    <div class="nav-group">
-        <div class="nav-group-title">Доп. оборудование</div>
-        <a class="nav-item" onclick="goTo('apps')"><span class="nav-dot"></span>ПО на телефон</a>
-        <a class="nav-item" onclick="goTo('alarm')"><span class="nav-dot"></span>Сигнализации</a>
-        <a class="nav-item" onclick="goTo('spacers')"><span class="nav-dot"></span>Проставки</a>
-    </div>
-    <div class="nav-group">
-        <div class="nav-group-title">Полезное</div>
-        <a class="nav-item" onclick="goTo('groups')"><span class="nav-dot"></span>Чаты и группы</a>
-        <a class="nav-item" onclick="goTo('recall')"><span class="nav-dot"></span>Отзыв производителя</a>
-        <a class="nav-item" onclick="goTo('qr')"><span class="nav-dot"></span>Комплектация по QR</a>
-        <a class="nav-item" onclick="goTo('contacts')"><span class="nav-dot"></span>Мастера</a>
-    </div>
-</nav>
+<!-- ЧАТЫ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">💬</span>Группы/чаты в интернете</h2>
+<ul>
+<li><strong>Сообщество в МАКС:</strong> <a href="https://max.ru/join/LF7lRQw04K2uaNn7qZnTMiugj8r881rTbL4bc6tp8-E" target="_blank">ссылка</a></li>
+<li><strong>Англоязычный FAQ:</strong> <a href="https://allev.info/2020/02/chevy-bolt-most-frequently-asked-questions/" target="_blank">ссылка</a></li>
+<li><strong>Шевроле Болт BY (viber 465 участников):</strong> <a href="https://invite.viber.com/?g2=AQBl%2FLRkKQsTMUw2adHmhJ0T7TYdVZmK2wi%2BsevzibMStMDKqIfrElqdpL9BAS%2Bu" target="_blank">ссылка</a></li>
+<li><strong>Chevrolet BOLT ФОРУМ (Телеграм 2080 участников):</strong> <a href="https://t.me/boltchevrolet" target="_blank">ссылка</a></li>
+<li><strong>ChevyBolt (Телеграм 980 участников):</strong> <a href="https://t.me/chevybolt" target="_blank">ссылка</a></li>
+<li><strong>Электромобиль Беларусь (viber 1014 участников):</strong> <a href="https://invite.viber.com/?g2=AQBtmLSM%2B3UiSUsgSc2APlKaAS7EDWoV0LnITrtqFUpxwQOaPAEh9LjTe6bagTul" target="_blank">ссылка</a></li>
+<li><strong>DRIVE2.RU:</strong> <a href="https://www.drive2.ru/experience/chevrolet/g5400/" target="_blank">ссылка</a></li>
+<li><strong>Chevrolet BOLT РФ:</strong> <a href="https://t.me/BOLT_RF" target="_blank">ссылка</a></li>
+<li><strong>BOLT_RF_запчасти:</strong> <a href="https://t.me/BOLT_RF_Parts" target="_blank">ссылка</a></li>
+</ul>
+</div>
 
-<!-- Main Content -->
-<main class="main">
+<!-- ОТЗЫВ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">📋</span>Проверка автомобиля на отзыв производителя</h2>
+<p><a href="https://my.chevrolet.com/recalls" target="_blank">https://my.chevrolet.com/recalls</a></p>
+</div>
 
-    <!-- HERO -->
-    <div class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-bg-2"></div>
-        <div class="hero-badge"><span class="dot"></span>Обновляется автоматически</div>
-        <h2>Советы<br><span class="gradient">Chevrolet Bolt EV</span></h2>
-        <p>Полный справочник владельца электромобиля. Термины, обслуживание, зарядка, ремонт и многое другое.</p>
-        <div class="hero-stats">
-            <div class="hero-stat">
-                <div class="num">60+</div>
-                <div class="label">Разделов</div>
-            </div>
-            <div class="hero-stat">
-                <div class="num">300+</div>
-                <div class="label">Советов</div>
-            </div>
-            <div class="hero-stat">
-                <div class="num">4000+</div>
-                <div class="label">Участников</div>
-            </div>
-        </div>
-    </div>
+<!-- СЕРИЙНЫЙ НОМЕР -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🔍</span>Где найти серийный номер батареи</h2>
+<img src="images/04_batt_serial1.png" alt="Серийный номер батареи 1">
+<img src="images/05_batt_serial2.png" alt="Серийный номер батареи 2">
+<img src="images/06_batt_serial3.png" alt="Серийный номер батареи 3">
+</div>
 
-    <!-- ТЕРМИНЫ -->
-    <div class="section" id="terms">
-        <div class="section-header">
-            <div class="section-icon">📖</div>
-            <h3 class="section-title">Термины</h3>
-        </div>
-        <div class="specs-grid">
-            <div class="spec animate-on-scroll stagger-1"><div class="label">SOC</div><div class="value">Заряд %</div></div>
-            <div class="spec animate-on-scroll stagger-2"><div class="label">SOH</div><div class="value">Здоровье</div></div>
-            <div class="spec animate-on-scroll stagger-3"><div class="label">EV</div><div class="value">Электромобиль</div></div>
-        </div>
-        <p><strong>SOC</strong> (State of Charge) — текущий уровень заряда батареи в процентах.</p>
-        <p><strong>SOH</strong> (State Of Health) — показатель состояния батареи. Обозначает остаточную ёмкость. Изначально равен 100%.</p>
-        <p><strong>Регенеративное торможение</strong> — система, восстанавливающая энергию при замедлении. Позволяет замедлить и остановить авто без тормозов (вождение одной педалью).</p>
-        <p><strong>Антипригарка</strong> — прошивка, ограничивающая заряд батареи для предотвращения возгорания.</p>
-        <p><strong>HillTop</strong> — функция ограничения зарядки для резерва энергии от рекуперативного торможения.</p>
-    </div>
+<!-- РЕЗИНА -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🛞</span>Резина</h2>
+<p>✿ У Bolt большой крутящий момент, поэтому, если у вас тяжелая нога, вы быстро изнашиваете передние колеса. Вот почему так важно выполнять ротацию шин по расписанию.</p>
+<p>Размер шин (оригинал) 215/50/R17</p>
+<p>Диски оригинал 6.5j×17 ET44 5×105</p>
+<p>215/55 r17 - На выворачивании будет затирать</p>
+<ul>
+<li>Вылет диска 44 - сток для 17 дисков, 39 - протестировано и подходит для 16 дисков <a href="https://t.me/boltchevrolet/37297" target="_blank">https://t.me/boltchevrolet/37297</a></li>
+<li>У меня не затирает. И арки подшумлены. Но зазор не большой <a href="https://t.me/boltchevrolet/37952" target="_blank">https://t.me/boltchevrolet/37952</a></li>
+<li>при ширине диска 7J вылет надо 39-42</li>
+<li>Вчера купил 16е диски себе на зиму от опеля астры чтоли круглой, 6.5J×16 5/105 ET39 d56.6 Резина размеры 205/60R16. Все стало как родное. Единственный момент, при выборе дисков смотрите чтобы спицы не задевали за суппорт.</li>
+<li>Поставил R16 ET38 6.5J×16 5/105 d56.6 с зимней резиной 205/60/16 все стало отлично. Диски искал от опеля.</li>
+<li>Сегодня поставил 7х17, вылет 42, нормально (резина стандартный размер)</li>
+</ul>
+<img src="images/07_tires1.png" alt="Диски R16">
+<p><strong>Диски 17":</strong> <a href="https://catalog.onliner.by/wheel?rim_diameter%5Bfrom%5D=17&rim_diameter%5Bto%5D=17&rim_width%5Bfrom%5D=7&rim_width%5Bto%5D=7&number_of_fixing%5B0%5D=second_hole&number_of_fixing%5Boperation%5D=union&pcd_wheel%5Bfrom%5D=105&pcd_wheel%5Bto%5D=105&diam_of_central%5Bfrom%5D=56&diam_of_central%5Bto%5D=57&et_wheel%5Bfrom%5D=42&et_wheel%5Bto%5D=42" target="_blank">Onliner</a> | <a href="https://market.yandex.ru/catalog--diski/54461/list?hid=166068&lr=213&glfilter=5085722%3A12109645&glfilter=5085724%3A12109662&glfilter=5085726%3A12109667&glfilter=5085720%3A12109630&onstock=0&local-offers-first=0" target="_blank">Яндекс</a></p>
+<p><strong>Диски 16":</strong> <a href="https://catalog.onliner.by/wheel?rim_diameter%5Bfrom%5D=16&rim_diameter%5Bto%5D=16&rim_width%5Bfrom%5D=6.5&rim_width%5Bto%5D=6.5&number_of_fixing%5B0%5D=second_hole&number_of_fixing%5Boperation%5D=union&pcd_wheel%5Bfrom%5D=105&pcd_wheel%5Bto%5D=105&diam_of_central%5Bfrom%5D=56&diam_of_central%5Bto%5D=57&et_wheel%5Bfrom%5D=39&et_wheel%5Bto%5D=39" target="_blank">Onliner</a> | <a href="https://market.yandex.ru/catalog--diski/54461/list?hid=166068&lr=213&glfilter=5085722%3A12109644&glfilter=5085724%3A12109662&glfilter=5085726%3A12109667&glfilter=5085720%3A12109628&onstock=0&local-offers-first=0" target="_blank">Яндекс</a> | <a href="https://autoset.by/wheels/?selection=p&type=&diameter=16&pcd_merge=5_105_0&dia_num=56_6&width_num_from=6.5&width_num_to=6.5&et_num_from=39&et_num_to=39" target="_blank">Autoset</a></p>
+<img src="images/08_tires2.png" alt="Диски">
+<div class="card warning"><strong>Важно:</strong> У Bolt большой крутящий момент — передние шины изнашиваются быстро. Делайте ротацию по расписанию!</div>
+</div>
 
-    <!-- РАЗНОЕ -->
-    <div class="section" id="misc">
-        <div class="section-header">
-            <div class="section-icon">⚡</div>
-            <h3 class="section-title">Разное (коротко)</h3>
-        </div>
-        <div class="card accent animate-on-scroll">
-            <div class="card-title"><span class="icon">⚡</span> Факты о Bolt</div>
-            <ul>
-                <li>Отличная система терморегулирования с жидкостным охлаждением батареи</li>
-                <li>Даже Bolts с пробегом 100k+ миль показывают деградацию 5-10%</li>
-                <li>Bolt 2020 — батарея 66 кВт·ч | 2022 — 65 кВт·ч (буфер 1 кВт·ч)</li>
-                <li>Батарея 2017-2019 — фактически 57 кВт·ч, получаем ~60 кВт·ч</li>
-                <li>2022 — встроенная зарядка Qi и Wireless CarPlay</li>
-                <li>2020 — добавлены HD-камеры (нельзя на старых моделях)</li>
-            </ul>
-        </div>
-        <div class="card animate-on-scroll">
-            <div class="card-title"><span class="icon">🔌</span> Питание дома от Bolt</div>
-            <p>Купите синусоидальный инвертор 2000 Вт+ и подключите к клеммам АКБ 12В. Bolt выдаёт 130А (~1600 Вт) в системе 12В.</p>
-            <p>Для работы >1-2 часов: включите авто, стояночный тормоз, нейтраль, выйдите через пассажирскую дверь.</p>
-        </div>
-    </div>
+<!-- ДАТЧИКИ ДАВЛЕНИЯ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">📡</span>Датчики в колеса</h2>
+<p>Болт 315 мГц</p>
+<p>Ampera-e на 433 мГц</p>
+<p>Оригинал ACDelco 13598772 GM Original Equipment Tire Pressure Monitoring System (TPMS). Батарейки хватает на лет 5.</p>
+<img src="images/09_tpms.png" alt="Датчик давления">
+<p>С китайскими большое кол-во брака. Нужно покупать с запасом на случай брака и перед установкой проверять</p>
+<p>Вентиль резиновый для датчика артикул - top5623904</p>
+</div>
 
-    <!-- ОПЕЛЬ vs BOLT -->
-    <div class="section" id="opel">
-        <div class="section-header">
-            <div class="section-icon">🔍</div>
-            <h3 class="section-title">Опель Ампера-e vs Chevrolet Bolt</h3>
-        </div>
-        <div class="card animate-on-scroll">
-            <div class="card-title"><span class="icon">💡</span> Оптика</div>
-            <ul>
-                <li>В Опеле есть ручной корректор фар</li>
-                <li>Нет боковых жёлтых повторителей габаритов</li>
-                <li>Задние ПТФ — отдельная кнопка вкл</li>
-            </ul>
-        </div>
-        <div class="card animate-on-scroll">
-            <div class="card-title"><span class="icon">🪞</span> Зеркала</div>
-            <ul>
-                <li>Сферические стекла с обеих сторон</li>
-                <li>Складывание с кнопки</li>
-            </ul>
-        </div>
-        <div class="card animate-on-scroll">
-            <div class="card-title"><span class="icon">🚗</span> Кузов и салон</div>
-            <ul>
-                <li>Европорты с завода, русский язык в меню</li>
-                <li>Есть датчик дождя, кнопка ограничения скорости</li>
-                <li>Парктроники в круг + автопарковка</li>
-                <li>Зарядка 6А/10А (vs 8А/12А у Bolt)</li>
-            </ul>
-        </div>
-    </div>
+<!-- ПРОСТАВКИ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">📐</span>Проставки</h2>
+<p>Проставки 25 перед, 20 зад</p>
+<img src="images/10_spacers.png" alt="Проставки">
+</div>
 
-    <!-- ТО -->
-    <div class="section" id="maintenance">
-        <div class="section-header">
-            <div class="section-icon">🔧</div>
-            <h3 class="section-title">Регламент ТО</h3>
-        </div>
-        <p>Bolt не требует частого ТО. Основные интервалы:</p>
-        <div class="specs-grid">
-            <div class="spec animate-on-scroll stagger-1"><div class="label">Масло редуктора</div><div class="value">100 000 км</div></div>
-            <div class="spec animate-on-scroll stagger-2"><div class="label">Салонный фильтр</div><div class="value">15 000 км</div></div>
-            <div class="spec animate-on-scroll stagger-3"><div class="label">Тормозные колодки</div><div class="value">60 000+ км</div></div>
-            <div class="spec animate-on-scroll stagger-4"><div class="label">Жидкость охлаждения</div><div class="value">240 000 км</div></div>
-        </div>
-    </div>
+<!-- БРЫЗГОВИКИ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🚗</span>Оригинальные брызговики</h2>
+<p>Их не существует</p>
+<img src="images/11_mudflaps.png" alt="Брызговики">
+</div>
 
-    <!-- МАСЛО -->
-    <div class="section" id="oil">
-        <div class="section-header">
-            <div class="section-icon">🛢️</div>
-            <h3 class="section-title">Масло в редуктор</h3>
-        </div>
-        <div class="specs-grid">
-            <div class="spec animate-on-scroll stagger-1"><div class="label">Оригинал</div><div class="value">ACDelco Dexron HP</div></div>
-            <div class="spec animate-on-scroll stagger-2"><div class="label">Аналог</div><div class="value">Mobil LV HP</div></div>
-            <div class="spec animate-on-scroll stagger-3"><div class="label">Объём</div><div class="value">2.6 л</div></div>
-            <div class="spec animate-on-scroll stagger-4"><div class="label">Интервал</div><div class="value">100 000 км</div></div>
-        </div>
-    </div>
+<!-- ДАТЧИКИ КОЛЕС -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🔧</span>Датчики колес</h2>
+<p>Прошивальщик EL-50448</p>
+<p>Ссылки на <a href="https://aliexpress.ru/item/4001211060618.html" target="_blank">Aliexpress</a></p>
+<img src="images/12_tpm_programmer.png" alt="Прошивальщик">
+</div>
 
-    <!-- ФИЛЬТР -->
-    <div class="section" id="filter">
-        <div class="section-header">
-            <div class="section-icon">🌬️</div>
-            <h3 class="section-title">Салонный фильтр</h3>
-        </div>
-        <p>Оригинал: <code>13356914</code>, высота 30 мм</p>
-        <div class="specs-grid">
-            <div class="spec animate-on-scroll stagger-1"><div class="label">Антибактериальный</div><div class="value">MANN FP 24 003</div></div>
-            <div class="spec animate-on-scroll stagger-2"><div class="label">Угольный</div><div class="value">CUK 24 003</div></div>
-            <div class="spec animate-on-scroll stagger-3"><div class="label">Альтернатива</div><div class="value">WIX 2107</div></div>
-            <div class="spec animate-on-scroll stagger-4"><div class="label">Антибактериальный</div><div class="value">FC 907 NY</div></div>
-        </div>
-        <div class="card warning animate-on-scroll">
-            <div class="card-title"><span class="icon">⚠️</span> Отзыв о MANN</div>
-            <p>Фильтр MANN (~150 злотых) — дорогой, но очень эффективный. Запахи улицы полностью пропадают. Минус: забивается за 2 месяца. Дешёвые хватают на полгода.</p>
-        </div>
-    </div>
+<!-- ПРОШИВКА КОЛЕС -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">⚙️</span>Прошивка колес</h2>
+<ol>
+<li>Входим в сервисный режим (Удерживать Start без тормоза на 5+ сек)</li>
+<li>Выбираете пункт меню на руле, где указано давление колес, нажимаете на руле галочку (типа ОК, которая). Машина спрашивает, действительно ли хотите перепривязать датчики?</li>
+<li>Выбираете да, машина сигналит и зажигает левый передний поворотник.</li>
+<li>Идете с прибором к левому переднему колесу и пробуете его привязать - тыкаете антенной прибора в место соединения ниппеля и диска, либо в резину сразу за диском, на уровне ниппеля. Пробуйте нажимать и держать кнопку.</li>
+<li>Обычно нужно несколько попыток, пробуйте, пока машина не выключит левый передний поворотник. Если удастся, она посигналить и зажжёт правый передний поворотник. Если не удалось, и поворотник погас, начинайте процесс снова.</li>
+<li>Обычно самый большой геморрой именно с первым колесом, как только удастся с ним, все остальные привязываются с первого касания, но может это только у меня так</li>
+<li>Выключаем авто. Если сразу поехать, то привязка потеряется</li>
+</ol>
+</div>
 
-    <!-- ДВОРНИКИ -->
-    <div class="section" id="wipers">
-        <div class="section-header">
-            <div class="section-icon">🌧️</div>
-            <h3 class="section-title">Дворники</h3>
-        </div>
-        <p>Оригинальные дворники: <span class="tag green">A101S</span></p>
-    </div>
+<!-- РАЗВАЛ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">📐</span>Развал схождение (пример)</h2>
+<img src="images/13_alignment.png" alt="Развал-схождение">
+</div>
 
-    <!-- 12В АКБ -->
-    <div class="section" id="battery-small">
-        <div class="section-header">
-            <div class="section-icon">🔋</div>
-            <h3 class="section-title">12В Аккумулятор</h3>
-        </div>
-        <div class="specs-grid">
-            <div class="spec animate-on-scroll stagger-1"><div class="label">Тип</div><div class="value">AGM</div></div>
-            <div class="spec animate-on-scroll stagger-2"><div class="label">Размер</div><div class="value">207×175×190</div></div>
-            <div class="spec animate-on-scroll stagger-3"><div class="label">Ёмкость</div><div class="value">50 Ah</div></div>
-            <div class="spec animate-on-scroll stagger-4"><div class="label">Оригинал</div><div class="value">ACDelco LN1AGM</div></div>
-        </div>
-        <div class="card danger animate-on-scroll">
-            <div class="card-title"><span class="icon">⚠️</span> Battery Saver Active</div>
-            <p>Если видите это сообщение — 12В АКБ разряжена. Обычно живёт 3-5 лет. На Bolt известны случаи выхода за 1 год.</p>
-        </div>
-    </div>
+<!-- ЧТО НУЖНО С СОБОЙ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🧰</span>Что нужно из важного с собой в Болте</h2>
+<ul>
+<li>✿ Ключ на 10 для снятия аккума</li>
+<li>✿ Если нет запаски, жижа для колес</li>
+<li>✿ Трос и крюк для буксировки</li>
+</ul>
+</div>
 
-    <!-- ФАРЫ -->
-    <div class="section" id="headlights">
-        <div class="section-header">
-            <div class="section-icon">💡</div>
-            <h3 class="section-title">Фары</h3>
-        </div>
-        <div class="specs-grid">
-            <div class="spec animate-on-scroll stagger-1"><div class="label">Ксенон</div><div class="value">D3S</div></div>
-            <div class="spec animate-on-scroll stagger-2"><div class="label">Линзы</div><div class="value">Aozoom A6</div></div>
-        </div>
-    </div>
+<!-- СИГНАЛИЗАЦИИ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🚨</span>Сигнализации</h2>
+<p><strong>Pandora</strong> - ребята не могли ничего установить, т.к. цитата: "Твоя Пандора срёт в кан шину и сбрасывает апдейт при опросе блоков". В итоге тупо вырвали её, а болту даже легче стало.</p>
+<p><a href="https://t.me/boltchevrolet/37960" target="_blank">https://t.me/boltchevrolet/37960</a></p>
+<p><a href="https://t.me/boltchevrolet/36354" target="_blank">https://t.me/boltchevrolet/36354</a></p>
+<p><a href="https://t.me/chevybolt/33716" target="_blank">https://t.me/chevybolt/33716</a></p>
+</div>
 
-    <!-- ШИНЫ -->
-    <div class="section" id="tires">
-        <div class="section-header">
-            <div class="section-icon">🛞</div>
-            <h3 class="section-title">Резина и диски</h3>
-        </div>
-        <div class="card accent animate-on-scroll">
-            <div class="card-title"><span class="icon">📐</span> Оригинальные размеры</div>
-            <div class="specs-grid">
-                <div class="spec"><div class="label">Шины</div><div class="value">215/50 R17</div></div>
-                <div class="spec"><div class="label">Диски</div><div class="value">6.5J×17 ET44</div></div>
-                <div class="spec"><div class="label">Крепление</div><div class="value">5×105</div></div>
-                <div class="spec"><div class="label">D центра</div><div class="value">56.6 мм</div></div>
-            </div>
-        </div>
-        <div class="subsection-title">Альтернативные размеры</div>
-        <ul>
-            <li><strong>16" зима:</strong> 205/60 R17 ET39 — от Opel Astra</li>
-            <li><strong>17" ET42:</strong> 7J×17 — нормально встаёт</li>
-            <li><strong>215/55 R17:</strong> на вывороте может затирать</li>
-        </ul>
-        <div class="card warning animate-on-scroll">
-            <div class="card-title"><span class="icon">⚠️</span> Важно</div>
-            <p>У Bolt большой крутящий момент — передние шины изнашиваются быстро. Делайте ротацию по расписанию!</p>
-        </div>
-    </div>
+<!-- ПО НА ТЕЛЕФОН -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">📲</span>ПО на телефон</h2>
+<h3 class="subsection">MyChevrolet программа для Android</h3>
+<img src="images/14_apps_overview.png" alt="Приложения">
+<p>Не обновляем! Входим без регистрации (кнопка на англ - войти без регистрации)</p>
+<p>Скачать APK: <a href="https://drive.google.com/file/d/1Nn9-wTQK9JG_gqN0dH5K7Yq9M995peYh/view" target="_blank">https://drive.google.com/file/d/1Nn9-wTQK9JG_gqN0dH5K7Yq9M995peYh/view</a></p>
+<img src="images/15_mychvrolet.png" alt="MyChevrolet">
+<h3 class="subsection">MyGreenVolt</h3>
+<p><a href="https://play.google.com/store/apps/details?id=net.MyGreenVolt&hl=ru&gl=US" target="_blank">https://play.google.com/store/apps/details?id=net.MyGreenVolt&hl=ru&gl=US</a></p>
+<p>функционал графика ячеек платный (1$+)</p>
+<h3 class="subsection">Torque Pro</h3>
+<img src="images/16_torque.png" alt="Torque Pro">
+<p>✿ ссылка на скачивание PRO - <a href="https://4pda.to/forum/index.php?showtopic=193433" target="_blank">https://4pda.to/forum/index.php?showtopic=193433</a> (нужна регистрация)</p>
+<p>✿ PIDы на 2017-2018 год - <a href="https://drive.google.com/file/d/1WyNItuKI24gT3G4vul_J3NN64T4AaTIz/view" target="_blank">Ссылка</a></p>
+<p>✿ PIDы на 2019-2020 год - <a href="https://drive.google.com/file/d/1WyNItuKI24gT3G4vul_J3NN64T4AaTIz/view" target="_blank">Ссылка</a></p>
+</div>
 
-    <!-- ДАТЧИКИ ДАВЛЕНИЯ -->
-    <div class="section" id="tpms">
-        <div class="section-header">
-            <div class="section-icon">📡</div>
-            <h3 class="section-title">Датчики давления в колёсах</h3>
-        </div>
-        <div class="specs-grid">
-            <div class="spec animate-on-scroll stagger-1"><div class="label">Частота Bolt</div><div class="value">315 МГц</div></div>
-            <div class="spec animate-on-scroll stagger-2"><div class="label">Частота Ampera-e</div><div class="value">433 МГц</div></div>
-            <div class="spec animate-on-scroll stagger-3"><div class="label">Оригинал</div><div class="value">ACDelco 13598772</div></div>
-            <div class="spec animate-on-scroll stagger-4"><div class="label">Вентиль</div><div class="value">top5623904</div></div>
-        </div>
-        <div class="card danger animate-on-scroll">
-            <div class="card-title"><span class="icon">⚠️</span> Китайские датчики</div>
-            <p>Большой процент брака. Покупайте с запасом и проверяйте перед установкой.</p>
-        </div>
-    </div>
+<!-- САЛОННЫЙ ФИЛЬТР -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🌬️</span>Салонный фильтр</h2>
+<p>Оригинальный партнамбер - 13356914</p>
+<p>Наш фильтр высотой 30мм.</p>
+<p>FP 24 003</p>
+<img src="images/17_cabin_filter.png" alt="Салонный фильтр">
+<p>Поставил фильтр MANN, по их каталогу номер FP 24 003. Антибактериальный и угольный. Плотненько встал. Покатался по пробкам - запаха нет. Кайф. Посмотрим как долго не будет.</p>
+<div class="card accent">
+<p><strong>Отчет о фильтре Mann для Болта.</strong></p>
+<p>Куплен был почти самый дорогой из доступных на рынке фильтров салона - Mann</p>
+<p>Цель была проверить на сколько комфорт с новым фильтром будет лучше чем с дешевым. Интересовала фильтрация запахов впереди идущих фур и прочих токсичных вонючек.</p>
+<p>Цена фильтра Mann в польше – около 150 злотых (ок 80 руб), дешевые фильтры угольные начинаются злотых от 20-30 (ок 15 руб). То есть разница почти в 5 раз.</p>
+<p>Фильтр установлен был в начале декабря. После 2 месяцев езды он «закончился» - стали заполевать стекла и пришлось включать обдув на стекло. На дешевом я ездил до полугода и ничего не происходило.</p>
+<p>Запахи действительно пропали. Я вообще перестал дергаться и включать внутреннюю циркуляцию когда впереди что-то коптящее появлялось. Вообще нет проблем с запахами с улицы.</p>
+<p>Итого – минус цена и быстрый износ. Плюс – комфорт и здоровье.</p>
+</div>
+<div class="specs">
+<div class="spec"><div class="label">Угольный</div><div class="value">CUK24003</div></div>
+<div class="spec"><div class="label">Антибактериальный</div><div class="value">FP24003</div></div>
+<div class="spec"><div class="label">Угольный</div><div class="value">GB-9941</div></div>
+<div class="spec"><div class="label">WIX</div><div class="value">2107</div></div>
+</div>
+<p>Заменил фильтр на антибактериальный, встал отлично, как родной. FC907NY</p>
+<p><a href="https://t.me/BOLT_RF/34292" target="_blank">https://t.me/BOLT_RF/34292</a></p>
+</div>
 
-    <!-- ПРОШИВКА ДАТЧИКОВ -->
-    <div class="section" id="tpms-flash">
-        <div class="section-header">
-            <div class="section-icon">🔧</div>
-            <h3 class="section-title">Прошивка датчиков колёс</h3>
-        </div>
-        <p><strong>Прошивальщик:</strong> EL-50448</p>
-        <ol>
-            <li>Войти в сервисный режим (Start без тормоза 5+ сек)</li>
-            <li>Выбрать давление колёс в меню на руле, нажать ОК</li>
-            <li>Подтвердить привязку — малина сигналит, горит левый поворотник</li>
-            <li>Поднести прибор к левому переднему колесу и привязать</li>
-            <li>После успешной привязки — правый поворотник, затем задние</li>
-            <li>Выключить авто (иначе привязка потеряется)</li>
-        </ol>
-    </div>
+<!-- ДВОРНИКИ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🌧️</span>Дворники на BOLT</h2>
+<p>A101S</p>
+<img src="images/18_wipers.png" alt="Дворники">
+</div>
 
-    <!-- РАЗВАЛ -->
-    <div class="section" id="alignment">
-        <div class="section-header">
-            <div class="section-icon">📐</div>
-            <h3 class="section-title">Развал-схождение</h3>
-        </div>
-        <div class="specs-grid">
-            <div class="spec animate-on-scroll stagger-1"><div class="label">Развал</div><div class="value">-0.5° ±0.3°</div></div>
-            <div class="spec animate-on-scroll stagger-2"><div class="label">Схождение</div><div class="value">0.1° ±0.1°</div></div>
-            <div class="spec animate-on-scroll stagger-3"><div class="label">Наклон оси</div><div class="value">-6.5° ±0.5°</div></div>
-        </div>
-    </div>
+<!-- МАСЛО -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🛢️</span>Масло в редуктор</h2>
+<p>ACDelco dextron HP</p>
+<p>Или mobil lv hp (остерегайтесь подделок)</p>
+<p>Рекомендуем поменять масло на 100.000 км</p>
+<p>Объем 2.6 л</p>
+</div>
 
-    <!-- ЗАРЯДКИ -->
-    <div class="section" id="charging-types">
-        <div class="section-header">
-            <div class="section-icon">🔌</div>
-            <h3 class="section-title">Типы зарядок</h3>
-        </div>
-        <div class="specs-grid">
-            <div class="spec animate-on-scroll stagger-1"><div class="label">AC (домашняя)</div><div class="value">1.4-7.2 кВт</div></div>
-            <div class="spec animate-on-scroll stagger-2"><div class="label">DC быстрая</div><div class="value">до 55 кВт</div></div>
-            <div class="spec animate-on-scroll stagger-3"><div class="label">Разъём DC</div><div class="value">CCS Combo</div></div>
-            <div class="spec animate-on-scroll stagger-4"><div class="label">Разъём AC</div><div class="value">J1772</div></div>
-        </div>
-    </div>
+<!-- 12В АКБ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🔋</span>Аккумулятор (малый)</h2>
+<p>✿ Покупать только желательно AGM. Обычный будет быстро сдыхать, но в наличии нет в Украине (ставим обычный)</p>
+<p>Размер оригинального АКБ 207×175×190 (ДхВхШ) 50Ah</p>
+<p>ACDelco LN1AGM: <a href="https://t.me/chevybolt/39572" target="_blank">https://t.me/chevybolt/39572</a></p>
+<p>✿ Если вы видите сообщение «Battery Saver Active», это означает, что ваш аккумулятор на 12 В разряжен. Если вы видите это часто или немного проехали, вам, вероятно, нужно заменить 12 В. Известно, что они портятся всего за 1 год. Обычно батареи на 12 В служат только 3-5 лет, так что вы можете рассчитывать на их замену.</p>
+<p>✿ Можно купить на Ali прикуриватель, удобно если вдруг сядет малый аккум</p>
+</div>
 
-    <!-- ГДЕ ЗАРЯДКИ -->
-    <div class="section" id="charging-map">
-        <div class="section-header">
-            <div class="section-icon">🗺️</div>
-            <h3 class="section-title">Где найти зарядки</h3>
-        </div>
-        <p><strong>PlugShare</strong> — главное приложение (после санкций через прокси)</p>
-        <p><strong>Беларусь:</strong></p>
-        <ul>
-            <li><a href="https://malankabn.by/" target="_blank">Маланка</a> — быстрая 0.39 BYN/кВт, обычная 0.29 BYN/кВт</li>
-            <li><a href="https://chargeandgo.by/" target="_blank">Charge&Go</a></li>
-        </ul>
-    </div>
+<!-- ФАРЫ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">💡</span>Фары</h2>
+<p>Ксенон на американском Болте - D3S</p>
+<p>Блок розжига:</p>
+<img src="images/19_headlight_bulb.png" alt="Блок розжига">
+<p>Линзы Aozoom A6: <a href="https://t.me/boltchevrolet/84490" target="_blank">https://t.me/boltchevrolet/84490</a></p>
+<img src="images/20_headlight_lens.png" alt="Линзы">
+<p>внешний вид фары не изменился</p>
+<img src="images/21_headlight_result.png" alt="Фара">
+</div>
 
-    <!-- БЫСТРАЯ ЗАРЯДКА -->
-    <div class="section" id="charging-fast">
-        <div class="section-header">
-            <div class="section-icon">⚡</div>
-            <h3 class="section-title">Быстрая зарядка</h3>
-        </div>
-        <p><strong>Как определить:</strong></p>
-        <ul>
-            <li><strong>Без быстрой зарядки:</strong> нет проводов, чёрная несъёмная заглушка</li>
-            <li><strong>С быстрой зарядкой:</strong> два кабеля, съёмная заглушка (под ней доп. разъём)</li>
-        </ul>
-    </div>
+<!-- ПИТАНИЕ ДОМА -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🏠</span>Как подключить к болту дом</h2>
+<p>Нужен Инвертор на 1000 - 2000w</p>
+<p>Подключить на обычный акб, запитать дом чтоб было потребление а потом завести авто</p>
+<p>Заводить нужно, чтобы он смог его заряжать. В идеале включить режим мойки.</p>
+<img src="images/22_home_power1.png" alt="Подключение дома">
+<p>Холодильник на старте берет пиковые мощности:</p>
+<img src="images/23_home_power2.png" alt="Пиковые мощности">
+</div>
 
-    <!-- ЗАРЯДКА В ПАРКИНГЕ -->
-    <div class="section" id="charging-parking">
-        <div class="section-header">
-            <div class="section-icon">🏢</div>
-            <h3 class="section-title">Установка зарядки в паркинге</h3>
-        </div>
-        <ol>
-            <li>Получить тех. условия (инженер ЖЭС/ТС)</li>
-            <li>Сделать проект</li>
-            <li>Согласовать с членами ТС (2/3 голосов)</li>
-            <li>Установить ящик со счётчиком (интеграция с АСКУЭ)</li>
-            <li>Согласовать с Энергонадзор</li>
-            <li>Согласовать с Энергосбыт</li>
-            <li>Заключить договор</li>
-            <li>Параметризовать счётчик</li>
-        </ol>
-    </div>
+<!-- РЕЖИМ МОЙКИ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🚿</span>Режим Мойки</h2>
+<img src="images/24_wash_mode.png" alt="Режим мойки">
+</div>
 
-    <!-- МИН НАПРЯЖЕНИЕ -->
-    <div class="section" id="charging-min">
-        <div class="section-header">
-            <div class="section-icon">⚠️</div>
-            <h3 class="section-title">Минимальное напряжение</h3>
-        </div>
-        <div class="card accent animate-on-scroll">
-            <div class="card-title"><span class="icon">⚡</span> Работает от 165В!</div>
-            <p>По данным из чатов, Bolt способен заряжаться от напряжения сети от 165В.</p>
-        </div>
-    </div>
+<!-- КЛЮЧ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🔑</span>Как поменять в ключе батарейку</h2>
+<p>CR 2032</p>
+<p><a href="https://youtu.be/ILFYhMcnynE" target="_blank">https://youtu.be/ILFYhMcnynE</a></p>
+<img src="images/25_key_battery1.png" alt="Ключ 1">
+<img src="images/26_key_battery2.png" alt="Ключ 2">
+<img src="images/27_key_battery3.png" alt="Ключ 3">
+<img src="images/28_key_battery4.png" alt="Ключ 4">
+</div>
 
-    <!-- ЁМКОСТЬ -->
-    <div class="section" id="battery-capacity">
-        <div class="section-header">
-            <div class="section-icon">🔋</div>
-            <h3 class="section-title">Ёмкость батареи</h3>
-        </div>
-        <div class="specs-grid">
-            <div class="spec animate-on-scroll stagger-1"><div class="label">2017-2019</div><div class="value">60 кВт·ч</div></div>
-            <div class="spec animate-on-scroll stagger-2"><div class="label">2020+</div><div class="value">66 кВт·ч</div></div>
-            <div class="spec animate-on-scroll stagger-3"><div class="label">2022</div><div class="value">65 кВт·ч</div></div>
-            <div class="spec animate-on-scroll stagger-4"><div class="label">Фактически 17-19</div><div class="value">~60 кВт·ч</div></div>
-        </div>
-    </div>
+<!-- НЕЙТРАЛЬ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">⚙️</span>Алгоритм перевода Болта в Нейтраль</h2>
+<p>Постановка на НЕЙТРАЛЬ: включить зажигание, нажать тормоз и не отпуская педаль, открыть дверь, не закрывая дверь, перевести в нейтраль, выключить авто. Покинуть салон, закрыть дверь.</p>
+</div>
 
-    <!-- ДЕГРАДАЦИЯ -->
-    <div class="section" id="battery-degradation">
-        <div class="section-header">
-            <div class="section-icon">📉</div>
-            <h3 class="section-title">Деградация батарей</h3>
-        </div>
-        <div class="card accent animate-on-scroll">
-            <div class="card-title"><span class="icon">📊</span> Практическая статистика</div>
-            <p>Bolts с пробегом 100k+ миль показывают деградацию всего 5-10%. Жидкостное охлаждение отлично справляется с поддержанием оптимального температурного режима.</p>
-        </div>
-    </div>
+<!-- СТОЙКИ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🔩</span>Стойки стабилизатора</h2>
+<p>Стойки стабилизатора подходят от тойота королла 02, авенсис 03, ниссан жук 2010, OEM Number: 4882002030 N4252</p>
+<img src="images/29_stabilizer.png" alt="Стойки стабилизатора">
+</div>
 
-    <!-- ЗАВИСИМОСТЬ ОТ СКОРОСТИ -->
-    <div class="section" id="range-speed">
-        <div class="section-header">
-            <div class="section-icon">🚗</div>
-            <h3 class="section-title">Зависимость запаса хода от скорости</h3>
-        </div>
-        <div class="specs-grid">
-            <div class="spec animate-on-scroll stagger-1"><div class="label">60 км/ч</div><div class="value">~400 км</div></div>
-            <div class="spec animate-on-scroll stagger-2"><div class="label">80 км/ч</div><div class="value">~350 км</div></div>
-            <div class="spec animate-on-scroll stagger-3"><div class="label">100 км/ч</div><div class="value">~300 км</div></div>
-            <div class="spec animate-on-scroll stagger-4"><div class="label">120 км/ч</div><div class="value">~250 км</div></div>
-            <div class="spec animate-on-scroll stagger-5"><div class="label">140 км/ч</div><div class="value">~200 км</div></div>
-        </div>
-        <p>Скорость — главный враг запаса хода. Каждые +20 км/ч = потеря ~50 км.</p>
-    </div>
+<!-- ЗАРЯДКИ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🔌</span>Зарядки</h2>
+<h3 class="subsection">Типы зарядок (описание)</h3>
+<p><a href="https://hevcars.com.ua/reviews/zaryazhaem-elektromobil-osnovnyie-tipy-zaryadnyih-stantsiy-i-razemov/?amp" target="_blank">https://hevcars.com.ua/reviews/zaryazhaem-elektromobil-osnovnyie-tipy-zaryadnyih-stantsiy-i-razemov/?amp</a></p>
+<p>Обычно Болты переделывают под европейский быстрый порт CCS</p>
 
-    <!-- ЗАВИСИМОСТЬ ОТ ТЕМПЕРАТУРЫ -->
-    <div class="section" id="range-temp">
-        <div class="section-header">
-            <div class="section-icon">🌡️</div>
-            <h3 class="section-title">Зависимость от температуры</h3>
-        </div>
-        <div class="specs-grid">
-            <div class="spec animate-on-scroll stagger-1"><div class="label">+25°C</div><div class="value">100%</div></div>
-            <div class="spec animate-on-scroll stagger-2"><div class="label">0°C</div><div class="value">70-80%</div></div>
-            <div class="spec animate-on-scroll stagger-3"><div class="label">-10°C</div><div class="value">60-70%</div></div>
-            <div class="spec animate-on-scroll stagger-4"><div class="label">-20°C</div><div class="value">50-60%</div></div>
-        </div>
-        <p>В морозы теряется 30-50% запаса хода. Подогрев батареи отнимает энергию.</p>
-    </div>
+<h3 class="subsection">Где смотреть зарядки?</h3>
+<p>Все страны</p>
+<p>приложение Plugshare (после санкций работает только через прокси)</p>
+<p><a href="https://apps.apple.com/us/app/plugshare/id421788217" target="_blank">https://apps.apple.com/us/app/plugshare/id421788217</a></p>
+<p><a href="https://play.google.com/store/apps/details?id=com.xatori.Plugshare" target="_blank">https://play.google.com/store/apps/details?id=com.xatori.Plugshare</a></p>
 
-    <!-- РАСХОД -->
-    <div class="section" id="consumption">
-        <div class="section-header">
-            <div class="section-icon">📊</div>
-            <h3 class="section-title">Расход кВт·ч</h3>
-        </div>
-        <div class="specs-grid">
-            <div class="spec animate-on-scroll stagger-1"><div class="label">Лето город</div><div class="value">14-16</div></div>
-            <div class="spec animate-on-scroll stagger-2"><div class="label">Лето трасса</div><div class="value">16-20</div></div>
-            <div class="spec animate-on-scroll stagger-3"><div class="label">Зима город</div><div class="value">20-28</div></div>
-            <div class="spec animate-on-scroll stagger-4"><div class="label">Зима трасса</div><div class="value">25-35</div></div>
-        </div>
-        <p>кВт·ч на 100 км. Зимой расход увеличивается в 1.5-2 раза.</p>
-    </div>
+<h3 class="subsection">Очень удобная зарядка Energy Star Pro</h3>
+<ul>
+<li>может работать без заземления</li>
+<li>есть свой WiFi (через него можно управлять всеми параметрами включая током заряда, и даже отключение после заряда. Удобно если ее повесить в свой ящик на улице)</li>
+</ul>
+<p>Инструкция к Energy Star 32 Pro: <a href="https://drive.google.com/file/d/1saKfNN0CwNuFEmxQCEx2Zija9kOAq-gu/view" target="_blank">Ссылка</a></p>
 
-    <!-- ЗИМА -->
-    <div class="section" id="winter">
-        <div class="section-header">
-            <div class="section-icon">❄️</div>
-            <h3 class="section-title">Зимние советы</h3>
-        </div>
-        <div class="card animate-on-scroll">
-            <div class="card-title"><span class="icon">🔥</span> Активация климата</div>
-            <p>Дистанционный запуск подогрева салона через приложение MyChevrolet. Заряжайте батарею перед поездкой — подогрев съедает 3-5% заряда.</p>
-        </div>
-    </div>
+<h3 class="subsection">Электрозарядки в РБ</h3>
+<p><strong>Маланка:</strong> <a href="https://malankabn.by/" target="_blank">https://malankabn.by/</a></p>
+<p>Быстрая зарядка 0.39 BYN / Квт</p>
+<p>Обычная 0.29 BYN / Квт</p>
+<p><a href="https://chargeandgo.by/" target="_blank">https://chargeandgo.by/</a></p>
 
-    <div class="section" id="winter-climate">
-        <div class="section-header">
-            <div class="section-icon">🔥</div>
-            <h3 class="section-title">Климат и подогрев</h3>
-        </div>
-        <p>Подогрев салона работает от тяговой батареи. В сильные морозы может съедать до 10% заряда. Рекомендуется заряжать батарею перед поездкой и использовать предварительный подогрев.</p>
-    </div>
+<h3 class="subsection">Минимальное напряжение для зарядки болта от 220в</h3>
+<p>В чатах пишут, что работает от 165в</p>
 
-    <div class="section" id="winter-cold">
-        <div class="section-header">
-            <div class="section-icon">🥶</div>
-            <h3 class="section-title">Большие морозы</h3>
-        </div>
-        <div class="card danger animate-on-scroll">
-            <div class="card-title"><span class="icon">⚠️</span> Внимание</div>
-            <p>При температуре ниже -20°C мощность зарядки может снизиться в 2-3 раза. Заряжайте батарею в тёплом гараже или используйте предварительный подогрев.</p>
-        </div>
-    </div>
+<h3 class="subsection">Как определить наличие быстрой зарядки в Болте?</h3>
+<p>Картинка 1 - без быстрой зарядке (нет проводов, и черная не съемная заглушка)</p>
+<p>Картинка 2 - есть быстрая зарядка (два кабеля, съемная заглушка (под ней доп разъем))</p>
+<img src="images/32_fast_charge.png" alt="Быстрая зарядка">
 
-    <!-- МЕДИА -->
-    <div class="section" id="media">
-        <div class="section-header">
-            <div class="section-icon">📱</div>
-            <h3 class="section-title">Медиасистема</h3>
-        </div>
-        <ul>
-            <li><strong>Перезапуск:</strong> удерживать кнопку громкости 10+ секунд</li>
-            <li><strong>Android Auto:</strong> долгое нажатие Home для переключения</li>
-            <li><strong>Прошивка 2017:</strong> версия 14.5</li>
-        </ul>
-    </div>
+<h3 class="subsection">Установка зарядки на своем машиноместе в паркинге</h3>
+<ol>
+<li>Получить тех. условия (инженер ЖЭС/ТС, за подписью председателя/директора).</li>
+<li>Сделать проект.</li>
+<li>Согласовать с членами ТС(2/3 голосов). Для ЖЭС скорее всего не требуется</li>
+<li>Установить ящик со счетчиком согласно проекту (требуется интеграция с АСКУЭ, т.е. счетчик с модемом).</li>
+<li>Согласовать с Энергонадзор</li>
+<li>Согласовать с Энергосбыт</li>
+<li>Заключить договор с Энергосбыт</li>
+<li>Параметризовать счетчик (энергосбыт)</li>
+</ol>
+<p>Самостоятельное согласование увеличивает сроки в Х раз. Лучше просить об этом проектировщика.</p>
+<p><a href="https://auto.onliner.by/2021/05/26/opyt-ustanovki-zaryadnoj-stancii" target="_blank">https://auto.onliner.by/2021/05/26/opyt-ustanovki-zaryadnoj-stancii</a></p>
+<p><a href="https://autokadabra.ru/shouts/104243" target="_blank">https://autokadabra.ru/shouts/104243</a></p>
 
-    <!-- ПИТАНИЕ ДОМА -->
-    <div class="section" id="home-power">
-        <div class="section-header">
-            <div class="section-icon">🏠</div>
-            <h3 class="section-title">Питание дома от Bolt</h3>
-        </div>
-        <div class="card accent animate-on-scroll">
-            <div class="card-title"><span class="icon">🔌</span> Схема подключения</div>
-            <ol>
-                <li>Купить инвертор 1000-2000 Вт (синусоидальный)</li>
-                <li>Подключить к клеммам АКБ 12В</li>
-                <li>Запитать дом через инвертор</li>
-                <li>Завести авто для зарядки АКБ</li>
-                <li>Включить режим мойки для непрерывной работы</li>
-            </ol>
-            <p><strong>Мощность:</strong> ~1400 Вт переменного тока непрерывно</p>
-        </div>
-    </div>
+<h3 class="subsection">Быстрая зарядка</h3>
+<p>✿ Болты 2017-2019 модельного года не любят быструю зарядку в холодном состоянии, поэтому они будут заряжаться медленно, пока аккумулятор не нагреется до полной температуры 15C.</p>
+<p>✿ Точно так же в очень жаркую погоду он снижает скорость заряда, если становится слишком жарко</p>
+<p>✿ Быстрая зарядка игнорирует ограничения по времени суток, а также ограничения по лимитам заряда.</p>
+<p>✿ Bolts 2017-2019 требуется около 1 часа, чтобы зарядиться с 10 до 70% при зарядном устройстве на 125 А мощностью 50 кВт, что добавляет около 230 км запаса хода.</p>
+<p>✿ Около 100км в час в хорошую погоду</p>
+<p>✿ Также требуется час, чтобы зарядиться с 70 до 100%</p>
 
-    <!-- РЕЖИМ МОЙКИ -->
-    <div class="section" id="wash-mode">
-        <div class="section-header">
-            <div class="section-icon">🚿</div>
-            <h3 class="section-title">Режим мойки</h3>
-        </div>
-        <p>Режим мойки позволяет держать автомобиль включённым при открытых дверях. Используется при подключении к дому для непрерывной зарядки 12В АКБ.</p>
-    </div>
+<h3 class="subsection">Зарядка CCS график</h3>
+<img src="images/33_ccs_graph.png" alt="CCS график">
 
-    <!-- ПРОБЛЕМЫ -->
-    <div class="section" id="problems">
-        <div class="section-header">
-            <div class="section-icon">⚠️</div>
-            <h3 class="section-title">Проблемы и решения</h3>
-        </div>
-        <div class="card danger animate-on-scroll">
-            <div class="card-title"><span class="icon">🔧</span> Stabilitrak</div>
-            <p>Ошибка стабилизации. Часто решается перезапуском авто. Если повторяется — проверьте датчики колёс.</p>
-        </div>
-        <div class="card animate-on-scroll">
-            <div class="card-title"><span class="icon">🔩</span> Скрип/стук спереди</div>
-            <p>Чаще всего — стойки стабилизатора. Подходят от Toyota Corolla 02, Avensis 03, Nissan Juke 2010 (OEM 4882002030).</p>
-        </div>
-        <div class="card animate-on-scroll">
-            <div class="card-title"><span class="icon">🔊</span> Скрежет при парковке</div>
-            <p>Нормальное явление — регенеративное торможение.</p>
-        </div>
-        <div class="card animate-on-scroll">
-            <div class="card-title"><span class="icon">🪑</span> Дребезжание заднего кресла</div>
-            <p>Решается демпферной лентой или поролоном в местах контакта.</p>
-        </div>
-    </div>
+<h3 class="subsection">Деградация батарей электромобилей</h3>
+<p><a href="https://prosto.energy/blogs/news/degradatsiya-batarey-electromobilya" target="_blank">https://prosto.energy/blogs/news/degradatsiya-batarey-electromobilya</a></p>
 
-    <!-- ПОДВЕСКА -->
-    <div class="section" id="suspension">
-        <div class="section-header">
-            <div class="section-icon">🔩</div>
-            <h3 class="section-title">Подвеска</h3>
-        </div>
-        <div class="specs-grid">
-            <div class="spec animate-on-scroll stagger-1"><div class="label">Стойки стабилизатора</div><div class="value">Toyota 02</div></div>
-            <div class="spec animate-on-scroll stagger-2"><div class="label">OEM</div><div class="value">4882002030</div></div>
-        </div>
-    </div>
+<h3 class="subsection">Ёмкость батареи</h3>
+<p>Первый столбик. Данные с авто можно смотреть через всякие bluetooth-сканеры</p>
+<img src="images/34_capacity.png" alt="Ёмкость батареи">
 
-    <!-- БАГАЖНИК -->
-    <div class="section" id="trunk">
-        <div class="section-header">
-            <div class="section-icon">🧳</div>
-            <h3 class="section-title">Багажник</h3>
-        </div>
-        <ul>
-            <li>Крючок крышки багажника — 3D печать</li>
-            <li>Крепление для шторки багажника</li>
-            <li>Нижняя полка — только как доп. опция</li>
-        </ul>
-    </div>
+<h3 class="subsection">Зависимость расстояния Болт от скорости</h3>
+<p>На 5 миль в час меньше может означать на 10% больший запас хода.</p>
+<img src="images/35_range_speed.png" alt="Запас хода vs скорость">
 
-    <!-- САЛОН -->
-    <div class="section" id="interior">
-        <div class="section-header">
-            <div class="section-icon">🪑</div>
-            <h3 class="section-title">Салон</h3>
-        </div>
-        <ul>
-            <li>Ремонт скрипа подлокотника — демпферная лента</li>
-            <li>Улучшение сидений — листовая пена</li>
-            <li>Альтернативные сиденья от Mercedes</li>
-            <li>Снятие подголовника — по инструкции</li>
-        </ul>
-    </div>
+<h3 class="subsection">Зависимость расстояния Болт от Температуры</h3>
+<img src="images/36_range_temp.png" alt="Запас хода vs температура">
 
-    <!-- ПРЕДОХРАНИТЕЛИ -->
-    <div class="section" id="fuses">
-        <div class="section-header">
-            <div class="section-icon">🔌</div>
-            <h3 class="section-title">Блок предохранителей</h3>
-        </div>
-        <ul>
-            <li><strong>Под капотом:</strong> основные предохранители</li>
-            <li><strong>Салон (слева от руля):</strong> дополнительные</li>
-        </ul>
-    </div>
+<h3 class="subsection">Расход кВт и расчёт по цене</h3>
+<p>Все электромобили приблизительно одинаково расходуют электричество. Поэтому важен размер батареи.</p>
+<p>Excel онлайн калькулятор</p>
+<p>Средний расход в кВт на 100км на Болтах:</p>
+<ul>
+<li>Летом в городе около 15кВт/100км (без кондиционера + стиль езды)</li>
+<li>Осенью в городе около 21кВт/100км (печка, щетки + стиль езды)</li>
+<li>Зимой около xxx кВт/100км (печка, щетки, подогрев батереи + стиль езды)</li>
+</ul>
+<p>Ф-ла запаса хода = Эквивалент литров бензина =</p>
+<p><a href="https://docs.google.com/spreadsheets/d/1PY888hxXtqvXgGJvA_GUkV_knmKiMO8AAAoPEKD0wNU/edit#gid=0" target="_blank">Калькулятор расчета цен на EV</a></p>
+</div>
 
-    <!-- БУКСИРОВКА -->
-    <div class="section" id="towing">
-        <div class="section-header">
-            <div class="section-icon">🚛</div>
-            <h3 class="section-title">Буксировка</h3>
-        </div>
-        <div class="card warning animate-on-scroll">
-            <div class="card-title"><span class="icon">⚠️</span> Важно</div>
-            <ul>
-                <li>Используйте только режим Нейтраль</li>
-                <li>Скорость буксировки — не более 50 км/ч</li>
-                <li>Расстояние — не более 50 км</li>
-                <li>Ключ для снятия АКБ — на 10</li>
-            </ul>
-        </div>
-    </div>
+<!-- ЗИМА -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">❄️</span>Зима</h2>
+<p>✿ Холодной зимой у вас будет на 40% меньше запас хода - это нормально.</p>
+<p>✿ Перед отъездом используйте предварительную подготовку, чтобы помочь согреть аккумулятор и кабину, когда они подключены к электросети. Каждый запуск длится 20 минут</p>
+<p>✿ Регенерация работает только на передних 2 колесах, и, хотя есть некоторая антипробуксовочная система и АБС, которые могут быть применены, следует проявлять осторожность при движении в L, когда это скользко.</p>
+<p>✿ Предварительная подготовка кабины работает только в том случае, если вы оставите климат в автоматическом режиме</p>
+<p>✿ В машине есть очень хорошая система терморегулирования, в том числе неплохая система охлаждения, которая использует кондиционер автомобиля.</p>
+<p>✿ 260км с печкой по трассе при -10</p>
+<p>✿ Подгорев охлаждающей жидкости - Греет до 15 если температура батареи опускается меньше 10</p>
 
-    <!-- ПО НА ТЕЛЕФОН -->
-    <div class="section" id="apps">
-        <div class="section-header">
-            <div class="section-icon">📲</div>
-            <h3 class="section-title">ПО на телефон</h3>
-        </div>
-        <div class="card animate-on-scroll">
-            <div class="card-title"><span class="icon">📱</span> MyChevrolet</div>
-            <p>Не обновлять! Входить без регистрации. <a href="https://drive.google.com/file/d/1Nn9-wTQK9JG_gqN0dH5K7Yq9M995peYh/view" target="_blank">Скачать APK</a></p>
-        </div>
-        <div class="card animate-on-scroll">
-            <div class="card-title"><span class="icon">🔋</span> MyGreenVolt</div>
-            <p><a href="https://play.google.com/store/apps/details?id=net.MyGreenVolt" target="_blank">Google Play</a>. График ячеек — платный ($1+).</p>
-        </div>
-        <div class="card animate-on-scroll">
-            <div class="card-title"><span class="icon">📊</span> Torque Pro</div>
-            <p><a href="https://4pda.to/forum/index.php?showtopic=193433" target="_blank">Скачать PRO</a> (нужна регистрация)</p>
-        </div>
-    </div>
+<h3 class="subsection">Активация климата и подогрева салона</h3>
+<p>А) Оставить включенным климат/печку</p>
+<p>Б) выставить градусы</p>
+<p>В) На брелочке нужно нажать кнопку закрытия 2 раза</p>
+<p>Г) нажать 3-ю кнопку на брелке.</p>
+<p>После включаются габариты автомобиля и активируется климат/подогрев</p>
 
-    <!-- СИГНАЛИЗАЦИИ -->
-    <div class="section" id="alarm">
-        <div class="section-header">
-            <div class="section-icon">🚨</div>
-            <h3 class="section-title">Сигнализации</h3>
-        </div>
-        <div class="card danger animate-on-scroll">
-            <div class="card-title"><span class="icon">❌</span> Pandora — НЕ рекомендуется</div>
-            <p>"Пандора срёт в CAN-шину и сбрасывает апдейт при опросе блоков." В итоге вырвали — Bolt стал ездить лучше.</p>
-        </div>
-    </div>
+<h3 class="subsection">Большие морозы</h3>
+<p>Замерзла 🥶 -30 ощущается как -40. ночью было -36</p>
+<img src="images/39_cold_weather.png" alt="Морозы">
+<p>выходит, не греется она сама, если к шнурку не подключена</p>
+<p>Я на даче ставил до похолодания с запасом хода 170 км. Утром при -26 стало 128. Подключил шнурок, за час стал пробег 150, за два вернулись 170 км.</p>
 
-    <!-- ПРОСТАВКИ -->
-    <div class="section" id="spacers">
-        <div class="section-header">
-            <div class="section-icon">📐</div>
-            <h3 class="section-title">Проставки</h3>
-        </div>
-        <div class="specs-grid">
-            <div class="spec animate-on-scroll stagger-1"><div class="label">Перёд</div><div class="value">25 мм</div></div>
-            <div class="spec animate-on-scroll stagger-2"><div class="label">Зад</div><div class="value">20 мм</div></div>
-        </div>
-    </div>
+<h3 class="subsection">Защита на днище (картера)</h3>
+<p><a href="https://karter-market.ru/catalog/zashchita-kartera/chevrolet-2/bolt_2016_2021/" target="_blank">https://karter-market.ru/catalog/zashchita-kartera/chevrolet-2/bolt_2016_2021/</a></p>
+</div>
 
-    <!-- ЧАТЫ -->
-    <div class="section" id="groups">
-        <div class="section-header">
-            <div class="section-icon">💬</div>
-            <h3 class="section-title">Чаты и группы</h3>
-        </div>
-        <ul>
-            <li><a href="https://t.me/boltchevrolet" target="_blank">Chevrolet BOLT ФОРУМ</a> — Telegram (2080 участников)</li>
-            <li><a href="https://t.me/chevybolt" target="_blank">ChevyBolt</a> — Telegram (980 участников)</li>
-            <li><a href="https://t.me/BOLT_RF" target="_blank">Chevrolet BOLT РФ</a> — Telegram</li>
-            <li><a href="https://www.drive2.ru/experience/chevrolet/g5400/" target="_blank">DRIVE2.RU</a></li>
-            <li><a href="https://invite.viber.com/?g2=AQBl%2FLRkKQsTMUw2adHmhJ0T7TYdVZmK2wi%2BsevzibMStMDKqIfrElqdpL9BAS%2Bu" target="_blank">Шевроле Болт BY</a> — Viber (465 участников)</li>
-        </ul>
-    </div>
+<!-- МЕДИА -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">📱</span>Медиа</h2>
+<p><strong>Беспроводная зарядка в болтах поддерживает вот эти телефоны:</strong></p>
+<p><a href="https://drive.google.com/file/d/1SQk_YB_aehkn6zOmdum2K5-ahIKHazj0/view" target="_blank">https://drive.google.com/file/d/1SQk_YB_aehkn6zOmdum2K5-ahIKHazj0/view</a></p>
+<p>✿ В 2022 есть встроенная зарядка Qi и функция Wireless CarPlay.</p>
+<p>✿ В 2017 году была зарядка «Qi», но пользователи iPhone X не могли заставить ее работать. Видимо модуль зарядки 2018 лучше.</p>
 
-    <!-- ОТЗЫВ -->
-    <div class="section" id="recall">
-        <div class="section-header">
-            <div class="section-icon">📋</div>
-            <h3 class="section-title">Проверка на отзыв</h3>
-        </div>
-        <p><a href="https://my.chevrolet.com/recalls" target="_blank">my.chevrolet.com/recalls</a></p>
-    </div>
+<h3 class="subsection">Перезапуск медиасистемы</h3>
+<p>Удерживайте Home + FF (две кнопки справа от ручки громкости) 10 секунд. Это безопасно в любое время.</p>
 
-    <!-- QR -->
-    <div class="section" id="qr">
-        <div class="section-header">
-            <div class="section-icon">📱</div>
-            <h3 class="section-title">Комплектация по QR</h3>
-        </div>
-        <p>Отсканируйте QR-код на водительской стойке. Длинный текст с кодами комплектации.</p>
-        <p><a href="https://drive.google.com/file/d/1nXYWi-4S7O5hWzxiyd02q6x0ExN-nwES/view" target="_blank">Расшифровка кодов (PDF)</a></p>
-    </div>
+<h3 class="subsection">Быстрое переключение между Android Auto и штатной системой</h3>
+<p>удерживать кнопку "домик"</p>
 
-    <!-- МАСТЕРА -->
-    <div class="section" id="contacts">
-        <div class="section-header">
-            <div class="section-icon">🔧</div>
-            <h3 class="section-title">Мастера</h3>
-        </div>
-        <p>Подробные контакты в оригинальной документации.</p>
-    </div>
+<h3 class="subsection">Прошивка на 17-й год - 14.5</h3>
+<p><a href="https://www.chevybolt.org/forums/software-and-firmware-updates.509/" target="_blank">https://www.chevybolt.org/forums/software-and-firmware-updates.509/</a></p>
+<p><a href="https://www.chevybolt.org/threads/what-is-in-14-5.26482/page-2" target="_blank">https://www.chevybolt.org/threads/what-is-in-14-5.26482/page-2</a></p>
+<p><a href="https://drive.google.com/file/d/17NfdKpwKbAfkY1qSdBem0InrDF-GMlZV/view" target="_blank">Ссылка</a></p>
+</div>
 
-</main>
+<!-- 3Д АДАПТЕР -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🖨️</span>3D адаптер для крепления телефона</h2>
+<p>Печатается на 3Д, потом к нему крепится любая держалка для телефона</p>
+<p><a href="https://www.thingiverse.com/thing:3622061" target="_blank">https://www.thingiverse.com/thing:3622061</a></p>
+<img src="images/41_3d_mount1.png" alt="3D адаптер 1">
+<img src="images/42_3d_mount2.png" alt="3D адаптер 2">
+<p>Альтернативный вариант на 3Д принтере:</p>
+<p><a href="https://t.me/chevybolt/40400" target="_blank">https://t.me/chevybolt/40400</a></p>
+<p>шарик надо под каждую держалку подгонять внешний размер, замерять штангеном родной шарик у держалки, писать мне - я скину нужную модель</p>
+<p>и держатель магнитного кабеля:</p>
+<p><a href="https://drive.google.com/file/d/1VEHqtkj92q4MxticOn6bYicqTjbNpnVM/view" target="_blank">Ссылка 1</a>, <a href="https://drive.google.com/file/d/1bdsuz0Jnf3dtsMNHWUKHyuMUU9FxjVhl/view" target="_blank">Ссылка 2</a>, <a href="https://drive.google.com/file/d/1t7mY0q-F9pGD0Epy3D7ru98ciAkAgKlp/view" target="_blank">Ссылка 3</a></p>
+<img src="images/43_3d_mount3.png" alt="3D адаптер 3">
+<h3 class="subsection">Держатель телефона в подстаканник</h3>
+<p><a href="https://www.ozon.ru/product/avtomobilnyy-derzhatel-telefona-zegood-v-podstakannik-260414796" target="_blank">https://www.ozon.ru/product/avtomobilnyy-derzhatel-telefona-zegood-v-podstakannik-260414796</a></p>
+<img src="images/44_3d_mount4.png" alt="Держатель">
+</div>
+
+<!-- АЛИЭКСПРЕСС -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🛒</span>Алиэкспресс</h2>
+<ul>
+<li><strong>Амортизатор Переднего Капота</strong> <a href="https://aliexpress.ru/item/4001345403740.html" target="_blank">https://aliexpress.ru/item/4001345403740.html</a> 31$</li>
+<li><strong>Датчик давления в шинах TPMS 13598771 13598772 13586335 315 МГц</strong> <a href="https://aliexpress.ru/item/10000350929144.html" target="_blank">30$</a> | <a href="https://aliexpress.ru/item/4000878454705.html" target="_blank">25$</a></li>
+<li><strong>Ключ</strong> <a href="https://aliexpress.ru/item/4000066837491.html" target="_blank">24$</a></li>
+<li><strong>Прошивщик датчиков колес</strong> <a href="https://aliexpress.ru/item/4001211060618.html" target="_blank">7.25$</a></li>
+<li><strong>Чехол для ключа</strong> <a href="https://aliexpress.ru/item/4001075319277.html" target="_blank">5$</a> | <a href="https://aliexpress.ru/item/4001364282756.html" target="_blank">11$ металл</a></li>
+<li><strong>CarLink</strong> <a href="https://aliexpress.ru/item/32826755246.html" target="_blank">36-53$</a></li>
+<li><strong>ELM327 Bluetooth PIC18F25K80</strong> <a href="https://aliexpress.ru/item/32636557500.html" target="_blank">5$</a></li>
+<li><strong>Лампочки заднего хода</strong> <a href="https://aliexpress.ru/item/4000162403407.html" target="_blank">Ссылка</a></li>
+</ul>
+</div>
+
+<!-- РЕМОНТ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🔧</span>Локальный ремонт (контакты)</h2>
+<p><strong>РБ:</strong></p>
+<ul>
+<li>GMPROG Павел +375 33 3007954 — Прошивка и электрика (РБ и удаленно весь мир через ELM327)</li>
+<li>Замена порта, электрика и другое — Женя Добрыня Болт +375 29 8187849</li>
+<li>Зеркало сферическое, в том числе с лазерной гравировкой и подогревом - 80 рублей, по времени 20 минут. Малиновка 150 пав. 8 (029) 323-18-28</li>
+</ul>
+<p><strong>Украина:</strong></p>
+<p>Зарядки EnergyStar и продажа болтов Telegram @Manheim_UA</p>
+</div>
+
+<!-- ПРОБЛЕМЫ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">⚠️</span>Проблемы</h2>
+
+<h3 class="subsection">Аккумулятор (восстановление старого AGM)</h3>
+<p>На Драйв2 кто-то поднимал soh старого 12вольтового аккума, залив по 5 шприцов деонизированной воды. Там пробки под наклейкой.</p>
+
+<h3 class="subsection">Как поставить щетки в сервисное положение?</h3>
+<p>Нужно включить и выключить машину. Тогда, удерживая рычажок на себя щетки станут в сервисное положение.</p>
+
+<h3 class="subsection">Что первым умирает по подвеске?</h3>
+<p>Первыми на 70т умирают тяги стаба, потом на сотке большой сайлентблок. Потом на 150т рейка не у всех. Ну и как я понял на очереди амортизаторы передние и подшипники ступицы, но опять же не у всех, тк зависит от дорог.</p>
+
+<h3 class="subsection">Задние колодки</h3>
+<p>patron pbp289</p>
+
+<h3 class="subsection">Буксировка (из чатов)</h3>
+<ul>
+<li>Буксировать с полностью разряженной батарей нельзя</li>
+<li>В режиме D куда угодно и сколь угодно (180км буксировки зарядилось на 150км)</li>
+<li>В режиме L только короткие дистанции</li>
+<li>В режиме N буксировать нельзя</li>
+</ul>
+
+<h3 class="subsection">Включение сервисного режима</h3>
+<p>Удерживать Start без тормоза на 5+ сек</p>
+
+<h3 class="subsection">Датчики слепой зоны</h3>
+<p>Если индикаторы боковой слепой зоны иногда отключаются или постоянный "светофор", это известная проблема - смотреть бюллетень 17-NA-097, чтобы наклеить дополнительную пленку для защиты датчиков.</p>
+<p><a href="https://static.nhtsa.gov/odi/tsbs/2017/MC-10139082-9999.pdf" target="_blank">https://static.nhtsa.gov/odi/tsbs/2017/MC-10139082-9999.pdf</a></p>
+<p>Снимать бампер не нужно. Можно сделать из под бампера. Обклеили датчики двумя слоями фольги(без битума, обычная самоклеящаяся лента из строительного) и также нишу двумя слоями, как указано в отзывной выше. Все стало работать исправно и четко. Также можно посмотреть здесь <a href="https://t.me/chevybolt/2657" target="_blank">https://t.me/chevybolt/2657</a></p>
+
+<h3 class="subsection">Отключить автоматическую блокировку дверей</h3>
+<p>Если и работает данный лайфхак, то максимум у 10% владельцев.</p>
+<p>Нажмите и удерживайте кнопку внутренней разблокировки двери водителя в течение 3 секунд, чтобы отключить автоматическую блокировку</p>
+
+<h3 class="subsection">Скрежет при паркинге</h3>
+<p>Скрежет, который иногда слышен при переключении на парк, является нормальным явлением. Автомобиль, использует гидравлические тормоза для полной остановки автомобиля, при этом не будет никаких повреждений.</p>
+
+<h3 class="subsection">Ошибка Stabilitrak</h3>
+<p>Проверьте датчик абс, ту сторону где вам снимали колесо <a href="https://t.me/boltchevrolet/32959" target="_blank">https://t.me/boltchevrolet/32959</a></p>
+<img src="images/47_stabilitrak.png" alt="Stabilitrak">
+
+<h3 class="subsection">Скрип / лёгкий стук спереди</h3>
+<p><a href="https://www.drive2.ru/l/483893419190518116/" target="_blank">https://www.drive2.ru/l/483893419190518116/</a></p>
+<p>Нужно менять кольца. Стоят между ступицей и шрусом, меняются просто</p>
+<p>11611964 номер колец</p>
+<img src="images/48_squeak1.png" alt="Скрип 1">
+<img src="images/49_squeak2.png" alt="Скрип 2">
+<img src="images/50_squeak3.png" alt="Скрип 3">
+
+<h3 class="subsection">Ремонт скрипа подлокотника</h3>
+<p>Открутили нижнюю пластиковую крышку, под ней прижимная хрень на четырёх шурупах, она держит два ролика) демонтировали и вытягиваете основной подголовник двигая в сторону лобового стекла (вперёд)</p>
+<p>Суть скрипов была в пустотности между всеми крышками... решил вопрос вот так…</p>
+<img src="images/51_armrest1.png" alt="Подлокотник 1">
+<img src="images/52_armrest2.png" alt="Подлокотник 2">
+<p>Собираем обратно в противоположной последовательности! Защелки хлипкие, два-три раза открыли и больше не держат!</p>
+<p><a href="https://t.me/chevybolt/39972" target="_blank">https://t.me/chevybolt/39972</a></p>
+
+<h3 class="subsection">Дребезжание заднего кресла</h3>
+<p>Там где петли - лента антискрип. Намотати на скобу, куди сидіння защіплюється</p>
+
+<h3 class="subsection">Крепление для шторки багажника</h3>
+<p>42363844</p>
+<p>Здесь можно запросить 3D модель: <a href="https://www.chevybolt.org/threads/the-little-peg-on-the-lift-gate-that-lifts-the-cargo-cover-rear-lift-gate-trim-removal-3d-printed-replacement.37242/" target="_blank">https://www.chevybolt.org/threads/the-little-peg-on-the-lift-gate-that-lifts-the-cargo-cover-rear-lift-gate-trim-removal-3d-printed-replacement.37242/</a></p>
+<img src="images/53_trunk_hook.png" alt="Шторка">
+
+<h3 class="subsection">Крючок крышки багажника 3D</h3>
+<p><a href="https://www.drive2.ru/l/590146099730208376/" target="_blank">https://www.drive2.ru/l/590146099730208376/</a></p>
+<img src="images/54_trunk_3d.png" alt="Крючок 3D">
+
+<h3 class="subsection">Улучшение сидений (добавление слоя листовой пены) АНГЛ</h3>
+<p><a href="https://www.chevybolt.org/threads/front-seat-fix.13810/" target="_blank">https://www.chevybolt.org/threads/front-seat-fix.13810/</a></p>
+<p><a href="https://youtu.be/2dgxWTOnVn8" target="_blank">https://youtu.be/2dgxWTOnVn8</a></p>
+
+<h3 class="subsection">Альтернативные сиденья от Mercedes</h3>
+<p>Mercedes W176 Сиденья Полуковши Спорт</p>
+<img src="images/55_mercedes_seats.png" alt="Сиденья Mercedes">
+
+<h3 class="subsection">Включение автозакрытия дверей</h3>
+<img src="images/56_autoclose.png" alt="Автозакрытие">
+
+<h3 class="subsection">Замена головного света (ламп) на LED</h3>
+<p><a href="https://t.me/chevybolt/38987" target="_blank">https://t.me/chevybolt/38987</a></p>
+<p>Светодиодные лампы ALED X D3S XD3SD09 40w 6000K gen.3 для линз.</p>
+<p>Вы довольны результатом?</p>
+<p>На порядок лучше стало, но я очень требователен к свету, так что в перспективе буду ставить ХОРОШИЕ biled модули. Вместо штатных линз, например ams z8</p>
+
+<h3 class="subsection">Рулевые наконечники</h3>
+<p>42353793 это оригинал болта. В заменителях показывает только CEG-60 или CE0932</p>
+<p>Характеристики:</p>
+<ul>
+<li>Длина 125 мм</li>
+<li>Резьба M12XP1,25</li>
+<li>Комплектация Включает гайки: да.</li>
+<li>Место установки снаружи</li>
+<li>Тип наконечника мама</li>
+<li>Размер резьбы осевого M14XP1,5</li>
+<li>шарнира Диаметр пальца 12,5</li>
+<li>Покатость конуса 1/6</li>
+</ul>
+<p>Можно попробовать по характеристикам подобрать.</p>
+
+<h3 class="subsection">Как снять заглушку с USB-портами?</h3>
+<p>Нужно снимать подлокотник, и внутри отжимать белые пластмассовые защелки</p>
+<p><a href="https://t.me/boltchevrolet/35981" target="_blank">https://t.me/boltchevrolet/35981</a></p>
+<img src="images/57_usb_cover.png" alt="USB заглушка">
+
+<h3 class="subsection">Как снять подголовник?</h3>
+<p><a href="https://t.me/boltchevrolet/21008" target="_blank">https://t.me/boltchevrolet/21008</a></p>
+<img src="images/58_headrest.png" alt="Подголовник">
+
+<h3 class="subsection">Снятие плафона в потолке</h3>
+<p><a href="https://t.me/boltchevrolet/18642" target="_blank">https://t.me/boltchevrolet/18642</a></p>
+<img src="images/59_dome1.png" alt="Плафон 1">
+<img src="images/60_dome2.png" alt="Плафон 2">
+
+<h3 class="subsection">Не заряжает быстрая зарядка</h3>
+<p>Как правило, со стороны машины есть защелка (Серебристая, блестящая, выше порта немного), которая фиксирует разъем быстрый зарядки (который выставляете), по тем или иным причинам(например сломана защелка на разъеме) может не доходить, можно ей аккуратно помочь. Кто-то подкладывал окурок.</p>
+
+<h3 class="subsection">Не работает микрофон</h3>
+<p>Микрофон сидит на одном предохранителе с OnStar. Может сами или еще кто выдернул предохранитель OnStar.</p>
+
+<h3 class="subsection">Отключение динамика пешеходов</h3>
+<p>Динамик на внутренней стороне бампера слева. На болте, кнопка на экране не активная. Отключить в болте можно сняв предохранитель №34 под капотом. Ни на что больше №34 не влияет.</p>
+<img src="images/61_pedspeaker.png" alt="Динамик пешеходов">
+
+<h3 class="subsection">Блок предохранителей</h3>
+<p>в мануале (для Болт 2017 год) Страница 266</p>
+<p><a href="https://my.chevrolet.com/content/dam/gmownercenter/gmna/dynamic/manuals/2017/Chevrolet/BOLT%20EV/Owner's%20Manual.pdf" target="_blank">https://my.chevrolet.com/content/dam/gmownercenter/gmna/dynamic/manuals/2017/Chevrolet/BOLT%20EV/Owner's%20Manual.pdf</a></p>
+<p><strong>Капот:</strong></p>
+<img src="images/62_fuse_hood1.png" alt="Предохранители капот 1">
+<img src="images/63_fuse_hood2.png" alt="Предохранители капот 2">
+<img src="images/64_fuse_hood3.png" alt="Предохранители капот 3">
+<img src="images/65_fuse_hood4.png" alt="Предохранители капот 4">
+<img src="images/66_fuse_hood5.png" alt="Предохранители капот 5">
+<p><strong>Салон (слева от руля):</strong></p>
+<img src="images/67_fuse_cabin1.png" alt="Предохранители салон 1">
+<img src="images/68_fuse_cabin2.png" alt="Предохранители салон 2">
+<img src="images/69_fuse_cabin3.png" alt="Предохранители салон 3">
+
+<h3 class="subsection">Лампочки освещения Chevrolet bolt:</h3>
+<p>Головной свет: d3s</p>
+<p>Номер / салон: w5w / T10</p>
+<p>Поворотники: wy21w / 7440a</p>
+<p>Доп стопы: w21w / 7440r</p>
+<p>Задний ход: w16w / T15 / 921</p>
+
+<h3 class="subsection">Перетирание кабеля под задним бампером</h3>
+<p>Перетирается проводка заднего бампера об задний усилитель, из-за этого машина может перестать ехать, либо пропадать системы помощи, ходовые огни, показание батареи, фантомные ошибки по airbag</p>
+<img src="images/70_bumper_cable1.png" alt="Кабель 1">
+<img src="images/71_bumper_cable2.png" alt="Кабель 2">
+<img src="images/72_bumper_cable3.png" alt="Кабель 3">
+<img src="images/73_bumper_cable4.png" alt="Кабель 4">
+<img src="images/74_bumper_cable5.png" alt="Кабель 5">
+
+<h3 class="subsection">Перестала работать камера в зеркале</h3>
+<p>От попадания влаги сгнивают контакты на фишке. За обшивкой двери. известная болячка болта...</p>
+<img src="images/75_mirror_camera.png" alt="Камера зеркала">
+
+<h3 class="subsection">Замена фильтра салона</h3>
+<p><a href="https://t.me/BOLT_RF/10830" target="_blank">https://t.me/BOLT_RF/10830</a></p>
+<img src="images/76_cabin_filter1.png" alt="Фильтр 1">
+<img src="images/77_cabin_filter2.png" alt="Фильтр 2">
+<img src="images/78_cabin_filter3.png" alt="Фильтр 3">
+<img src="images/79_cabin_filter4.png" alt="Фильтр 4">
+<img src="images/80_cabin_filter5.png" alt="Фильтр 5">
+<img src="images/81_cabin_filter6.png" alt="Фильтр 6">
+<img src="images/82_cabin_filter7.png" alt="Фильтр 7">
+<img src="images/83_cabin_filter8.png" alt="Фильтр 8">
+
+<h3 class="subsection">Задний дворник (щетка)</h3>
+<p>Щетка обычная под крючок, длина 12 дюймов или 300 мм. Бескаркасную лучше не брать, крышка не встанет на место</p>
+
+<h3 class="subsection">Лампа подсветки в задний номер</h3>
+<p>Т10 W5W</p>
+<p>Снаружи плафон сам отводиться в бок и достается вправо</p>
+<img src="images/84_number_light.png" alt="Лампа номера">
+
+<h3 class="subsection">Альтернатива датчика ABS</h3>
+<p>Датчик ABS от Chevrolet Cruze Номер датчика ST-13470637, подходит, нужно только переставить крепление со старого датчика + провод длиньше. Срезал со старого датчика крепления и поставил на новый. Датчик один в один.</p>
+<img src="images/85_abs_sensor.png" alt="Датчик ABS">
+
+<h3 class="subsection">Докатка</h3>
+<p>Докатка 115/70/16</p>
+<img src="images/86_spare_tire.png" alt="Докатка">
+</div>
+
+</div>
 
 <script>
-// ===== PARTICLES =====
-(function() {
-    const container = document.getElementById('particles');
-    for (let i = 0; i < 30; i++) {
-        const p = document.createElement('div');
-        p.className = 'particle';
-        p.style.left = Math.random() * 100 + '%';
-        p.style.top = Math.random() * 100 + '%';
-        p.style.setProperty('--tx', (Math.random() - 0.5) * 200 + 'px');
-        p.style.setProperty('--ty', (Math.random() - 0.5) * 200 + 'px');
-        p.style.animationDuration = (Math.random() * 8 + 6) + 's';
-        p.style.animationDelay = (Math.random() * 8) + 's';
-        container.appendChild(p);
-    }
-})();
-
-// ===== SCROLL ANIMATIONS =====
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-document.querySelectorAll('.section, .animate-on-scroll').forEach(el => observer.observe(el));
-
-// ===== NAVIGATION =====
-function goTo(id) {
-    const el = document.getElementById(id);
-    if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-        event.target.closest('.nav-item')?.classList.add('active');
-    }
-    // Close mobile sidebar
-    document.getElementById('sidebar').classList.remove('open');
-    document.getElementById('sidebarOverlay').classList.remove('open');
-}
-
-function toggleSidebar() {
-    document.getElementById('sidebar').classList.toggle('open');
-    document.getElementById('sidebarOverlay').classList.toggle('open');
-}
-
-// ===== SEARCH =====
-function filterNav(query) {
-    const q = query.toLowerCase();
-    document.querySelectorAll('.nav-item').forEach(item => {
-        item.style.display = item.textContent.toLowerCase().includes(q) || !q ? '' : 'none';
-    });
-    document.querySelectorAll('.nav-group').forEach(g => {
-        const visible = g.querySelectorAll('.nav-item:not([style*="display: none"])').length;
-        g.style.display = visible || !q ? '' : 'none';
-    });
-}
-
-// ===== BACK TO TOP =====
-window.addEventListener('scroll', () => {
-    const btn = document.getElementById('backToTop');
-    btn.classList.toggle('visible', window.scrollY > 400);
-});
-
-// ===== ACTIVE NAV ON SCROLL =====
-const sections = document.querySelectorAll('.section');
-const navItems = document.querySelectorAll('.nav-item');
-window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(s => {
-        if (window.scrollY >= s.offsetTop - 120) current = s.id;
-    });
-    navItems.forEach(n => {
-        n.classList.remove('active');
-        if (n.getAttribute('onclick')?.includes(current)) n.classList.add('active');
-    });
-});
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.scroll-reveal').forEach(el=>obs.observe(el));
 </script>
 </body>
 </html>
