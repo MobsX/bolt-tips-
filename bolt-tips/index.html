@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Советы Chevrolet Bolt EV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root{--bg:#06060c;--surface:#0d0d16;--surface-2:#12121e;--border:rgba(255,255,255,0.06);--text:#f0f0f8;--text-2:#9898b0;--text-3:#555570;--accent:#00e4b0;--accent-dim:rgba(0,228,176,0.12);--blue:#4a9eff;--orange:#fb923c;--red:#f43f5e;--purple:#a78bfa;--pink:#f472b6}
+        *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+        body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.8;overflow-x:hidden}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes glowPulse{0%,100%{opacity:.3}50%{opacity:1}}
+        @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+        @keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+        @keyframes borderGlow{0%,100%{border-color:rgba(0,228,176,.1)}50%{border-color:rgba(0,228,176,.3)}}
+        @keyframes slideIn{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
+        .scroll-reveal{opacity:0;transform:translateY(30px);transition:all .7s cubic-bezier(.16,1,.3,1)}.scroll-reveal.visible{opacity:1;transform:translateY(0)}
+        .main{max-width:820px;margin:0 auto;padding:40px 24px 100px}
+        .hero{text-align:center;padding:80px 0 50px;position:relative;overflow:hidden}
+        .hero::before{content:'';position:absolute;top:-150px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(0,228,176,.15),transparent 70%);filter:blur(80px);animation:glowPulse 4s ease-in-out infinite;pointer-events:none}
+        .hero-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;background:var(--accent-dim);border:1px solid rgba(0,228,176,.2);border-radius:100px;font-size:11px;color:var(--accent);margin-bottom:16px;animation:fadeIn .8s .2s both}
+        .hero-badge .dot{width:5px;height:5px;background:var(--accent);border-radius:50%;animation:glowPulse 2s infinite}
+        .hero h1{font-size:42px;font-weight:900;line-height:1.1;margin-bottom:12px;animation:fadeIn .8s .4s both}
+        .hero h1 .g{background:linear-gradient(135deg,var(--accent),var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200% 200%;animation:shimmer 3s linear infinite}
+        .hero>p{color:var(--text-2);font-size:15px;max-width:500px;margin:0 auto;animation:fadeIn .8s .6s both}
+        .hero-links{display:flex;gap:12px;justify-content:center;margin-top:20px;animation:fadeIn .8s .8s both}
+        .hero-links a{padding:8px 16px;background:var(--accent-dim);border:1px solid rgba(0,228,176,.2);border-radius:8px;color:var(--accent);font-size:12px;font-weight:600;text-decoration:none;transition:all .3s}
+        .hero-links a:hover{background:var(--accent);color:var(--bg);transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,228,176,.3)}
+        .section{margin-bottom:48px;padding:24px;background:var(--surface);border:1px solid var(--border);border-radius:16px;transition:all .3s}
+        .section:hover{border-color:rgba(0,228,176,.15);box-shadow:0 8px 32px rgba(0,0,0,.2)}
+        .section-title{font-size:20px;font-weight:800;margin:0 0 16px;padding-bottom:10px;border-bottom:2px solid var(--accent);display:inline-block;letter-spacing:-.3px}
+        .section-title .icon{margin-right:8px}
+        .subsection{font-size:15px;font-weight:700;margin:20px 0 10px;color:var(--blue);display:flex;align-items:center;gap:8px}
+        .subsection::before{content:'';width:3px;height:14px;background:var(--blue);border-radius:2px}
+        p{margin-bottom:10px;font-size:14px;color:var(--text-2);line-height:1.8}
+        ul,ol{margin:8px 0 16px 20px;font-size:14px;color:var(--text-2)}
+        li{margin-bottom:6px}
+        a{color:var(--accent);text-decoration:none;transition:all .2s}
+        a:hover{text-shadow:0 0 12px rgba(0,228,176,.25);text-decoration:underline}
+        img{width:100%;border-radius:12px;margin:12px 0;border:1px solid var(--border);display:block;transition:transform .3s}
+        img:hover{transform:scale(1.01)}
+        .specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin:12px 0}
+        .spec{background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center;transition:all .3s}
+        .spec:hover{transform:translateY(-2px);border-color:rgba(0,228,176,.2);box-shadow:0 4px 16px rgba(0,0,0,.2)}
+        .spec .label{font-size:10px;color:var(--text-3);text-transform:uppercase;letter-spacing:1px}
+        .spec .value{font-size:18px;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-top:4px}
+        .card{background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:16px;margin:12px 0;transition:all .3s}
+        .card:hover{border-color:rgba(0,228,176,.2)}
+        .card.accent{border-left:3px solid var(--accent)}
+        .card.warning{border-left:3px solid var(--orange)}
+        .card.danger{border-left:3px solid var(--red)}
+        code{background:var(--surface-2);padding:2px 6px;border-radius:4px;font-size:13px;color:var(--accent);border:1px solid var(--border)}
+        .tag{display:inline-block;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:600;margin:2px 4px 2px 0}
+        .tag.green{background:rgba(0,228,176,.12);color:var(--accent)}
+        .tag.blue{background:rgba(74,158,255,.12);color:var(--blue)}
+        .tag.orange{background:rgba(251,146,60,.12);color:var(--orange)}
+        .tag.purple{background:rgba(167,139,250,.12);color:var(--purple)}
+        @media(max-width:600px){.main{padding:20px 16px 60px}.hero h1{font-size:28px}.section{padding:16px}.specs{grid-template-columns:1fr 1fr}}
+    </style>
+</head>
+<body>
+<div class="main">
+<div class="hero">
+    <div class="hero-badge"><span class="dot"></span>Обновляется автоматически</div>
+    <h1>Советы<br><span class="g">Chevrolet Bolt EV</span></h1>
+    <p>Полный справочник владельца электромобиля. Термины, обслуживание, зарядка, ремонт и многое другое.</p>
+    <div class="hero-links">
+        <a href="https://allev.info/2020/02/chevy-bolt-most-frequently-asked-questions/" target="_blank">FAQ (англ)</a>
+        <a href="https://docs.google.com/spreadsheets/d/1PY888hxXtqvXgGJvA_GUkV_knmKiMO8AAAoPEKD0wNU/edit" target="_blank">Калькулятор</a>
+        <a href="https://max.ru/join/LF7lRQw04K2uaNn7qZnTMiugj8r881rTbL4bc6tp8-E" target="_blank">MAX</a>
+    </div>
+</div>
+
+<!-- ТЕРМИНЫ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">📖</span>Термины</h2>
+<p><strong>SOC</strong> - State of charge. Текущий уровень заряда батареи в процентах</p>
+<p><strong>SOH</strong> - (State Of Health, %) – показатель, использующийся для оценки состояния батареи. На русском языке может звучать, как: степень работоспособности аккумулятора. Обозначает его остаточную емкость, измеряется в %, т.к. изначально SOH любого электромобиля равен 100%. НЕ имеет единой формулы исчисления и пороговой величины, после прохождения которой аккумулятор будет считаться нерабочим – все индивидуально и зависит от конкретного разработчика.</p>
+<p>Следует также отличать его от «запаса хода» (дистанция, которую машина может проехать на выдаваемых кВтч), который постоянно меняется в зависимости от уровня заряда, рельефа местности, использования вспомогательных систем, стиля вождения, количества пассажиров и веса перевозимого груза.</p>
+<p><strong>EV</strong> - Electric vehicle</p>
+<p><strong>РЕГЕНЕРАТИВНОЕ ТОРМОЖЕНИЕ</strong> - Система, используемая в электромобилях, которая восстанавливает энергию, она в противном случае теряется во время замедления и торможения, тогда система отправляет ее обратно в аккумуляторную батарею, чтобы помочь поддерживать заряд. Электромобили, такие как Chevrolet Bolt EV, могут максимизировать эффект рекуперативного торможения, чтобы замедлить - и даже полностью остановить автомобиль - без использования тормозов. Это называется «вождение одной педалью».</p>
+<p><strong>Антипригарка</strong> - прошивка Bolt ограничивающая заряд батареи для предотвращения возгорания</p>
+<p><strong>HillTop</strong> - функция для ограничения зарядки. При включении эта функция ограничивает заряд во время зарядки аккумулятора, делая резерв для энергии от рекуперативного торможения. Эта функция также интегрируется с функцией зарядки на основе местоположения, что позволяет настроить систему таким образом, чтобы она включалась, когда вы находитесь дома (On - Home Only) или в дороге (On - только в гостях)</p>
+</div>
+
+<!-- РАЗНОЕ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">⚡</span>Разное (коротко)</h2>
+<p>✿ В машине есть очень хорошая система терморегулирования, в том числе неплохая система охлаждения, которая использует кондиционер автомобиля. Существует система жидкостного охлаждения, которая неплохо справляется с поддержанием оптимального температурного режима батареи для максимального срока службы.</p>
+<p>✿ Фактически, даже болты с большим пробегом (100 тыс. + Миль) демонстрируют очень минимальную деградацию в максимальном диапазоне 5-10%.</p>
+<p>✿ Bolt 2020 г.в. (модельный год) имеет немного большую батарею - 66 кВтч</p>
+<p>✿ У Bolt 2022 похоже, что добавили буфер на 1 кВтч. Доступно только 65 кВт / ч.</p>
+<p>✿ В 2018 модельном году добавлен телескопический солнцезащитный козырек (который можно установить в 2017 модельный год), а обогрев рулевого колеса может включаться автоматически.</p>
+<p>✿ батарея 2017-2019 на самом деле составляет 57 кВтч, но при нормальном использовании мы можем получить ~ 60 кВтч.</p>
+<p>✿ В 2022 есть встроенная зарядка Qi и функция Wireless CarPlay.</p>
+<p>✿ В 2020 были добавлены HD-камеры, однако вы не можете использовать их на более старых моделях.</p>
+<p>✿ Предупреждения о низком уровне жидкости для омывателя ветрового стекла нет.</p>
+<p>✿ Если вам нужно запитать свой дом (или что-то еще), приобретите качественный синусоидальный инвертор (в идеале) мощностью 2000 Вт + непрерывной мощности и подключите его напрямую к клеммам аккумулятора 12 В. Bolt может обеспечить постоянную мощность 130 А или около 1600 Вт в системе 12 В от основного тягового аккумулятора. Это означает, что постоянная выходная мощность переменного тока составляет около 1400 Вт. Короткие нагрузки выше этого допустимы.</p>
+<p>Если вам нужно проработать более 1-2 часов (когда Bolt автоматически выключится), включите автомобиль, включите стояночный тормоз, переключитесь на нейтраль и выйдите через пассажирскую дверь.</p>
+</div>
+
+<!-- ОПЕЛЬ vs BOLT -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🔍</span>Опель Ампера-е vs Chevrolet Bolt</h2>
+<p><strong>ОПТИКА</strong></p>
+<ol>
+<li>В опеле есть ручной корректор</li>
+<li>В опеле нет боковых жёлтых повторителей габаритов, соответственно нет боковых диодных габаритов</li>
+<li>Оптика в заднем бампере в опеле, это противотуманные фонари, и задний ход одна лампа. Есть кнопка вкл зад. птф.</li>
+</ol>
+<p><strong>ЗЕРКАЛА</strong></p>
+<ol>
+<li>Стекла сферические с обеих сторон, с пассажирской стороны нет надписи</li>
+<li>В опеле зеркала складываются с кнопки.</li>
+</ol>
+<p><strong>КУЗОВ</strong></p>
+<ol>
+<li>В опеле передняя решетка рельефная.</li>
+<li>В опеле европорты с завода</li>
+<li>Штатная зарядка в опеле полностью соответствует нашим стандартам, без переделок</li>
+<li>В опеле чуть другое расположение предохранителей под капотом</li>
+<li>В опеле блокируется даже штатный пистолет зарядки, разблокировать можно кнопкой на ключе или на большом экране.</li>
+</ol>
+<p><strong>САЛОН - КОМФОРТ</strong></p>
+<ol>
+<li>В опеле в меню есть по умолчанию русский язык, четные волны</li>
+<li>В опеле в отличии от шевроле, только две камеры, задняя и в лобовом, кругового обзора не бывает</li>
+<li>В опеле есть датчик дождя</li>
+<li>В опеле есть кнопка на руле ограничения скорости</li>
+<li>В опеле парктроники в круг, есть автопарковка, задействованы кнопки под большим монитором</li>
+<li>В опеле не бывает нижней жёсткой полки в багажнике, как и креплений. (Пишут что есть как доп. опция)</li>
+<li>Ключи внешне абсолютно разные</li>
+<img src="images/01_opel_optika1.jpg" alt="Ключи сравнение 1">
+<img src="images/02_opel_optika2.jpg" alt="Ключи сравнение 2">
+<li>В Опеле камера 360, как опция за отдельную плату</li>
+</ol>
+<p>Разница в скорости стандартной зарядки Bolt 8А/12А на шевроле и 6А/10А на опеле</p>
+<p>В остальном, абсолютно одинаковые машины</p>
+</div>
+
+<!-- ИНСТРУКЦИИ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">📋</span>Инструкции</h2>
+<p>Различные инструкции (англ): <a href="https://allev.info/2020/02/chevy-bolt-most-frequently-asked-questions/" target="_blank">https://allev.info/2020/02/chevy-bolt-most-frequently-asked-questions/</a></p>
+<p>Русская кривая: <a href="https://drive.google.com/file/d/1Rpj8Pf-UXJazhzd5efhcn-YdODuj8pZ8/view" target="_blank">https://drive.google.com/file/d/1Rpj8Pf-UXJazhzd5efhcn-YdODuj8pZ8/view</a></p>
+<p><strong>Bolt EV Service Manual 2017-2019 (сервисная инструкция):</strong> <a href="https://drive.google.com/file/d/1eZawZRS1c3m7dLvHKuv3AWbXhLbp4s62/view" target="_blank">https://drive.google.com/file/d/1eZawZRS1c3m7dLvHKuv3AWbXhLbp4s62/view</a></p>
+</div>
+
+<!-- ТО -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🔧</span>Регламент ТО, интервалы и тех. обслуживание</h2>
+<img src="images/03_TO_reglament.jpg" alt="Регламент ТО">
+</div>
+
+<!-- QR КОД -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">📱</span>Комплектация BOLT через чтение QR кода на стойке водителя</h2>
+<p>Чтобы прочитать коды комплектации нужно отсканировать большой QR-код на водительской стойке. Там будет длинный текст, где через пробелы разные коды.</p>
+<p>Ниже есть PDF где можно найти большинство из них: <a href="https://drive.google.com/file/d/1nXYWi-4S7O5hWzxiyd02q6x0ExN-nwES/view" target="_blank">Коды из расшифровки</a></p>
+</div>
+
+<!-- ЧАТЫ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">💬</span>Группы/чаты в интернете</h2>
+<ul>
+<li><strong>Сообщество в МАКС:</strong> <a href="https://max.ru/join/LF7lRQw04K2uaNn7qZnTMiugj8r881rTbL4bc6tp8-E" target="_blank">ссылка</a></li>
+<li><strong>Англоязычный FAQ:</strong> <a href="https://allev.info/2020/02/chevy-bolt-most-frequently-asked-questions/" target="_blank">ссылка</a></li>
+<li><strong>Шевроле Болт BY (viber 465 участников):</strong> <a href="https://invite.viber.com/?g2=AQBl%2FLRkKQsTMUw2adHmhJ0T7TYdVZmK2wi%2BsevzibMStMDKqIfrElqdpL9BAS%2Bu" target="_blank">ссылка</a></li>
+<li><strong>Chevrolet BOLT ФОРУМ (Телеграм 2080 участников):</strong> <a href="https://t.me/boltchevrolet" target="_blank">ссылка</a></li>
+<li><strong>ChevyBolt (Телеграм 980 участников):</strong> <a href="https://t.me/chevybolt" target="_blank">ссылка</a></li>
+<li><strong>Электромобиль Беларусь (viber 1014 участников):</strong> <a href="https://invite.viber.com/?g2=AQBtmLSM%2B3UiSUsgSc2APlKaAS7EDWoV0LnITrtqFUpxwQOaPAEh9LjTe6bagTul" target="_blank">ссылка</a></li>
+<li><strong>DRIVE2.RU:</strong> <a href="https://www.drive2.ru/experience/chevrolet/g5400/" target="_blank">ссылка</a></li>
+<li><strong>Chevrolet BOLT РФ:</strong> <a href="https://t.me/BOLT_RF" target="_blank">ссылка</a></li>
+<li><strong>BOLT_RF_запчасти:</strong> <a href="https://t.me/BOLT_RF_Parts" target="_blank">ссылка</a></li>
+</ul>
+</div>
+
+<!-- ОТЗЫВ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">📋</span>Проверка автомобиля на отзыв производителя</h2>
+<p><a href="https://my.chevrolet.com/recalls" target="_blank">https://my.chevrolet.com/recalls</a></p>
+</div>
+
+<!-- СЕРИЙНЫЙ НОМЕР -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🔍</span>Где найти серийный номер батареи</h2>
+<img src="images/04_batt_serial1.jpg" alt="Серийный номер батареи 1">
+<img src="images/05_batt_serial2.jpg" alt="Серийный номер батареи 2">
+<img src="images/06_batt_serial3.jpg" alt="Серийный номер батареи 3">
+</div>
+
+<!-- РЕЗИНА -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🛞</span>Резина</h2>
+<p>✿ У Bolt большой крутящий момент, поэтому, если у вас тяжелая нога, вы быстро изнашиваете передние колеса. Вот почему так важно выполнять ротацию шин по расписанию.</p>
+<p>Размер шин (оригинал) 215/50/R17</p>
+<p>Диски оригинал 6.5j×17 ET44 5×105</p>
+<p>215/55 r17 - На выворачивании будет затирать</p>
+<ul>
+<li>Вылет диска 44 - сток для 17 дисков, 39 - протестировано и подходит для 16 дисков <a href="https://t.me/boltchevrolet/37297" target="_blank">https://t.me/boltchevrolet/37297</a></li>
+<li>У меня не затирает. И арки подшумлены. Но зазор не большой <a href="https://t.me/boltchevrolet/37952" target="_blank">https://t.me/boltchevrolet/37952</a></li>
+<li>при ширине диска 7J вылет надо 39-42</li>
+<li>Вчера купил 16е диски себе на зиму от опеля астры чтоли круглой, 6.5J×16 5/105 ET39 d56.6 Резина размеры 205/60R16. Все стало как родное. Единственный момент, при выборе дисков смотрите чтобы спицы не задевали за суппорт.</li>
+<li>Поставил R16 ET38 6.5J×16 5/105 d56.6 с зимней резиной 205/60/16 все стало отлично. Диски искал от опеля.</li>
+<li>Сегодня поставил 7х17, вылет 42, нормально (резина стандартный размер)</li>
+</ul>
+<img src="images/07_tires1.jpg" alt="Диски R16">
+<p><strong>Диски 17":</strong> <a href="https://catalog.onliner.by/wheel?rim_diameter%5Bfrom%5D=17&rim_diameter%5Bto%5D=17&rim_width%5Bfrom%5D=7&rim_width%5Bto%5D=7&number_of_fixing%5B0%5D=second_hole&number_of_fixing%5Boperation%5D=union&pcd_wheel%5Bfrom%5D=105&pcd_wheel%5Bto%5D=105&diam_of_central%5Bfrom%5D=56&diam_of_central%5Bto%5D=57&et_wheel%5Bfrom%5D=42&et_wheel%5Bto%5D=42" target="_blank">Onliner</a> | <a href="https://market.yandex.ru/catalog--diski/54461/list?hid=166068&lr=213&glfilter=5085722%3A12109645&glfilter=5085724%3A12109662&glfilter=5085726%3A12109667&glfilter=5085720%3A12109630&onstock=0&local-offers-first=0" target="_blank">Яндекс</a></p>
+<p><strong>Диски 16":</strong> <a href="https://catalog.onliner.by/wheel?rim_diameter%5Bfrom%5D=16&rim_diameter%5Bto%5D=16&rim_width%5Bfrom%5D=6.5&rim_width%5Bto%5D=6.5&number_of_fixing%5B0%5D=second_hole&number_of_fixing%5Boperation%5D=union&pcd_wheel%5Bfrom%5D=105&pcd_wheel%5Bto%5D=105&diam_of_central%5Bfrom%5D=56&diam_of_central%5Bto%5D=57&et_wheel%5Bfrom%5D=39&et_wheel%5Bto%5D=39" target="_blank">Onliner</a> | <a href="https://market.yandex.ru/catalog--diski/54461/list?hid=166068&lr=213&glfilter=5085722%3A12109644&glfilter=5085724%3A12109662&glfilter=5085726%3A12109667&glfilter=5085720%3A12109628&onstock=0&local-offers-first=0" target="_blank">Яндекс</a> | <a href="https://autoset.by/wheels/?selection=p&type=&diameter=16&pcd_merge=5_105_0&dia_num=56_6&width_num_from=6.5&width_num_to=6.5&et_num_from=39&et_num_to=39" target="_blank">Autoset</a></p>
+<img src="images/08_tires2.jpg" alt="Диски">
+<div class="card warning"><strong>Важно:</strong> У Bolt большой крутящий момент — передние шины изнашиваются быстро. Делайте ротацию по расписанию!</div>
+</div>
+
+<!-- ДАТЧИКИ ДАВЛЕНИЯ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">📡</span>Датчики в колеса</h2>
+<p>Болт 315 мГц</p>
+<p>Ampera-e на 433 мГц</p>
+<p>Оригинал ACDelco 13598772 GM Original Equipment Tire Pressure Monitoring System (TPMS). Батарейки хватает на лет 5.</p>
+<img src="images/09_tpms.jpg" alt="Датчик давления">
+<p>С китайскими большое кол-во брака. Нужно покупать с запасом на случай брака и перед установкой проверять</p>
+<p>Вентиль резиновый для датчика артикул - top5623904</p>
+</div>
+
+<!-- ПРОСТАВКИ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">📐</span>Проставки</h2>
+<p>Проставки 25 перед, 20 зад</p>
+<img src="images/10_spacers.jpg" alt="Проставки">
+</div>
+
+<!-- БРЫЗГОВИКИ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🚗</span>Оригинальные брызговики</h2>
+<p>Их не существует</p>
+<img src="images/11_mudflaps.jpg" alt="Брызговики">
+</div>
+
+<!-- ДАТЧИКИ КОЛЕС -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🔧</span>Датчики колес</h2>
+<p>Прошивальщик EL-50448</p>
+<p>Ссылки на <a href="https://aliexpress.ru/item/4001211060618.html" target="_blank">Aliexpress</a></p>
+<img src="images/12_tpm_programmer.jpg" alt="Прошивальщик">
+</div>
+
+<!-- ПРОШИВКА КОЛЕС -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">⚙️</span>Прошивка колес</h2>
+<ol>
+<li>Входим в сервисный режим (Удерживать Start без тормоза на 5+ сек)</li>
+<li>Выбираете пункт меню на руле, где указано давление колес, нажимаете на руле галочку (типа ОК, которая). Машина спрашивает, действительно ли хотите перепривязать датчики?</li>
+<li>Выбираете да, машина сигналит и зажигает левый передний поворотник.</li>
+<li>Идете с прибором к левому переднему колесу и пробуете его привязать - тыкаете антенной прибора в место соединения ниппеля и диска, либо в резину сразу за диском, на уровне ниппеля. Пробуйте нажимать и держать кнопку.</li>
+<li>Обычно нужно несколько попыток, пробуйте, пока машина не выключит левый передний поворотник. Если удастся, она посигналить и зажжёт правый передний поворотник. Если не удалось, и поворотник погас, начинайте процесс снова.</li>
+<li>Обычно самый большой геморрой именно с первым колесом, как только удастся с ним, все остальные привязываются с первого касания, но может это только у меня так</li>
+<li>Выключаем авто. Если сразу поехать, то привязка потеряется</li>
+</ol>
+</div>
+
+<!-- РАЗВАЛ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">📐</span>Развал схождение (пример)</h2>
+<img src="images/13_alignment.jpg" alt="Развал-схождение">
+</div>
+
+<!-- ЧТО НУЖНО С СОБОЙ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🧰</span>Что нужно из важного с собой в Болте</h2>
+<ul>
+<li>✿ Ключ на 10 для снятия аккума</li>
+<li>✿ Если нет запаски, жижа для колес</li>
+<li>✿ Трос и крюк для буксировки</li>
+</ul>
+</div>
+
+<!-- СИГНАЛИЗАЦИИ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🚨</span>Сигнализации</h2>
+<p><strong>Pandora</strong> - ребята не могли ничего установить, т.к. цитата: "Твоя Пандора срёт в кан шину и сбрасывает апдейт при опросе блоков". В итоге тупо вырвали её, а болту даже легче стало.</p>
+<p><a href="https://t.me/boltchevrolet/37960" target="_blank">https://t.me/boltchevrolet/37960</a></p>
+<p><a href="https://t.me/boltchevrolet/36354" target="_blank">https://t.me/boltchevrolet/36354</a></p>
+<p><a href="https://t.me/chevybolt/33716" target="_blank">https://t.me/chevybolt/33716</a></p>
+</div>
+
+<!-- ПО НА ТЕЛЕФОН -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">📲</span>ПО на телефон</h2>
+<h3 class="subsection">MyChevrolet программа для Android</h3>
+<img src="images/14_apps_overview.jpg" alt="Приложения">
+<p>Не обновляем! Входим без регистрации (кнопка на англ - войти без регистрации)</p>
+<p>Скачать APK: <a href="https://drive.google.com/file/d/1Nn9-wTQK9JG_gqN0dH5K7Yq9M995peYh/view" target="_blank">https://drive.google.com/file/d/1Nn9-wTQK9JG_gqN0dH5K7Yq9M995peYh/view</a></p>
+<img src="images/15_mychvrolet.jpg" alt="MyChevrolet">
+<h3 class="subsection">MyGreenVolt</h3>
+<p><a href="https://play.google.com/store/apps/details?id=net.MyGreenVolt&hl=ru&gl=US" target="_blank">https://play.google.com/store/apps/details?id=net.MyGreenVolt&hl=ru&gl=US</a></p>
+<p>функционал графика ячеек платный (1$+)</p>
+<h3 class="subsection">Torque Pro</h3>
+<img src="images/16_torque.jpg" alt="Torque Pro">
+<p>✿ ссылка на скачивание PRO - <a href="https://4pda.to/forum/index.php?showtopic=193433" target="_blank">https://4pda.to/forum/index.php?showtopic=193433</a> (нужна регистрация)</p>
+<p>✿ PIDы на 2017-2018 год - <a href="https://drive.google.com/file/d/1WyNItuKI24gT3G4vul_J3NN64T4AaTIz/view" target="_blank">Ссылка</a></p>
+<p>✿ PIDы на 2019-2020 год - <a href="https://drive.google.com/file/d/1WyNItuKI24gT3G4vul_J3NN64T4AaTIz/view" target="_blank">Ссылка</a></p>
+</div>
+
+<!-- САЛОННЫЙ ФИЛЬТР -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🌬️</span>Салонный фильтр</h2>
+<p>Оригинальный партнамбер - 13356914</p>
+<p>Наш фильтр высотой 30мм.</p>
+<p>FP 24 003</p>
+<img src="images/17_cabin_filter.jpg" alt="Салонный фильтр">
+<p>Поставил фильтр MANN, по их каталогу номер FP 24 003. Антибактериальный и угольный. Плотненько встал. Покатался по пробкам - запаха нет. Кайф. Посмотрим как долго не будет.</p>
+<div class="card accent">
+<p><strong>Отчет о фильтре Mann для Болта.</strong></p>
+<p>Куплен был почти самый дорогой из доступных на рынке фильтров салона - Mann</p>
+<p>Цель была проверить на сколько комфорт с новым фильтром будет лучше чем с дешевым. Интересовала фильтрация запахов впереди идущих фур и прочих токсичных вонючек.</p>
+<p>Цена фильтра Mann в польше – около 150 злотых (ок 80 руб), дешевые фильтры угольные начинаются злотых от 20-30 (ок 15 руб). То есть разница почти в 5 раз.</p>
+<p>Фильтр установлен был в начале декабря. После 2 месяцев езды он «закончился» - стали заполевать стекла и пришлось включать обдув на стекло. На дешевом я ездил до полугода и ничего не происходило.</p>
+<p>Запахи действительно пропали. Я вообще перестал дергаться и включать внутреннюю циркуляцию когда впереди что-то коптящее появлялось. Вообще нет проблем с запахами с улицы.</p>
+<p>Итого – минус цена и быстрый износ. Плюс – комфорт и здоровье.</p>
+</div>
+<div class="specs">
+<div class="spec"><div class="label">Угольный</div><div class="value">CUK24003</div></div>
+<div class="spec"><div class="label">Антибактериальный</div><div class="value">FP24003</div></div>
+<div class="spec"><div class="label">Угольный</div><div class="value">GB-9941</div></div>
+<div class="spec"><div class="label">WIX</div><div class="value">2107</div></div>
+</div>
+<p>Заменил фильтр на антибактериальный, встал отлично, как родной. FC907NY</p>
+<p><a href="https://t.me/BOLT_RF/34292" target="_blank">https://t.me/BOLT_RF/34292</a></p>
+</div>
+
+<!-- ДВОРНИКИ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🌧️</span>Дворники на BOLT</h2>
+<p>A101S</p>
+<img src="images/18_wipers.jpg" alt="Дворники">
+</div>
+
+<!-- МАСЛО -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🛢️</span>Масло в редуктор</h2>
+<p>ACDelco dextron HP</p>
+<p>Или mobil lv hp (остерегайтесь подделок)</p>
+<p>Рекомендуем поменять масло на 100.000 км</p>
+<p>Объем 2.6 л</p>
+</div>
+
+<!-- 12В АКБ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🔋</span>Аккумулятор (малый)</h2>
+<p>✿ Покупать только желательно AGM. Обычный будет быстро сдыхать, но в наличии нет в Украине (ставим обычный)</p>
+<p>Размер оригинального АКБ 207×175×190 (ДхВхШ) 50Ah</p>
+<p>ACDelco LN1AGM: <a href="https://t.me/chevybolt/39572" target="_blank">https://t.me/chevybolt/39572</a></p>
+<p>✿ Если вы видите сообщение «Battery Saver Active», это означает, что ваш аккумулятор на 12 В разряжен. Если вы видите это часто или немного проехали, вам, вероятно, нужно заменить 12 В. Известно, что они портятся всего за 1 год. Обычно батареи на 12 В служат только 3-5 лет, так что вы можете рассчитывать на их замену.</p>
+<p>✿ Можно купить на Ali прикуриватель, удобно если вдруг сядет малый аккум</p>
+</div>
+
+<!-- ФАРЫ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">💡</span>Фары</h2>
+<p>Ксенон на американском Болте - D3S</p>
+<p>Блок розжига:</p>
+<img src="images/19_headlight_bulb.jpg" alt="Блок розжига">
+<p>Линзы Aozoom A6: <a href="https://t.me/boltchevrolet/84490" target="_blank">https://t.me/boltchevrolet/84490</a></p>
+<img src="images/20_headlight_lens.jpg" alt="Линзы">
+<p>внешний вид фары не изменился</p>
+<img src="images/21_headlight_result.jpg" alt="Фара">
+</div>
+
+<!-- ПИТАНИЕ ДОМА -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🏠</span>Как подключить к болту дом</h2>
+<p>Нужен Инвертор на 1000 - 2000w</p>
+<p>Подключить на обычный акб, запитать дом чтоб было потребление а потом завести авто</p>
+<p>Заводить нужно, чтобы он смог его заряжать. В идеале включить режим мойки.</p>
+<img src="images/22_home_power1.jpg" alt="Подключение дома">
+<p>Холодильник на старте берет пиковые мощности:</p>
+<img src="images/23_home_power2.jpg" alt="Пиковые мощности">
+</div>
+
+<!-- РЕЖИМ МОЙКИ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🚿</span>Режим Мойки</h2>
+<img src="images/24_wash_mode.jpg" alt="Режим мойки">
+</div>
+
+<!-- КЛЮЧ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🔑</span>Как поменять в ключе батарейку</h2>
+<p>CR 2032</p>
+<p><a href="https://youtu.be/ILFYhMcnynE" target="_blank">https://youtu.be/ILFYhMcnynE</a></p>
+<img src="images/25_key_battery1.jpg" alt="Ключ 1">
+<img src="images/26_key_battery2.jpg" alt="Ключ 2">
+<img src="images/27_key_battery3.jpg" alt="Ключ 3">
+<img src="images/28_key_battery4.jpg" alt="Ключ 4">
+</div>
+
+<!-- НЕЙТРАЛЬ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">⚙️</span>Алгоритм перевода Болта в Нейтраль</h2>
+<p>Постановка на НЕЙТРАЛЬ: включить зажигание, нажать тормоз и не отпуская педаль, открыть дверь, не закрывая дверь, перевести в нейтраль, выключить авто. Покинуть салон, закрыть дверь.</p>
+</div>
+
+<!-- СТОЙКИ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🔩</span>Стойки стабилизатора</h2>
+<p>Стойки стабилизатора подходят от тойота королла 02, авенсис 03, ниссан жук 2010, OEM Number: 4882002030 N4252</p>
+<img src="images/29_stabilizer.jpg" alt="Стойки стабилизатора">
+</div>
+
+<!-- ЗАРЯДКИ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🔌</span>Зарядки</h2>
+<h3 class="subsection">Типы зарядок (описание)</h3>
+<p><a href="https://hevcars.com.ua/reviews/zaryazhaem-elektromobil-osnovnyie-tipy-zaryadnyih-stantsiy-i-razemov/?amp" target="_blank">https://hevcars.com.ua/reviews/zaryazhaem-elektromobil-osnovnyie-tipy-zaryadnyih-stantsiy-i-razemov/?amp</a></p>
+<p>Обычно Болты переделывают под европейский быстрый порт CCS</p>
+
+<h3 class="subsection">Где смотреть зарядки?</h3>
+<p>Все страны</p>
+<p>приложение Plugshare (после санкций работает только через прокси)</p>
+<p><a href="https://apps.apple.com/us/app/plugshare/id421788217" target="_blank">https://apps.apple.com/us/app/plugshare/id421788217</a></p>
+<p><a href="https://play.google.com/store/apps/details?id=com.xatori.Plugshare" target="_blank">https://play.google.com/store/apps/details?id=com.xatori.Plugshare</a></p>
+
+<h3 class="subsection">Очень удобная зарядка Energy Star Pro</h3>
+<ul>
+<li>может работать без заземления</li>
+<li>есть свой WiFi (через него можно управлять всеми параметрами включая током заряда, и даже отключение после заряда. Удобно если ее повесить в свой ящик на улице)</li>
+</ul>
+<p>Инструкция к Energy Star 32 Pro: <a href="https://drive.google.com/file/d/1saKfNN0CwNuFEmxQCEx2Zija9kOAq-gu/view" target="_blank">Ссылка</a></p>
+
+<h3 class="subsection">Электрозарядки в РБ</h3>
+<p><strong>Маланка:</strong> <a href="https://malankabn.by/" target="_blank">https://malankabn.by/</a></p>
+<p>Быстрая зарядка 0.39 BYN / Квт</p>
+<p>Обычная 0.29 BYN / Квт</p>
+<p><a href="https://chargeandgo.by/" target="_blank">https://chargeandgo.by/</a></p>
+
+<h3 class="subsection">Минимальное напряжение для зарядки болта от 220в</h3>
+<p>В чатах пишут, что работает от 165в</p>
+
+<h3 class="subsection">Как определить наличие быстрой зарядки в Болте?</h3>
+<p>Картинка 1 - без быстрой зарядке (нет проводов, и черная не съемная заглушка)</p>
+<p>Картинка 2 - есть быстрая зарядка (два кабеля, съемная заглушка (под ней доп разъем))</p>
+<img src="images/32_fast_charge.jpg" alt="Быстрая зарядка">
+
+<h3 class="subsection">Установка зарядки на своем машиноместе в паркинге</h3>
+<ol>
+<li>Получить тех. условия (инженер ЖЭС/ТС, за подписью председателя/директора).</li>
+<li>Сделать проект.</li>
+<li>Согласовать с членами ТС(2/3 голосов). Для ЖЭС скорее всего не требуется</li>
+<li>Установить ящик со счетчиком согласно проекту (требуется интеграция с АСКУЭ, т.е. счетчик с модемом).</li>
+<li>Согласовать с Энергонадзор</li>
+<li>Согласовать с Энергосбыт</li>
+<li>Заключить договор с Энергосбыт</li>
+<li>Параметризовать счетчик (энергосбыт)</li>
+</ol>
+<p>Самостоятельное согласование увеличивает сроки в Х раз. Лучше просить об этом проектировщика.</p>
+<p><a href="https://auto.onliner.by/2021/05/26/opyt-ustanovki-zaryadnoj-stancii" target="_blank">https://auto.onliner.by/2021/05/26/opyt-ustanovki-zaryadnoj-stancii</a></p>
+<p><a href="https://autokadabra.ru/shouts/104243" target="_blank">https://autokadabra.ru/shouts/104243</a></p>
+
+<h3 class="subsection">Быстрая зарядка</h3>
+<p>✿ Болты 2017-2019 модельного года не любят быструю зарядку в холодном состоянии, поэтому они будут заряжаться медленно, пока аккумулятор не нагреется до полной температуры 15C.</p>
+<p>✿ Точно так же в очень жаркую погоду он снижает скорость заряда, если становится слишком жарко</p>
+<p>✿ Быстрая зарядка игнорирует ограничения по времени суток, а также ограничения по лимитам заряда.</p>
+<p>✿ Bolts 2017-2019 требуется около 1 часа, чтобы зарядиться с 10 до 70% при зарядном устройстве на 125 А мощностью 50 кВт, что добавляет около 230 км запаса хода.</p>
+<p>✿ Около 100км в час в хорошую погоду</p>
+<p>✿ Также требуется час, чтобы зарядиться с 70 до 100%</p>
+
+<h3 class="subsection">Зарядка CCS график</h3>
+<img src="images/33_ccs_graph.jpg" alt="CCS график">
+
+<h3 class="subsection">Деградация батарей электромобилей</h3>
+<p><a href="https://prosto.energy/blogs/news/degradatsiya-batarey-electromobilya" target="_blank">https://prosto.energy/blogs/news/degradatsiya-batarey-electromobilya</a></p>
+
+<h3 class="subsection">Ёмкость батареи</h3>
+<p>Первый столбик. Данные с авто можно смотреть через всякие bluetooth-сканеры</p>
+<img src="images/34_capacity.jpg" alt="Ёмкость батареи">
+
+<h3 class="subsection">Зависимость расстояния Болт от скорости</h3>
+<p>На 5 миль в час меньше может означать на 10% больший запас хода.</p>
+<img src="images/35_range_speed.jpg" alt="Запас хода vs скорость">
+
+<h3 class="subsection">Зависимость расстояния Болт от Температуры</h3>
+<img src="images/36_range_temp.jpg" alt="Запас хода vs температура">
+
+<h3 class="subsection">Расход кВт и расчёт по цене</h3>
+<p>Все электромобили приблизительно одинаково расходуют электричество. Поэтому важен размер батареи.</p>
+<p>Excel онлайн калькулятор</p>
+<p>Средний расход в кВт на 100км на Болтах:</p>
+<ul>
+<li>Летом в городе около 15кВт/100км (без кондиционера + стиль езды)</li>
+<li>Осенью в городе около 21кВт/100км (печка, щетки + стиль езды)</li>
+<li>Зимой около xxx кВт/100км (печка, щетки, подогрев батереи + стиль езды)</li>
+</ul>
+<p>Ф-ла запаса хода = Эквивалент литров бензина =</p>
+<p><a href="https://docs.google.com/spreadsheets/d/1PY888hxXtqvXgGJvA_GUkV_knmKiMO8AAAoPEKD0wNU/edit#gid=0" target="_blank">Калькулятор расчета цен на EV</a></p>
+</div>
+
+<!-- ЗИМА -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">❄️</span>Зима</h2>
+<p>✿ Холодной зимой у вас будет на 40% меньше запас хода - это нормально.</p>
+<p>✿ Перед отъездом используйте предварительную подготовку, чтобы помочь согреть аккумулятор и кабину, когда они подключены к электросети. Каждый запуск длится 20 минут</p>
+<p>✿ Регенерация работает только на передних 2 колесах, и, хотя есть некоторая антипробуксовочная система и АБС, которые могут быть применены, следует проявлять осторожность при движении в L, когда это скользко.</p>
+<p>✿ Предварительная подготовка кабины работает только в том случае, если вы оставите климат в автоматическом режиме</p>
+<p>✿ В машине есть очень хорошая система терморегулирования, в том числе неплохая система охлаждения, которая использует кондиционер автомобиля.</p>
+<p>✿ 260км с печкой по трассе при -10</p>
+<p>✿ Подгорев охлаждающей жидкости - Греет до 15 если температура батареи опускается меньше 10</p>
+
+<h3 class="subsection">Активация климата и подогрева салона</h3>
+<p>А) Оставить включенным климат/печку</p>
+<p>Б) выставить градусы</p>
+<p>В) На брелочке нужно нажать кнопку закрытия 2 раза</p>
+<p>Г) нажать 3-ю кнопку на брелке.</p>
+<p>После включаются габариты автомобиля и активируется климат/подогрев</p>
+
+<h3 class="subsection">Большие морозы</h3>
+<p>Замерзла 🥶 -30 ощущается как -40. ночью было -36</p>
+<img src="images/39_cold_weather.jpg" alt="Морозы">
+<p>выходит, не греется она сама, если к шнурку не подключена</p>
+<p>Я на даче ставил до похолодания с запасом хода 170 км. Утром при -26 стало 128. Подключил шнурок, за час стал пробег 150, за два вернулись 170 км.</p>
+
+<h3 class="subsection">Защита на днище (картера)</h3>
+<p><a href="https://karter-market.ru/catalog/zashchita-kartera/chevrolet-2/bolt_2016_2021/" target="_blank">https://karter-market.ru/catalog/zashchita-kartera/chevrolet-2/bolt_2016_2021/</a></p>
+</div>
+
+<!-- МЕДИА -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">📱</span>Медиа</h2>
+<p><strong>Беспроводная зарядка в болтах поддерживает вот эти телефоны:</strong></p>
+<p><a href="https://drive.google.com/file/d/1SQk_YB_aehkn6zOmdum2K5-ahIKHazj0/view" target="_blank">https://drive.google.com/file/d/1SQk_YB_aehkn6zOmdum2K5-ahIKHazj0/view</a></p>
+<p>✿ В 2022 есть встроенная зарядка Qi и функция Wireless CarPlay.</p>
+<p>✿ В 2017 году была зарядка «Qi», но пользователи iPhone X не могли заставить ее работать. Видимо модуль зарядки 2018 лучше.</p>
+
+<h3 class="subsection">Перезапуск медиасистемы</h3>
+<p>Удерживайте Home + FF (две кнопки справа от ручки громкости) 10 секунд. Это безопасно в любое время.</p>
+
+<h3 class="subsection">Быстрое переключение между Android Auto и штатной системой</h3>
+<p>удерживать кнопку "домик"</p>
+
+<h3 class="subsection">Прошивка на 17-й год - 14.5</h3>
+<p><a href="https://www.chevybolt.org/forums/software-and-firmware-updates.509/" target="_blank">https://www.chevybolt.org/forums/software-and-firmware-updates.509/</a></p>
+<p><a href="https://www.chevybolt.org/threads/what-is-in-14-5.26482/page-2" target="_blank">https://www.chevybolt.org/threads/what-is-in-14-5.26482/page-2</a></p>
+<p><a href="https://drive.google.com/file/d/17NfdKpwKbAfkY1qSdBem0InrDF-GMlZV/view" target="_blank">Ссылка</a></p>
+</div>
+
+<!-- 3Д АДАПТЕР -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🖨️</span>3D адаптер для крепления телефона</h2>
+<p>Печатается на 3Д, потом к нему крепится любая держалка для телефона</p>
+<p><a href="https://www.thingiverse.com/thing:3622061" target="_blank">https://www.thingiverse.com/thing:3622061</a></p>
+<img src="images/41_3d_mount1.jpg" alt="3D адаптер 1">
+<img src="images/42_3d_mount2.jpg" alt="3D адаптер 2">
+<p>Альтернативный вариант на 3Д принтере:</p>
+<p><a href="https://t.me/chevybolt/40400" target="_blank">https://t.me/chevybolt/40400</a></p>
+<p>шарик надо под каждую держалку подгонять внешний размер, замерять штангеном родной шарик у держалки, писать мне - я скину нужную модель</p>
+<p>и держатель магнитного кабеля:</p>
+<p><a href="https://drive.google.com/file/d/1VEHqtkj92q4MxticOn6bYicqTjbNpnVM/view" target="_blank">Ссылка 1</a>, <a href="https://drive.google.com/file/d/1bdsuz0Jnf3dtsMNHWUKHyuMUU9FxjVhl/view" target="_blank">Ссылка 2</a>, <a href="https://drive.google.com/file/d/1t7mY0q-F9pGD0Epy3D7ru98ciAkAgKlp/view" target="_blank">Ссылка 3</a></p>
+<img src="images/43_3d_mount3.jpg" alt="3D адаптер 3">
+<h3 class="subsection">Держатель телефона в подстаканник</h3>
+<p><a href="https://www.ozon.ru/product/avtomobilnyy-derzhatel-telefona-zegood-v-podstakannik-260414796" target="_blank">https://www.ozon.ru/product/avtomobilnyy-derzhatel-telefona-zegood-v-podstakannik-260414796</a></p>
+<img src="images/44_3d_mount4.jpg" alt="Держатель">
+</div>
+
+<!-- АЛИЭКСПРЕСС -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🛒</span>Алиэкспресс</h2>
+<ul>
+<li><strong>Амортизатор Переднего Капота</strong> <a href="https://aliexpress.ru/item/4001345403740.html" target="_blank">https://aliexpress.ru/item/4001345403740.html</a> 31$</li>
+<li><strong>Датчик давления в шинах TPMS 13598771 13598772 13586335 315 МГц</strong> <a href="https://aliexpress.ru/item/10000350929144.html" target="_blank">30$</a> | <a href="https://aliexpress.ru/item/4000878454705.html" target="_blank">25$</a></li>
+<li><strong>Ключ</strong> <a href="https://aliexpress.ru/item/4000066837491.html" target="_blank">24$</a></li>
+<li><strong>Прошивщик датчиков колес</strong> <a href="https://aliexpress.ru/item/4001211060618.html" target="_blank">7.25$</a></li>
+<li><strong>Чехол для ключа</strong> <a href="https://aliexpress.ru/item/4001075319277.html" target="_blank">5$</a> | <a href="https://aliexpress.ru/item/4001364282756.html" target="_blank">11$ металл</a></li>
+<li><strong>CarLink</strong> <a href="https://aliexpress.ru/item/32826755246.html" target="_blank">36-53$</a></li>
+<li><strong>ELM327 Bluetooth PIC18F25K80</strong> <a href="https://aliexpress.ru/item/32636557500.html" target="_blank">5$</a></li>
+<li><strong>Лампочки заднего хода</strong> <a href="https://aliexpress.ru/item/4000162403407.html" target="_blank">Ссылка</a></li>
+</ul>
+</div>
+
+<!-- РЕМОНТ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">🔧</span>Локальный ремонт (контакты)</h2>
+<p><strong>РБ:</strong></p>
+<ul>
+<li>GMPROG Павел +375 33 3007954 — Прошивка и электрика (РБ и удаленно весь мир через ELM327)</li>
+<li>Замена порта, электрика и другое — Женя Добрыня Болт +375 29 8187849</li>
+<li>Зеркало сферическое, в том числе с лазерной гравировкой и подогревом - 80 рублей, по времени 20 минут. Малиновка 150 пав. 8 (029) 323-18-28</li>
+</ul>
+<p><strong>Украина:</strong></p>
+<p>Зарядки EnergyStar и продажа болтов Telegram @Manheim_UA</p>
+</div>
+
+<!-- ПРОБЛЕМЫ -->
+<div class="section scroll-reveal">
+<h2 class="section-title"><span class="icon">⚠️</span>Проблемы</h2>
+
+<h3 class="subsection">Аккумулятор (восстановление старого AGM)</h3>
+<p>На Драйв2 кто-то поднимал soh старого 12вольтового аккума, залив по 5 шприцов деонизированной воды. Там пробки под наклейкой.</p>
+
+<h3 class="subsection">Как поставить щетки в сервисное положение?</h3>
+<p>Нужно включить и выключить машину. Тогда, удерживая рычажок на себя щетки станут в сервисное положение.</p>
+
+<h3 class="subsection">Что первым умирает по подвеске?</h3>
+<p>Первыми на 70т умирают тяги стаба, потом на сотке большой сайлентблок. Потом на 150т рейка не у всех. Ну и как я понял на очереди амортизаторы передние и подшипники ступицы, но опять же не у всех, тк зависит от дорог.</p>
+
+<h3 class="subsection">Задние колодки</h3>
+<p>patron pbp289</p>
+
+<h3 class="subsection">Буксировка (из чатов)</h3>
+<ul>
+<li>Буксировать с полностью разряженной батарей нельзя</li>
+<li>В режиме D куда угодно и сколь угодно (180км буксировки зарядилось на 150км)</li>
+<li>В режиме L только короткие дистанции</li>
+<li>В режиме N буксировать нельзя</li>
+</ul>
+
+<h3 class="subsection">Включение сервисного режима</h3>
+<p>Удерживать Start без тормоза на 5+ сек</p>
+
+<h3 class="subsection">Датчики слепой зоны</h3>
+<p>Если индикаторы боковой слепой зоны иногда отключаются или постоянный "светофор", это известная проблема - смотреть бюллетень 17-NA-097, чтобы наклеить дополнительную пленку для защиты датчиков.</p>
+<p><a href="https://static.nhtsa.gov/odi/tsbs/2017/MC-10139082-9999.pdf" target="_blank">https://static.nhtsa.gov/odi/tsbs/2017/MC-10139082-9999.pdf</a></p>
+<p>Снимать бампер не нужно. Можно сделать из под бампера. Обклеили датчики двумя слоями фольги(без битума, обычная самоклеящаяся лента из строительного) и также нишу двумя слоями, как указано в отзывной выше. Все стало работать исправно и четко. Также можно посмотреть здесь <a href="https://t.me/chevybolt/2657" target="_blank">https://t.me/chevybolt/2657</a></p>
+
+<h3 class="subsection">Отключить автоматическую блокировку дверей</h3>
+<p>Если и работает данный лайфхак, то максимум у 10% владельцев.</p>
+<p>Нажмите и удерживайте кнопку внутренней разблокировки двери водителя в течение 3 секунд, чтобы отключить автоматическую блокировку</p>
+
+<h3 class="subsection">Скрежет при паркинге</h3>
+<p>Скрежет, который иногда слышен при переключении на парк, является нормальным явлением. Автомобиль, использует гидравлические тормоза для полной остановки автомобиля, при этом не будет никаких повреждений.</p>
+
+<h3 class="subsection">Ошибка Stabilitrak</h3>
+<p>Проверьте датчик абс, ту сторону где вам снимали колесо <a href="https://t.me/boltchevrolet/32959" target="_blank">https://t.me/boltchevrolet/32959</a></p>
+<img src="images/47_stabilitrak.jpg" alt="Stabilitrak">
+
+<h3 class="subsection">Скрип / лёгкий стук спереди</h3>
+<p><a href="https://www.drive2.ru/l/483893419190518116/" target="_blank">https://www.drive2.ru/l/483893419190518116/</a></p>
+<p>Нужно менять кольца. Стоят между ступицей и шрусом, меняются просто</p>
+<p>11611964 номер колец</p>
+<img src="images/48_squeak1.jpg" alt="Скрип 1">
+<img src="images/49_squeak2.jpg" alt="Скрип 2">
+<img src="images/50_squeak3.jpg" alt="Скрип 3">
+
+<h3 class="subsection">Ремонт скрипа подлокотника</h3>
+<p>Открутили нижнюю пластиковую крышку, под ней прижимная хрень на четырёх шурупах, она держит два ролика) демонтировали и вытягиваете основной подголовник двигая в сторону лобового стекла (вперёд)</p>
+<p>Суть скрипов была в пустотности между всеми крышками... решил вопрос вот так…</p>
+<img src="images/51_armrest1.jpg" alt="Подлокотник 1">
+<img src="images/52_armrest2.jpg" alt="Подлокотник 2">
+<p>Собираем обратно в противоположной последовательности! Защелки хлипкие, два-три раза открыли и больше не держат!</p>
+<p><a href="https://t.me/chevybolt/39972" target="_blank">https://t.me/chevybolt/39972</a></p>
+
+<h3 class="subsection">Дребезжание заднего кресла</h3>
+<p>Там где петли - лента антискрип. Намотати на скобу, куди сидіння защіплюється</p>
+
+<h3 class="subsection">Крепление для шторки багажника</h3>
+<p>42363844</p>
+<p>Здесь можно запросить 3D модель: <a href="https://www.chevybolt.org/threads/the-little-peg-on-the-lift-gate-that-lifts-the-cargo-cover-rear-lift-gate-trim-removal-3d-printed-replacement.37242/" target="_blank">https://www.chevybolt.org/threads/the-little-peg-on-the-lift-gate-that-lifts-the-cargo-cover-rear-lift-gate-trim-removal-3d-printed-replacement.37242/</a></p>
+<img src="images/53_trunk_hook.jpg" alt="Шторка">
+
+<h3 class="subsection">Крючок крышки багажника 3D</h3>
+<p><a href="https://www.drive2.ru/l/590146099730208376/" target="_blank">https://www.drive2.ru/l/590146099730208376/</a></p>
+<img src="images/54_trunk_3d.jpg" alt="Крючок 3D">
+
+<h3 class="subsection">Улучшение сидений (добавление слоя листовой пены) АНГЛ</h3>
+<p><a href="https://www.chevybolt.org/threads/front-seat-fix.13810/" target="_blank">https://www.chevybolt.org/threads/front-seat-fix.13810/</a></p>
+<p><a href="https://youtu.be/2dgxWTOnVn8" target="_blank">https://youtu.be/2dgxWTOnVn8</a></p>
+
+<h3 class="subsection">Альтернативные сиденья от Mercedes</h3>
+<p>Mercedes W176 Сиденья Полуковши Спорт</p>
+<img src="images/55_mercedes_seats.jpg" alt="Сиденья Mercedes">
+
+<h3 class="subsection">Включение автозакрытия дверей</h3>
+<img src="images/56_autoclose.jpg" alt="Автозакрытие">
+
+<h3 class="subsection">Замена головного света (ламп) на LED</h3>
+<p><a href="https://t.me/chevybolt/38987" target="_blank">https://t.me/chevybolt/38987</a></p>
+<p>Светодиодные лампы ALED X D3S XD3SD09 40w 6000K gen.3 для линз.</p>
+<p>Вы довольны результатом?</p>
+<p>На порядок лучше стало, но я очень требователен к свету, так что в перспективе буду ставить ХОРОШИЕ biled модули. Вместо штатных линз, например ams z8</p>
+
+<h3 class="subsection">Рулевые наконечники</h3>
+<p>42353793 это оригинал болта. В заменителях показывает только CEG-60 или CE0932</p>
+<p>Характеристики:</p>
+<ul>
+<li>Длина 125 мм</li>
+<li>Резьба M12XP1,25</li>
+<li>Комплектация Включает гайки: да.</li>
+<li>Место установки снаружи</li>
+<li>Тип наконечника мама</li>
+<li>Размер резьбы осевого M14XP1,5</li>
+<li>шарнира Диаметр пальца 12,5</li>
+<li>Покатость конуса 1/6</li>
+</ul>
+<p>Можно попробовать по характеристикам подобрать.</p>
+
+<h3 class="subsection">Как снять заглушку с USB-портами?</h3>
+<p>Нужно снимать подлокотник, и внутри отжимать белые пластмассовые защелки</p>
+<p><a href="https://t.me/boltchevrolet/35981" target="_blank">https://t.me/boltchevrolet/35981</a></p>
+<img src="images/57_usb_cover.jpg" alt="USB заглушка">
+
+<h3 class="subsection">Как снять подголовник?</h3>
+<p><a href="https://t.me/boltchevrolet/21008" target="_blank">https://t.me/boltchevrolet/21008</a></p>
+<img src="images/58_headrest.jpg" alt="Подголовник">
+
+<h3 class="subsection">Снятие плафона в потолке</h3>
+<p><a href="https://t.me/boltchevrolet/18642" target="_blank">https://t.me/boltchevrolet/18642</a></p>
+<img src="images/59_dome1.jpg" alt="Плафон 1">
+<img src="images/60_dome2.jpg" alt="Плафон 2">
+
+<h3 class="subsection">Не заряжает быстрая зарядка</h3>
+<p>Как правило, со стороны машины есть защелка (Серебристая, блестящая, выше порта немного), которая фиксирует разъем быстрый зарядки (который выставляете), по тем или иным причинам(например сломана защелка на разъеме) может не доходить, можно ей аккуратно помочь. Кто-то подкладывал окурок.</p>
+
+<h3 class="subsection">Не работает микрофон</h3>
+<p>Микрофон сидит на одном предохранителе с OnStar. Может сами или еще кто выдернул предохранитель OnStar.</p>
+
+<h3 class="subsection">Отключение динамика пешеходов</h3>
+<p>Динамик на внутренней стороне бампера слева. На болте, кнопка на экране не активная. Отключить в болте можно сняв предохранитель №34 под капотом. Ни на что больше №34 не влияет.</p>
+<img src="images/61_pedspeaker.jpg" alt="Динамик пешеходов">
+
+<h3 class="subsection">Блок предохранителей</h3>
+<p>в мануале (для Болт 2017 год) Страница 266</p>
+<p><a href="https://my.chevrolet.com/content/dam/gmownercenter/gmna/dynamic/manuals/2017/Chevrolet/BOLT%20EV/Owner's%20Manual.pdf" target="_blank">https://my.chevrolet.com/content/dam/gmownercenter/gmna/dynamic/manuals/2017/Chevrolet/BOLT%20EV/Owner's%20Manual.pdf</a></p>
+<p><strong>Капот:</strong></p>
+<img src="images/62_fuse_hood1.jpg" alt="Предохранители капот 1">
+<img src="images/63_fuse_hood2.jpg" alt="Предохранители капот 2">
+<img src="images/64_fuse_hood3.jpg" alt="Предохранители капот 3">
+<img src="images/65_fuse_hood4.jpg" alt="Предохранители капот 4">
+<img src="images/66_fuse_hood5.jpg" alt="Предохранители капот 5">
+<p><strong>Салон (слева от руля):</strong></p>
+<img src="images/67_fuse_cabin1.jpg" alt="Предохранители салон 1">
+<img src="images/68_fuse_cabin2.jpg" alt="Предохранители салон 2">
+<img src="images/69_fuse_cabin3.jpg" alt="Предохранители салон 3">
+
+<h3 class="subsection">Лампочки освещения Chevrolet bolt:</h3>
+<p>Головной свет: d3s</p>
+<p>Номер / салон: w5w / T10</p>
+<p>Поворотники: wy21w / 7440a</p>
+<p>Доп стопы: w21w / 7440r</p>
+<p>Задний ход: w16w / T15 / 921</p>
+
+<h3 class="subsection">Перетирание кабеля под задним бампером</h3>
+<p>Перетирается проводка заднего бампера об задний усилитель, из-за этого машина может перестать ехать, либо пропадать системы помощи, ходовые огни, показание батареи, фантомные ошибки по airbag</p>
+<img src="images/70_bumper_cable1.jpg" alt="Кабель 1">
+<img src="images/71_bumper_cable2.jpg" alt="Кабель 2">
+<img src="images/72_bumper_cable3.jpg" alt="Кабель 3">
+<img src="images/73_bumper_cable4.jpg" alt="Кабель 4">
+<img src="images/74_bumper_cable5.jpg" alt="Кабель 5">
+
+<h3 class="subsection">Перестала работать камера в зеркале</h3>
+<p>От попадания влаги сгнивают контакты на фишке. За обшивкой двери. известная болячка болта...</p>
+<img src="images/75_mirror_camera.jpg" alt="Камера зеркала">
+
+<h3 class="subsection">Замена фильтра салона</h3>
+<p><a href="https://t.me/BOLT_RF/10830" target="_blank">https://t.me/BOLT_RF/10830</a></p>
+<img src="images/76_cabin_filter1.jpg" alt="Фильтр 1">
+<img src="images/77_cabin_filter2.jpg" alt="Фильтр 2">
+<img src="images/78_cabin_filter3.jpg" alt="Фильтр 3">
+<img src="images/79_cabin_filter4.jpg" alt="Фильтр 4">
+<img src="images/80_cabin_filter5.jpg" alt="Фильтр 5">
+<img src="images/81_cabin_filter6.jpg" alt="Фильтр 6">
+<img src="images/82_cabin_filter7.jpg" alt="Фильтр 7">
+<img src="images/83_cabin_filter8.jpg" alt="Фильтр 8">
+
+<h3 class="subsection">Задний дворник (щетка)</h3>
+<p>Щетка обычная под крючок, длина 12 дюймов или 300 мм. Бескаркасную лучше не брать, крышка не встанет на место</p>
+
+<h3 class="subsection">Лампа подсветки в задний номер</h3>
+<p>Т10 W5W</p>
+<p>Снаружи плафон сам отводиться в бок и достается вправо</p>
+<img src="images/84_number_light.jpg" alt="Лампа номера">
+
+<h3 class="subsection">Альтернатива датчика ABS</h3>
+<p>Датчик ABS от Chevrolet Cruze Номер датчика ST-13470637, подходит, нужно только переставить крепление со старого датчика + провод длиньше. Срезал со старого датчика крепления и поставил на новый. Датчик один в один.</p>
+<img src="images/85_abs_sensor.jpg" alt="Датчик ABS">
+
+<h3 class="subsection">Докатка</h3>
+<p>Докатка 115/70/16</p>
+<img src="images/86_spare_tire.jpg" alt="Докатка">
+</div>
+
+</div>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.scroll-reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
